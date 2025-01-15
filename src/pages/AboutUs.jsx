@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as S from "../style/LayoutStyle";
+import { generation } from "../seasonalData";
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -229,7 +230,7 @@ const AboutUs = () => {
             <LinkToAboutUsContainer onClick={onClick}>
               <LinkToAboutUs>
                 숙명여대 멋쟁이사자처럼
-                <BoldText>&nbsp;&nbsp;12기 </BoldText>
+                <BoldText>&nbsp;&nbsp;{generation} </BoldText>
                 지원하기
               </LinkToAboutUs>
               <ImgArrow
@@ -567,6 +568,7 @@ const ImgArrow = styled.img`
 
 const LinkToAboutUsContainer = styled.div`
   position: relative;
+  cursor: pointer;
   &:hover {
     text-shadow: 1px 1px 8px #fff;
   }
