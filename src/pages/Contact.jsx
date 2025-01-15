@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import FAQList from "../components/FAQList";
+import { contactInfo } from "../seasonalData";
 
 const Contact = () => {
   useEffect(() => {
@@ -30,10 +31,7 @@ const Contact = () => {
         </Text>
 
         <SNSContainer>
-          <SNSBox
-            href="https://www.instagram.com/sookmyung_likelion/"
-            target="_blank"
-          >
+          <SNSBox href={contactInfo.instagram} target="_blank">
             <Icon
               src={`${process.env.REACT_APP_IMAGE_URL}/Insta.svg`}
               alt="Instagram"
@@ -59,10 +57,7 @@ const Contact = () => {
               @sookmyung_likelion
             </Text>
           </SNSBox>
-          <SNSBox
-            href="https://open.kakao.com/me/likelion_sookmyung"
-            target="_blank"
-          >
+          <SNSBox href={contactInfo.kakaotalk} target="_blank">
             <Icon
               src={`${process.env.REACT_APP_IMAGE_URL}/Kakao.svg`}
               alt="KakaoTalk"
@@ -88,10 +83,7 @@ const Contact = () => {
               참여코드: likelion
             </Text>
           </SNSBox>
-          <SNSBox
-            href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=sookmyung@likelion.org"
-            target="_blank"
-          >
+          <SNSBox href={contactInfo.email} target="_blank">
             <Icon
               src={`${process.env.REACT_APP_IMAGE_URL}/Gmail.svg`}
               alt="Email"
