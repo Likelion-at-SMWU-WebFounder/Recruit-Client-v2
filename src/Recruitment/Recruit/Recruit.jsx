@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Information from "../../components/Information";
 import { useNavigate } from "react-router-dom";
+import { notionUrl } from "../../seasonalData";
 
 const Recruit = () => {
   useEffect(() => {
@@ -54,10 +55,7 @@ const Recruit = () => {
           </PartBox>
         </PartContainer>
 
-        <NotionBox
-          href="https://tattered-cabinet-6cd.notion.site/12-at-Sookmyung-db2f25f1f35c48a6b068dbc5e33577e4?pvs=4"
-          target="_blank"
-        >
+        <NotionBox href={notionUrl} target="_blank">
           숙명여대 멋쟁이사자처럼 리쿠르팅 홍보 노션 확인하기
         </NotionBox>
 

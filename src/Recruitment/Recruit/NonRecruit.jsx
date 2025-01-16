@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Information from "../../components/Information";
+import { notionUrl } from "../../seasonalData";
 
 const NonRecruit = () => {
   const [email, setEmail] = useState("");
@@ -73,10 +74,7 @@ const NonRecruit = () => {
             알림 신청
           </button>
         </form>
-        <NotionBox
-          href="https://tattered-cabinet-6cd.notion.site/12-at-Sookmyung-db2f25f1f35c48a6b068dbc5e33577e4?pvs=4"
-          target="_blank"
-        >
+        <NotionBox href={notionUrl} target="_blank">
           멋쟁이사자처럼 숙명여대 리쿠르팅 홍보 노션 확인하기
         </NotionBox>
         <Information />
