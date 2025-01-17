@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { recruitInfo } from "../seasonalData";
 
 const Information = () => {
   return (
@@ -46,25 +47,25 @@ const Information = () => {
         <RoundedBox background="#FFDEB9">
           서류 접수
           <ChangeText fontWeight="200" fontSize="18px">
-            2/17(토)~2/23(금) 18:00
+            {recruitInfo.docSubmissionDate}
           </ChangeText>
         </RoundedBox>
         <RoundedBox background="#FFC88C">
           1차 합격자 발표
           <ChangeText fontWeight="200" fontSize="24px">
-            2/27(화)
+            {recruitInfo.passAnnounce_1st}
           </ChangeText>
         </RoundedBox>
         <RoundedBox background="#FFB666">
           면접 *대면 원칙
           <ChangeText fontWeight="200" fontSize="24px">
-            2/29(목)~3/1(금)
+            {recruitInfo.interview}
           </ChangeText>
         </RoundedBox>
         <RoundedBox background="#FFA94C">
           최종 합격자 발표
           <ChangeText fontWeight="200" fontSize="24px">
-            3/5(화)
+            {recruitInfo.passAnnounce_final}
           </ChangeText>
         </RoundedBox>
       </BoxContainer>
