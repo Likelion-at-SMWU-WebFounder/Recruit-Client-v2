@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import { questions, agree, scheduleData, required } from "./data";
+import { questions, agree, scheduleData, required } from "../questionData";
 
 const Question = () => {
   const { part } = useParams();
