@@ -27,7 +27,6 @@ import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
 import ApplyPage from "./pages/ApplyPage";
 import Project from "./pages/Project";
-import ProjectForm from "./components/ProjectForm";
 
 const Div = styled.div`
   margin-top: 120px;
@@ -72,7 +71,6 @@ function App() {
             />*/}
             <Route path="/contact" element={LayOut(Contact)} />
             <Route path="/makers" element={LayOut(Makers)} />
-            {/*<Route path="/form" element={<ProjectForm />} /> 프로젝트 신규 등록 시 열어서 활용하기 */}
           </Routes>
         </div>
       </Router>
