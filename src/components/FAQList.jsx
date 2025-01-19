@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { faqData } from "./data";
+import { faqData } from "../seasonalData";
 
 const FAQList = () => {
   const [isOpen, setIsOpen] = useState(Array(faqData.length).fill(false));
