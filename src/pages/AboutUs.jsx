@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as S from "../style/LayoutStyle";
 import { generation } from "../seasonalData";
+import { imgCard } from "../seasonalData";
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -39,26 +40,17 @@ const AboutUs = () => {
               얻습니다.
             </SmallTextDiv>
           </GradDiv>
-          <RowBox>
-            <ImgSmwu
-              src={`${process.env.REACT_APP_IMAGE_URL}/smwu1.svg`}
-              alt="정기 세미나"
-            />
-            <ImgSmwu
-              src={`${process.env.REACT_APP_IMAGE_URL}/smwu2.svg`}
-              alt="해커톤"
-            />
-          </RowBox>
-          <RowBox>
-            <ImgSmwu
-              src={`${process.env.REACT_APP_IMAGE_URL}/smwu3.svg`}
-              alt="선배와의 대화"
-            />
-            <ImgSmwu
-              src={`${process.env.REACT_APP_IMAGE_URL}/smwu4.svg`}
-              alt="그 외 친목 활동"
-            />
-          </RowBox>
+          <ImgGrid>
+            {imgCard.map((card, index) => (
+              <ImgSmwu key={index}>
+                <img src={card.imgUrl} alt={card.title} />
+                <div className="text-overlay">
+                  <div className="title">{card.title}</div>
+                  <div className="content">{card.content}</div>
+                </div>
+              </ImgSmwu>
+            ))}
+          </ImgGrid>
           <GradDiv background="linear-gradient(180deg, rgba(14, 50, 132, 0.50) 0%, rgba(174, 190, 249, 0.00) 51.35%, rgba(14, 50, 132, 0.50) 100%)">
             <BigTextDiv>
               숙명여대 멋쟁이사자처럼 활동 트랙 및 교육과정
@@ -418,14 +410,65 @@ const RowBox = styled.div`
   }
 `;
 
-const ImgSmwu = styled.img`
-  height: 371px;
-  flex-shrink: 0;
+const ImgGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 595.3px);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 50px; /* 그리드 항목 간 간격 */
+  justify-content: center;
+  padding-bottom: 100px;
 
   @media (max-width: 1024px) {
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    gap: 0;
+  }
+`;
+
+const ImgSmwu = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  img {
+    height: 371px;
+    flex-shrink: 0;
+    width: 595.73px;
+    object-fit: cover;
+    border-radius: 30px;
+    opacity: 0.5;
+    mix-blend-mode: exclusion;
+
+    @media (max-width: 1024px) {
+      height: 300px;
+      width: 90%;
+      margin-bottom: 20px;
+    }
+  }
+
+  .text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
     width: 90%;
-    margin-bottom: 20px;
+    .title {
+      font-weight: 700;
+      font-size: 40px;
+      @media (max-width: 1024px) {
+        font-size: 22px;
+      }
+    }
+    .content {
+      line-height: 22px;
+      white-space: pre-line;
+      margin-top: 10px;
+      font-weight: 500;
+      font-family: "Noto Sans Light";
+      font-size: 18px;
+    }
   }
 `;
 

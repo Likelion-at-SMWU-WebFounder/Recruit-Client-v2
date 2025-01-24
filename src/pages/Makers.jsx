@@ -17,7 +17,10 @@ const Makers = () => {
 
         <RowProfile>
           <ProfileContainer>
-            <Img src="/heesu.svg" alt="Profile" />
+            <Img
+              src={`${process.env.REACT_APP_IMAGE_URL}/heesu.svg`}
+              alt="Profile"
+            />
             <BoxContainer>
               <ProfileText style={{ fontWeight: "800", fontSize: "20px" }}>
                 소희수 | 기획/디자인

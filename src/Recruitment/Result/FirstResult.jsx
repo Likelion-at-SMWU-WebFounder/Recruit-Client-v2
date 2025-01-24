@@ -6,10 +6,7 @@ const FirstResult = ({ name, message, interviewTime }) => {
   return (
     <Layout>
       <Container>
-        <Img
-          src={`${process.env.REACT_APP_IMAGE_URL}/sm_logo.svg`}
-          alt="logo"
-        />
+        <Img src={`${process.env.REACT_APP_IMAGE_URL}/Logo.svg`} alt="logo" />
         <PassContainer message={message}>
           <BoxContainer>
             <Hr />
