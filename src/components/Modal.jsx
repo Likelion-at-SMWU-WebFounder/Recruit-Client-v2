@@ -204,6 +204,7 @@ const ModalText = styled.p`
   font-weight: lighter;
   margin-top: ${(props) => props.marginTop};
   line-height: 1.2vw;
+  white-space: pre-line;
 
   @media (max-width: 480px) {
     font-size: 10px;
