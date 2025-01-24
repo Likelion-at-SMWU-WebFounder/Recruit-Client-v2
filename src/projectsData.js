@@ -14,7 +14,7 @@
 
 const s3URL = process.env.REACT_APP_IMAGE_URL;
 
-const result = [
+export const projectsData = [
   {
     year: 2023,
     bgImg: `${s3URL}/`,
@@ -29,6 +29,7 @@ const result = [
     gitBeUrl: "https://github.com/Likelion-at-SMWU-11th/LoveBridge-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-11th/LoveBridge-Client",
     servLaunch: null,
+    no: "11기",
   },
   {
     year: 2023,
@@ -44,6 +45,7 @@ const result = [
     gitBeUrl: "https://github.com/Likelion-at-SMWU-11th/BanJjak-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-11th/BanJjak-Client",
     servLaunch: null,
+    no: "11기",
   },
   {
     year: 2023,
@@ -60,6 +62,7 @@ const result = [
     gitBeUrl: "https://github.com/Likelion-at-SMWU-11th/D_raw-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-11th/D_raw-Client",
     servLaunch: null,
+    no: "11기",
   },
   {
     year: 2022,
@@ -82,6 +85,7 @@ const result = [
     gitBeUrl: null,
     gitFeUrl: null,
     servLaunch: null,
+    no: "10기",
   },
   {
     year: 2022,
@@ -97,6 +101,7 @@ const result = [
     gitBeUrl: "https://github.com/Likelion-at-SMWU-10th/MYHEALING-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-10th/MYHEALING-Client",
     servLaunch: null,
+    no: "10기",
   },
   {
     year: 2022,
@@ -111,6 +116,7 @@ const result = [
     gitBeUrl: "https://github.com/Likelion-at-SMWU-10th/Otr-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-10th/OTR_client",
     servLaunch: null,
+    no: "10기",
   },
   {
     year: 2021,
@@ -125,6 +131,7 @@ const result = [
     gitBeUrl: "https://github.com/Likelion-at-SMWU/meetwizard",
     gitFeUrl: null,
     servLaunch: null,
+    no: "9기",
   },
   {
     year: 2021,
@@ -141,6 +148,7 @@ const result = [
     gitBeUrl: null,
     gitFeUrl: null,
     servLaunch: null,
+    no: "9기",
   },
   {
     year: 2021,
@@ -158,6 +166,7 @@ const result = [
     gitBeUrl: null,
     gitFeUrl: null,
     servLaunch: null,
+    no: "9기",
   },
   {
     year: 2021,
@@ -176,5 +185,6 @@ const result = [
     gitBeUrl: "https://github.com/LikeLion-snowball",
     gitFeUrl: null,
     servLaunch: null,
+    no: "9기",
   },
 ];

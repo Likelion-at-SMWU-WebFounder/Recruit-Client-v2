@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "../components/Modal";
 import axios from "axios";
+import { projectsData } from "../projectsData";
 
 const ProjectCard = ({ project, onClick }) => {
   const { bgImg, title, no, year, summary } = project;
@@ -27,28 +28,28 @@ const ProjectCard = ({ project, onClick }) => {
 };
 
 const Project = () => {
-  const [projects, setProjects] = useState([]);
+  // const [projects, setProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_ROOT}/api/project`
-        );
-        const data = response.data;
-        setProjects(data.result);
-        console.log(data.result);
-      } catch (error) {
-        console.error("Error fetching project data:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `${process.env.REACT_APP_API_ROOT}/api/project`
+  //       );
+  //       const data = response.data;
+  //       setProjects(data.result);
+  //       console.log(data.result);
+  //     } catch (error) {
+  //       console.error("Error fetching project data:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  const openModal = (projectId) => {
-    setSelectedProjectId(projectId);
+  const openModal = (projectTitle) => {
+    setSelectedProjectId(projectTitle);
 
     // 뒷화면 스크롤 막기
     document.body.style.cssText = `
@@ -100,11 +101,11 @@ const Project = () => {
             숙명여대 멋쟁이사자처럼 팀원들의 프로젝트를 둘러보세요.
           </Text>
         </BannerContainer>
-        {projects.map((project) => (
+        {projectsData.map((project) => (
           <ProjectCard
-            key={project.projectId}
+            key={project.title}
             project={project}
-            onClick={() => openModal(project.projectId)}
+            onClick={() => openModal(project.title)}
           />
         ))}
         {selectedProjectId && (
