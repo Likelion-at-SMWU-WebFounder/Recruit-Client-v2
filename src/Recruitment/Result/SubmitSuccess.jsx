@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SubmitSuccess = () => {
   return (
     <Layout>
-      <Img src={`${process.env.REACT_APP_IMAGE_URL}/sm_logo.svg`} alt="logo" />
+      <Img src={`${process.env.REACT_APP_IMAGE_URL}/Logo.svg`} alt="logo" />
       <Container>
         <Img
           src={`${process.env.REACT_APP_IMAGE_URL}/StarLion.svg`}
