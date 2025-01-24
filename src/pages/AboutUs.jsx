@@ -41,21 +41,21 @@ const AboutUs = () => {
           </GradDiv>
           <RowBox>
             <ImgSmwu
-              src={`${process.env.REACT_APP_IMAGE_URL}/smwu1.svg`}
+              src={`${process.env.REACT_APP_IMAGE_URL}/smwu1_seminar.svg`}
               alt="정기 세미나"
             />
             <ImgSmwu
-              src={`${process.env.REACT_APP_IMAGE_URL}/smwu2.svg`}
+              src={`${process.env.REACT_APP_IMAGE_URL}/smwu2_hackathon.svg`}
               alt="해커톤"
             />
           </RowBox>
           <RowBox>
             <ImgSmwu
-              src={`${process.env.REACT_APP_IMAGE_URL}/smwu3.svg`}
+              src={`${process.env.REACT_APP_IMAGE_URL}/smwu3_talkWithSenior.svg`}
               alt="선배와의 대화"
             />
             <ImgSmwu
-              src={`${process.env.REACT_APP_IMAGE_URL}/smwu4.svg`}
+              src={`${process.env.REACT_APP_IMAGE_URL}/smwu4_friendship.svg`}
               alt="그 외 친목 활동"
             />
           </RowBox>
