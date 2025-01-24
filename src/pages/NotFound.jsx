@@ -74,7 +74,7 @@ const NotFound = () => {
             src={`${process.env.REACT_APP_IMAGE_URL}/lionwow.svg`}
             alt="lionwow"
           />
-          <Img
+          <Imgg
             src={`${process.env.REACT_APP_IMAGE_URL}/question.svg`}
             alt="question"
           />
