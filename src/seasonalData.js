@@ -1,6 +1,7 @@
 // ABOUTUS 탭 - 지원하기 버튼 텍스트 (AboutUs 컴포넌트)
 export const generation = "13기"; // 모집 기수
 
+// ABOUTUS 탭 - 활동 소개 그리드 (AboutUs 컴포넌트)
 export const imgCard = [
   {
     title: "정기 세미나",
