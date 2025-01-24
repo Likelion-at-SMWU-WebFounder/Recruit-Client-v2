@@ -1,37 +1,40 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { projectsData } from "../projectsData";
 
 const Modal = ({ projectId, onClose }) => {
-  const [project, setProject] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // const [project, setProject] = useState(null);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_ROOT}/api/project/${projectId}`
-        );
-        const data = response.data;
-        setProject(data.result);
-        console.log(data.result);
-      } catch (error) {
-        console.error("Error fetching project data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const response = await axios.get(
+  //         `${process.env.REACT_APP_API_ROOT}/api/project/${projectId}`
+  //       );
+  //       const data = response.data;
+  //       setProject(data.result);
+  //       console.log(data.result);
+  //     } catch (error) {
+  //       console.error("Error fetching project data:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchData();
-  }, [projectId]);
+  //   fetchData();
+  // }, [projectId]);
 
-  if (loading) {
-    return <LoadingMessage>Loading...</LoadingMessage>;
-  }
+  // if (loading) {
+  //   return <LoadingMessage>Loading...</LoadingMessage>;
+  // }
+
+  const project = projectsData.find((project) => project.title === projectId);
 
   if (!project) {
-    return <ErrorMessage>Error loading project data.</ErrorMessage>;
+    return <ErrorMessage>Cannot find project data.</ErrorMessage>;
   }
 
   const {
@@ -201,6 +204,7 @@ const ModalText = styled.p`
   font-weight: lighter;
   margin-top: ${(props) => props.marginTop};
   line-height: 1.2vw;
+  white-space: pre-line;
 
   @media (max-width: 480px) {
     font-size: 10px;
