@@ -7,10 +7,7 @@ const FirstRecruit = () => {
   return (
     <Layout>
       <Container>
-        <Img
-          src={`${process.env.REACT_APP_IMAGE_URL}/EndLion.svg`}
-          alt="lion"
-        />
+        <Img src={`${process.env.REACT_APP_IMAGE_URL}/lion.svg`} alt="lion" />
 
         <Text>
           멋쟁이사자처럼 숙명여대{" "}
