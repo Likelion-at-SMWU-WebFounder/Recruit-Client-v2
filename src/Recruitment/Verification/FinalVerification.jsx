@@ -59,7 +59,7 @@ const FinalVerification = () => {
         {finalResult ? null : (
           <>
             <Img
-              src={`${process.env.REACT_APP_IMAGE_URL}/sm_logo.svg`}
+              src={`${process.env.REACT_APP_IMAGE_URL}/Logo.svg`}
               alt="logo"
             />
             <Text marginBottom="60px" MobileFontSize="21px">
