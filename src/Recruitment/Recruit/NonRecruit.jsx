@@ -55,12 +55,12 @@ const NonRecruit = () => {
     <Layout>
       <Container>
         <Img
-          src={`${process.env.REACT_APP_IMAGE_URL}/EndLion.svg`}
+          src={`${process.env.REACT_APP_IMAGE_URL}/lioncrying.svg`}
           alt="lion"
         />
-        <Text>2024년 12기 신규 모집이 종료되었습니다.</Text>
+        <Text>지금은 모집기간이 아닙니다.</Text>
         <Text>
-          멋쟁이사자처럼 숙명여대 모집이 시작되면 메일을 보내드립니다.
+          숙명여대 멋쟁이사자처럼 모집이 시작되면 메일을 보내드립니다.
         </Text>
 
         <form onSubmit={handleSubmit}>
