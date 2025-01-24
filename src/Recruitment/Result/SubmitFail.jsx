@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SubmitFail = () => {
   return (
     <Layout>
-      <Img src={`${process.env.REACT_APP_IMAGE_URL}/Logo.svg`} alt="logo" />
+      <Img src={`${process.env.REACT_APP_IMAGE_URL}/lionwow.svg`} alt="logo" />
       <Container>
         <Img
           src={`${process.env.REACT_APP_IMAGE_URL}/StarLion.svg`}
