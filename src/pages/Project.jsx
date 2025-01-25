@@ -21,7 +21,14 @@ const ProjectCard = ({ project, onClick }) => {
         <CardText fontSize="2.3vw" fontWeight="lighter">
           {summary}
         </CardText>
-        <Detail>상세보기 🔍</Detail>
+        <Detail>
+          상세보기
+          <img
+            src={`${process.env.REACT_APP_IMAGE_URL}/ShowDetail.svg`}
+            alt="ShowDetail"
+            style={{ width: "40px", height: "auto", marginLeft: "5px" }}
+          />
+        </Detail>
       </CardContent>
     </Card>
   );
@@ -219,4 +226,10 @@ const Detail = styled.div`
   text-align: center;
   padding: 1.2vw;
   margin-top: 3vw;
+
+  &:hover {
+    background-color: #c66c0a;
+    color: #ffffff;
+    cursor: pointer;
+  }
 `;
