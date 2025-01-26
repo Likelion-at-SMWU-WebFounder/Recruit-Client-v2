@@ -30,12 +30,13 @@ const ProjectCard = ({ project, onClick }) => {
 const Project = () => {
   // const [projects, setProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const sortedByYearProjects = projectsData.sort((p1, p2) => p2.year - p1.year);
 
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
   //       const response = await axios.get(
-  //         `${process.env.REACT_APP_API_ROOT}/api/project`
+  // `${process.env.REACT_APP_API_ROOT}/api/project`
   //       );
   //       const data = response.data;
   //       setProjects(data.result);
@@ -101,7 +102,7 @@ const Project = () => {
             숙명여대 멋쟁이사자처럼 팀원들의 프로젝트를 둘러보세요.
           </Text>
         </BannerContainer>
-        {projectsData.map((project) => (
+        {sortedByYearProjects.map((project) => (
           <ProjectCard
             key={project.title}
             project={project}

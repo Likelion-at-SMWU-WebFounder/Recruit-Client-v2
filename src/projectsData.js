@@ -17,7 +17,7 @@ const s3URL = process.env.REACT_APP_IMAGE_URL;
 export const projectsData = [
   {
     year: 2023,
-    bgImg: `${s3URL}/`,
+    bgImg: `${s3URL}/bridge.svg`,
     title: "Bridge",
     teamName: "러브브릿지",
     teamMember: "서연경 문유진 손민재 이예린 이예지",
@@ -33,7 +33,7 @@ export const projectsData = [
   },
   {
     year: 2023,
-    bgImg: `${s3URL}/`,
+    bgImg: `${s3URL}/banzak.svg`,
     title: "반짝",
     teamName: "반짝",
     teamMember: "한다인 이선아 조성하 김원희 이예나",
@@ -49,7 +49,7 @@ export const projectsData = [
   },
   {
     year: 2023,
-    bgImg: `${s3URL}/`,
+    bgImg: `${s3URL}/draw.svg`,
     title: "D:raw",
     teamName: "D:raw",
     teamMember: "박연빈 강주은 박상아 이서현 윤서희",
@@ -66,7 +66,7 @@ export const projectsData = [
   },
   {
     year: 2022,
-    bgImg: `${s3URL}/`,
+    bgImg: `${s3URL}/rememb.svg`,
     title: "rememB",
     teamName: "rememB",
     teamMember: "고두영 나유진 박소윤 이수민",
@@ -89,7 +89,7 @@ export const projectsData = [
   },
   {
     year: 2022,
-    bgImg: `${s3URL}/`,
+    bgImg: `${s3URL}/myhealing.svg`,
     title: "마이힐링 (MY Healing)",
     teamName: "MY Healing",
     teamMember: "양지원 양은수 이수민 조은비 최예진",
@@ -105,7 +105,7 @@ export const projectsData = [
   },
   {
     year: 2022,
-    bgImg: `${s3URL}/`,
+    bgImg: `${s3URL}/otr.svg`,
     title: "Otr.",
     teamName: "Otr.",
     teamMember: "김지수 김희원 배지윤 소희수 임아현",
@@ -120,7 +120,7 @@ export const projectsData = [
   },
   {
     year: 2021,
-    bgImg: `${s3URL}/`,
+    bgImg: `${s3URL}/meet.svg`,
     title: "Meet Wizard",
     teamName: "Manna",
     teamMember: "김소은 문다연 박혜준 장한빛",
@@ -135,7 +135,7 @@ export const projectsData = [
   },
   {
     year: 2021,
-    bgImg: `${s3URL}/`,
+    bgImg: `${s3URL}/fm.svg`,
     title: "FM (Find Medical)",
     teamName: "FM",
     teamMember: "강연우 김서영 안현주 황서경",
@@ -152,7 +152,7 @@ export const projectsData = [
   },
   {
     year: 2021,
-    bgImg: `${s3URL}/`,
+    bgImg: `${s3URL}/oneeat.svg`,
     title: "일인분",
     teamName: "인덕션",
     teamMember: "김정운 이민정 박경나 이연수",
@@ -170,7 +170,7 @@ export const projectsData = [
   },
   {
     year: 2021,
-    bgImg: `${s3URL}/`,
+    bgImg: `${s3URL}/roadmap.svg`,
     title: "RoadMap",
     teamName: "눈덩이",
     teamMember: "김유진 노은성 오예림 조원아",
@@ -186,5 +186,51 @@ export const projectsData = [
     gitFeUrl: null,
     servLaunch: null,
     no: "9기",
+  },
+  {
+    year: 2024,
+    bgImg: `${s3URL}/bbangutbbangood.svg`,
+    title: "빵긋빵굿",
+    teamName: "빵긋빵굿",
+    teamMember: "김보미 강주은 최현서 이효림 홍상희",
+    summary: "웰니스 빵 정보(상품 및 레시피)를 제공하는 서비스",
+    content:
+      "‘빵돌이’, ‘빵순이의 일상’과 같은 키워드처럼 다이어트나 건강을 생각하는 사람들 사이에서도 빵을 포기하지 못하는 소비자들을 위해 건강빵을 통해 맛있게 먹으면서도 건강을 관리할 수 있는 플랫폼을 만들고자 기획한 서비스 (빵 유형 테스트, 웰니스 빵, 레시피, 기록 등)",
+    servIntro: null,
+    gitBeUrl: "https://github.com/Likelion-at-SMWU-12th/DreamPatissier-Server",
+    gitFeUrl: "https://github.com/Likelion-at-SMWU-12th/DreamPatissier-Client",
+    servLaunch: null,
+    no: "12기",
+  },
+  {
+    year: 2024,
+    bgImg: `${s3URL}/hancare.svg`,
+    title: "한케어",
+    teamName: "한케어",
+    teamMember: "오시은 유동은 이현정 경민서 서문지",
+    summary: "한의학 기반 맞춤형 건강관리 서비스",
+    content:
+      "한의학/한의원 정보 및 식습관 기반 건강관리 서비스를 제공하여 현대인의 신체적 건강 문제를 해결하기 위해 기획. 한의원 찾기나 한의학 관련 칼럼 제공, 또는 캘린더에 한의원 예약 기록이나 일정을 관리할 수 있는 서비스를 제공한다. ",
+    servIntro: null,
+    gitBeUrl: "https://github.com/Likelion-at-SMWU-12th/Hanappun-Server",
+    gitFeUrl: "https://github.com/Likelion-at-SMWU-12th/Hanappun-Client",
+    servLaunch: null,
+    no: "12기",
+  },
+  {
+    year: 2024,
+    bgImg: `${s3URL}/voyage.svg`,
+    title: "VOYAGE",
+    teamName: "VOYAGE",
+    teamMember: "박우현 성윤정 장유빈 정지윤 유채민",
+    summary:
+      "현대인 심리 건강 개선을 위한 중장년층과 청년층의 세대통합 멘토링 서비스",
+    content:
+      "현대인의 심리적 건강을 위해 중장년층의 자기효능감과 청년층의 자기확신감 증대를 목표로 기획된 서비스로, 중장년층과 청년층이 서로의 멘토이자 멘티가 되어 도움을 주는 서비스. 멘토는 멘티의 고민에 해답을 제시하고, 채팅을 통한 멘토링을 진행할 수 있으며, 커뮤니티 칼럼 작성 및 스크랩이 가능하다. 한편, 멘티는 한 줄 고민 작성, 관심 멘토 설정, 자동 멘토 매칭 및 멘토링에 참여하는 등 고민을 해결하는 데에 도움을 얻을 수 있다.",
+    servIntro: null,
+    gitBeUrl: "https://github.com/Likelion-at-SMWU-12th/CheongpaGamja-Client",
+    gitFeUrl: null,
+    servLaunch: null,
+    no: "12기",
   },
 ];
