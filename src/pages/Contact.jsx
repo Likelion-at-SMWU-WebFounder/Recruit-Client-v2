@@ -80,7 +80,7 @@ const Contact = () => {
               marginBottom="10px"
               fontWeight="200"
             >
-              참여코드: likelion
+              참여코드: {contactInfo.kakaoCode}
             </Text>
           </SNSBox>
           <SNSBox href={contactInfo.email} target="_blank">
