@@ -44,7 +44,7 @@ export const recruitInfo = {
 // CONTACT 탭 - 문의처 링크 (Contact 컴포넌트)
 export const contactInfo = {
   instagram: "https://www.instagram.com/sookmyung_likelion/", // 인스타그램 링크
-  kakaotalk: "https://open.kakao.com/me/likelion_sookmyung", // 카카오톡 오픈채팅 링크
+  kakaotalk: "https://open.kakao.com/o/sCwHovch", // 카카오톡 오픈채팅 링크
   email: "https://mail.google.com/mail/?view=cm&fs=1&to=sookmyung@likelion.org", // email 작성 링크
 };
 
