@@ -44,27 +44,27 @@ const Information = () => {
         <WarnText>*최종 합격 시, 활동 기간 1년을 준수해야 합니다. </WarnText>
       </TextBox>
       <BoxContainer>
-        <RoundedBox background="#FFDEB9">
-          서류 접수
-          <ChangeText fontWeight="200" fontSize="18px">
+        <RoundedBox background="linear-gradient(rgba(255, 222, 185, 1) 0%, rgba(255, 255, 255, 0.8) 100%)">
+          <div className="title">서류 접수</div>
+          <ChangeText fontSize="24px">
             {recruitInfo.docSubmissionDate}
           </ChangeText>
         </RoundedBox>
-        <RoundedBox background="#FFC88C">
-          1차 합격자 발표
-          <ChangeText fontWeight="200" fontSize="24px">
+        <RoundedBox background="linear-gradient(rgba(255, 200, 140, 1) 0%, rgba(255, 255, 255, 0.8) 100%)">
+          <div className="title">1차 합격자 발표</div>
+          <ChangeText fontSize="24px">
             {recruitInfo.passAnnounce_1st}
           </ChangeText>
         </RoundedBox>
-        <RoundedBox background="#FFB666">
-          면접 *대면 원칙
-          <ChangeText fontWeight="200" fontSize="24px">
-            {recruitInfo.interview}
-          </ChangeText>
+        <RoundedBox background="linear-gradient(rgba(255, 182, 102, 1) 0%, rgba(255, 255, 255, 0.8) 100%)">
+          <div className="title">
+            면접 <span>*대면 원칙</span>
+          </div>
+          <ChangeText fontSize="24px">{recruitInfo.interview}</ChangeText>
         </RoundedBox>
-        <RoundedBox background="#FFA94C">
-          최종 합격자 발표
-          <ChangeText fontWeight="200" fontSize="24px">
+        <RoundedBox background="linear-gradient(rgba(255, 156, 47, 1) 0%, rgba(255, 255, 255, 0.8) 100%)">
+          <div className="title">최종 합격자 발표</div>
+          <ChangeText fontSize="24px">
             {recruitInfo.passAnnounce_final}
           </ChangeText>
         </RoundedBox>
@@ -149,8 +149,9 @@ const WarnText = styled.div`
 `;
 
 const ChangeText = styled.span`
+  font-family: "Noto Sans Regular";
   font-size: ${(props) => props.fontSize};
-  font-weight: ${(props) => props.fontWeight};
+  text-align: right;
 
   @media (max-width: 480px) {
     font-size: 12px;
@@ -233,19 +234,24 @@ const RoundedBox = styled.div`
   align-items: left;
   justify-content: center;
   padding: 40px;
-  font-size: 34px;
-  font-weight: 700;
   background: ${(props) => props.background};
   line-height: 75px;
-  white-space: pre-line;
   flex-direction: column;
   color: #111111;
+
+  .title {
+    font-size: 34px;
+    font-weight: 700;
+    white-space: pre-line;
+  }
 
   @media (max-width: 480px) {
     width: calc(50% - 10px);
     line-height: 36px;
     height: 110px;
-    font-size: 14px;
+    .title {
+      font-size: 14px;
+    }
     border: 1px solid #333;
     border-radius: 17px;
     padding: 15px;
