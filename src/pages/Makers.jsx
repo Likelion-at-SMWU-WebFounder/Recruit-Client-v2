@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { makers } from "/Users/leeeyez/Desktop/Recruitment-Client/src/seasonalData.js";
+import AnimatedContainer from "../components/AnimatedContainer";
 
 const Makers = () => {
   useEffect(() => {
@@ -13,60 +14,50 @@ const Makers = () => {
         <Title>
           <div style={{ display: window.innerWidth <= 700 ? "block" : "flex" }}>
             <span className="bold">멋쟁이사자처럼 숙명여대 홈페이지</span>를
-            {window.innerWidth <= 700 && <br />} 만든 멋쟁이 개발자들입니다.{" "}
+            {window.innerWidth <= 700 && <br />} 만든 멋쟁이 개발자들입니다.
           </div>
           <Hr />
         </Title>
+
         <RowProfile>
-          {makers[0].members.map((item) => (
-            <>
+          {makers[0].members.map((item, index) => (
+            <AnimatedContainer key={index} index={index}>
               <ProfileContainer>
                 <Img src={item.img} alt="profileimg" />
                 <BoxContainer>
                   <ProfileNameText>
                     {item.name} | {item.part}
                   </ProfileNameText>
-                  <ProfileText
-                    style={{
-                      fontFamily: "Noto Sans Light",
-                    }}
-                  >
-                    {item.sooklion}
-                  </ProfileText>
-                  <ProfileText style={{ fontFamily: "Noto Sans Light" }}>
-                    {item.major}
-                  </ProfileText>
+                  <ProfileText>{item.sooklion}</ProfileText>
+                  <ProfileText>{item.major}</ProfileText>
                 </BoxContainer>
               </ProfileContainer>
-            </>
+            </AnimatedContainer>
           ))}
         </RowProfile>
+
         <Title>
           <Hr />
           <div className="bold">🛠️ Web-Founders 2nd</div>
         </Title>
+
         <RowProfile>
-          {makers[1].members.map((item) => (
-            <>
+          {makers[1].members.map((item, index) => (
+            <AnimatedContainer
+              key={index + makers[0].members.length}
+              index={index + makers[0].members.length}
+            >
               <ProfileContainer>
                 <Img src={item.img} alt="profileimg" />
                 <BoxContainer>
-                  <ProfileNameText style={{ fontWeight: "800" }}>
+                  <ProfileNameText>
                     {item.name} | {item.part}
                   </ProfileNameText>
-                  <ProfileText
-                    style={{
-                      fontFamily: "Noto Sans Light",
-                    }}
-                  >
-                    {item.sooklion}
-                  </ProfileText>
-                  <ProfileText style={{ fontFamily: "Noto Sans Light" }}>
-                    {item.major}
-                  </ProfileText>
+                  <ProfileText>{item.sooklion}</ProfileText>
+                  <ProfileText>{item.major}</ProfileText>
                 </BoxContainer>
               </ProfileContainer>
-            </>
+            </AnimatedContainer>
           ))}
         </RowProfile>
       </Container>
@@ -132,7 +123,7 @@ const Layout = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  @media (max-width: 700px) {
+  @media (max-width: 480px) {
     padding: 30px;
   }
 `;
@@ -143,11 +134,11 @@ const Hr = styled.hr`
   width: 100%;
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    margin: 20px 0;
+    margin: 15px 0;
   }
 
   @media (max-width: 480px) {
-    margin: 20px 0;
+    margin: 10px 0;
   }
 `;
 
@@ -183,7 +174,7 @@ const ProfileContainer = styled.div`
 const RowProfile = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin: 20px 0;
+  margin-bottom: 20px;
   width: 100%;
 
   @media (max-width: 960px) {
