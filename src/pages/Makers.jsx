@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import { makers } from "/Users/leeeyez/Desktop/Recruitment-Client/src/seasonalData.js";
 
 const Makers = () => {
   useEffect(() => {
@@ -9,139 +10,64 @@ const Makers = () => {
   return (
     <Layout>
       <Container>
-        <Text marginLeft="-120px">
-          <BoldText>멋쟁이사자처럼 숙명여대 홈페이지</BoldText>를{" "}
-          {768 <= window.innerWidth <= 480 && <br />} 만든 멋쟁이
-          개발자들입니다. <Hr />
-        </Text>
-
+        <Title>
+          <div style={{ display: window.innerWidth <= 700 ? "block" : "flex" }}>
+            <span className="bold">멋쟁이사자처럼 숙명여대 홈페이지</span>를
+            {window.innerWidth <= 700 && <br />} 만든 멋쟁이 개발자들입니다.{" "}
+          </div>
+          <Hr />
+        </Title>
         <RowProfile>
-          <ProfileContainer>
-            <Img
-              src={`${process.env.REACT_APP_IMAGE_URL}/heesu.svg`}
-              alt="Profile"
-            />
-            <BoxContainer>
-              <ProfileText style={{ fontWeight: "800", fontSize: "20px" }}>
-                소희수 | 기획/디자인
-              </ProfileText>
-              <ProfileText style={{ marginRight: "40px" }}>
-                멋쟁이사자처럼 숙명여대 10기
-              </ProfileText>
-              <ProfileText>숙명여대 중어중문학부 · IT공학전공</ProfileText>
-            </BoxContainer>
-          </ProfileContainer>
-          <ProfileContainer>
-            <Img
-              src={`${process.env.REACT_APP_IMAGE_URL}/jiyoon.svg`}
-              alt="Profile"
-            />
-            <BoxContainer>
-              <ProfileText style={{ fontWeight: "800", fontSize: "20px" }}>
-                배지윤 | 프론트엔드
-              </ProfileText>
-              <ProfileText style={{ marginRight: "40px" }}>
-                멋쟁이사자처럼 숙명여대 10기
-              </ProfileText>
-              <ProfileText>숙명여대 수학과 · IT공학전공</ProfileText>
-            </BoxContainer>
-          </ProfileContainer>
+          {makers[0].members.map((item) => (
+            <>
+              <ProfileContainer>
+                <Img src={item.img} alt="profileimg" />
+                <BoxContainer>
+                  <ProfileNameText>
+                    {item.name} | {item.part}
+                  </ProfileNameText>
+                  <ProfileText
+                    style={{
+                      fontFamily: "Noto Sans Light",
+                    }}
+                  >
+                    {item.sooklion}
+                  </ProfileText>
+                  <ProfileText style={{ fontFamily: "Noto Sans Light" }}>
+                    {item.major}
+                  </ProfileText>
+                </BoxContainer>
+              </ProfileContainer>
+            </>
+          ))}
         </RowProfile>
+        <Title>
+          <Hr />
+          <div className="bold">🛠️ Web-Founders 2nd</div>
+        </Title>
         <RowProfile>
-          <ProfileContainer>
-            <Img
-              src={`${process.env.REACT_APP_IMAGE_URL}/eunsu.svg`}
-              alt="Profile"
-            />
-            <BoxContainer>
-              <ProfileText style={{ fontWeight: "800", fontSize: "20px" }}>
-                양은수 | 프론트엔드
-              </ProfileText>
-              <ProfileText style={{ marginRight: "40px" }}>
-                멋쟁이사자처럼 숙명여대 10기
-              </ProfileText>
-              <ProfileText>숙명여대 컴퓨터과학전공</ProfileText>
-            </BoxContainer>
-          </ProfileContainer>
-          <ProfileContainer>
-            <Img
-              src={`${process.env.REACT_APP_IMAGE_URL}/yujin.svg`}
-              alt="Profile"
-            />
-            <BoxContainer>
-              <ProfileText style={{ fontWeight: "800", fontSize: "20px" }}>
-                나유진 | 프론트엔드
-              </ProfileText>
-              <ProfileText style={{ marginRight: "40px" }}>
-                멋쟁이사자처럼 숙명여대 10기
-              </ProfileText>
-              <ProfileText>숙명여대 컴퓨터과학전공</ProfileText>
-            </BoxContainer>
-          </ProfileContainer>
-        </RowProfile>
-        <RowProfile>
-          <ProfileContainer>
-            <Img
-              src={`${process.env.REACT_APP_IMAGE_URL}/sumin.svg`}
-              alt="Profile"
-            />
-            <BoxContainer>
-              <ProfileText style={{ fontWeight: "800", fontSize: "20px" }}>
-                이수민 | 백엔드
-              </ProfileText>
-              <ProfileText style={{ marginRight: "40px" }}>
-                멋쟁이사자처럼 숙명여대 10기
-              </ProfileText>
-              <ProfileText>숙명여대 컴퓨터과학전공</ProfileText>
-            </BoxContainer>
-          </ProfileContainer>
-          <ProfileContainer>
-            <Img
-              src={`${process.env.REACT_APP_IMAGE_URL}/ahyun.svg`}
-              alt="Profile"
-            />
-            <BoxContainer>
-              <ProfileText style={{ fontWeight: "800", fontSize: "20px" }}>
-                임아현 | 백엔드
-              </ProfileText>
-              <ProfileText style={{ marginRight: "40px" }}>
-                멋쟁이사자처럼 숙명여대 10기
-              </ProfileText>
-              <ProfileText>숙명여대 IT공학전공</ProfileText>
-            </BoxContainer>
-          </ProfileContainer>
-        </RowProfile>
-        <RowProfile>
-          <ProfileContainer>
-            <Img
-              src={`${process.env.REACT_APP_IMAGE_URL}/soyoon.svg`}
-              alt="Profile"
-            />
-            <BoxContainer>
-              <ProfileText style={{ fontWeight: "800", fontSize: "20px" }}>
-                박소윤 | 백엔드
-              </ProfileText>
-              <ProfileText style={{ marginRight: "40px" }}>
-                멋쟁이사자처럼 숙명여대 10기
-              </ProfileText>
-              <ProfileText>숙명여대 IT공학전공</ProfileText>
-            </BoxContainer>
-          </ProfileContainer>
-          <ProfileContainer style={{ visibility: "hidden" }}>
-            <Img
-              src={`${process.env.REACT_APP_IMAGE_URL}/soyoon.svg`}
-              alt="Profile"
-            />
-            <BoxContainer>
-              <ProfileText style={{ fontWeight: "800", fontSize: "20px" }}>
-                박소윤 | 백엔드
-              </ProfileText>
-              <ProfileText style={{ marginRight: "40px" }}>
-                멋쟁이사자처럼 숙명여대 10기
-              </ProfileText>
-              <ProfileText>숙명여대 IT공학전공</ProfileText>
-            </BoxContainer>
-          </ProfileContainer>
+          {makers[1].members.map((item) => (
+            <>
+              <ProfileContainer>
+                <Img src={item.img} alt="profileimg" />
+                <BoxContainer>
+                  <ProfileNameText style={{ fontWeight: "800" }}>
+                    {item.name} | {item.part}
+                  </ProfileNameText>
+                  <ProfileText
+                    style={{
+                      fontFamily: "Noto Sans Light",
+                    }}
+                  >
+                    {item.sooklion}
+                  </ProfileText>
+                  <ProfileText style={{ fontFamily: "Noto Sans Light" }}>
+                    {item.major}
+                  </ProfileText>
+                </BoxContainer>
+              </ProfileContainer>
+            </>
+          ))}
         </RowProfile>
       </Container>
     </Layout>
@@ -150,80 +76,88 @@ const Makers = () => {
 
 export default Makers;
 
-const Text = styled.div`
+const Title = styled.div`
   color: white;
-  font-size: 40px;
-  font-weight: 300;
-  line-height: 50px;
-  padding-left: 25px;
-  margin-top: ${(props) => props.marginTop};
-  margin-bottom: ${(props) => props.marginBottom};
-  margin-left: ${(props) => props.marginLeft};
-  margin-right: ${(props) => props.marginRight};
+  width: 100%;
+
+  div,
+  span {
+    font-family: "Noto Sans Regular";
+    font-size: 30px;
+    line-height: 33px;
+  }
+
+  .bold {
+    font-family: "Noto Sans Bold";
+  }
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    font-size: 30px;
-    line-height: 38px;
-    padding-left: 80px;
+    div,
+    span {
+      font-family: "Noto Sans Regular";
+      font-size: 20px;
+      line-height: 23px;
+    }
   }
 
   @media (max-width: 480px) {
-    font-size: 18px;
-    line-height: 30px;
-    padding-left: 55px;
+    div,
+    span {
+      font-family: "Noto Sans Regular";
+      font-size: 20px;
+      line-height: 23px;
+    }
   }
 `;
 
 const Img = styled.img`
-  margin-top: 30px;
   width: 180px;
-  margin-left: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 120px;
-    margin-top: 30px;
   }
 
   @media (max-width: 480px) {
     width: 100px;
-    margin-top: 30px;
   }
 `;
 
 const Layout = styled.div`
   display: flex;
-  padding-left: 100px;
-  padding-right: 20px;
+  padding: 50px 100px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media (max-width: 700px) {
+    padding: 30px;
+  }
 `;
 
 const Hr = styled.hr`
-  border: 1px solid #ffffff;
-  margin-top: 60px;
-  width: 1250px;
+  border: 0.5px solid #9e9e9e;
+  margin: 60px 0;
+  width: 100%;
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    width: 750px;
-    margin: 15px;
-    margin-left: 0px;
+    margin: 20px 0;
   }
 
   @media (max-width: 480px) {
-    width: 330px;
-    margin: 10px;
-    margin-left: 0px;
+    margin: 20px 0;
   }
 `;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  height: fit-content;
   align-items: center;
   color: white;
   width: 100%;
-  margin-left: -20px;
   margin-top: 40px;
 
   @media (max-width: 480px) {
@@ -234,20 +168,6 @@ const Container = styled.div`
 const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: left;
-  padding: 50px;
-  margin-top: 40px;
-  margin-left: -10px;
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    padding: 35px;
-    margin-top: 20px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 20px;
-    margin-top: 30px;
-  }
 `;
 
 const ProfileContainer = styled.div`
@@ -255,65 +175,56 @@ const ProfileContainer = styled.div`
   flex-direction: row;
   align-items: center;
   margin-left: 0px;
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    flex-direction: row;
-    margin-left: -110px;
-  }
-
-  @media (max-width: 480px) {
-    flex-direction: row;
-    margin-left: -110px;
-  }
+  gap: 5%;
+  margin-bottom: 30px;
+  width: 100%;
 `;
 
 const RowProfile = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 20px 0;
+  width: 100%;
 
-  @media (min-width: 768px) and (max-width: 1024px) {
-    margin-right: -60px;
-  }
-
-  @media (max-width: 480px) {
+  @media (max-width: 960px) {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0px;
   }
 `;
 
 const ProfileText = styled.div`
   font-size: 20px;
-  line-height: 36px;
+  line-height: 25px;
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    font-size: 14px;
-    line-height: 25px;
+    font-size: 15px;
+    line-height: 20px;
     margin-left: 10px;
-    margin: 5px;
   }
 
   @media (max-width: 768px) {
     font-size: 12px;
-    line-height: 13px;
+    line-height: 17px;
     margin-left: 10px;
-    margin: 5px;
   }
 `;
 
-const BoldText = styled.span`
-  font-size: 40px;
+const ProfileNameText = styled.div`
+  font-size: 23px;
+  line-height: 36px;
   font-weight: 800;
+  margin-bottom: 5px;
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 18px;
+    line-height: 25px;
+    margin-left: 10px;
   }
 
-  @media (max-width: 480px) {
-    font-size: 18px;
-    line-height: 23px;
+  @media (max-width: 768px) {
+    font-size: 15px;
+    line-height: 13px;
+    margin-left: 10px;
   }
 `;
