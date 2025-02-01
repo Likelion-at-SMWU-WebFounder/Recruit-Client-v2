@@ -93,9 +93,10 @@ export const faqData = [
   },
 ];
 
+// 홈페이지 개발자들 데이터 배열 (Makers 컴포넌트 - Footer 통해 진입)
 export const makers = [
   {
-    generation: 1,
+    generation: 1, // 1기
     members: [
       {
         name: "소희수",
@@ -149,7 +150,7 @@ export const makers = [
     ],
   },
   {
-    generation: 2,
+    generation: 2, // 2기
     members: [
       {
         name: "강주은",
