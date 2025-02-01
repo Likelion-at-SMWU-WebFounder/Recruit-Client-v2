@@ -92,3 +92,114 @@ export const faqData = [
       "정기 세션, 중앙 아이디어톤, 중앙 해커톤 참여 시 수료증이 발급됩니다.",
   },
 ];
+
+export const makers = [
+  {
+    generation: 1,
+    members: [
+      {
+        name: "소희수",
+        part: "기획/디자인",
+        img: `${process.env.REACT_APP_IMAGE_URL}/heesu.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 중어중문학부 • IT공학전공",
+      },
+      {
+        name: "나유진",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/yujin.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 컴퓨터과학전공",
+      },
+      {
+        name: "배지윤",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/jiyoon.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 수학과 • IT공학전공",
+      },
+      {
+        name: "양은수",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/eunsu.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 컴퓨터과학전공",
+      },
+      {
+        name: "이수민",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/sumin.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 컴퓨터과학전공",
+      },
+      {
+        name: "임아현",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/ahyun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 IT공학전공",
+      },
+      {
+        name: "박소윤",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/soyoon.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 IT공학전공",
+      },
+    ],
+  },
+  {
+    generation: 2,
+    members: [
+      {
+        name: "강주은",
+        part: "기획/디자인",
+        img: `${process.env.REACT_APP_IMAGE_URL}/jooeun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 경영학부 • 컴퓨터과학전공",
+      },
+      {
+        name: "이선아",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/jooeun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 IT공학전공",
+      },
+      {
+        name: "이예지",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/jooeun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 IT공학전공",
+      },
+      {
+        name: "조성하",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/jooeun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 IT공학전공",
+      },
+      {
+        name: "김원희",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/jooeun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 IT공학전공",
+      },
+      {
+        name: "윤서희",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/jooeun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 소프트웨어융합전공 • 통계학과",
+      },
+      {
+        name: "이서현",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/jooeun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 소프트웨어융합전공 • 통계학과",
+      },
+    ],
+  },
+];
