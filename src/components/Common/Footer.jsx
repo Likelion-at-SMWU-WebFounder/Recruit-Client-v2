@@ -60,4 +60,5 @@ const SiteMakers = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  cursor: pointer;
 `;

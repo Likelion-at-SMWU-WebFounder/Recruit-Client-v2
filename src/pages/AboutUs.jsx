@@ -4,6 +4,7 @@ import styled from "styled-components";
 import * as S from "../style/LayoutStyle";
 import { generation } from "../seasonalData";
 import { imgCard } from "../seasonalData";
+import AnimatedContainer from "../components/AnimatedContainer";
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -16,190 +17,209 @@ const AboutUs = () => {
     <>
       <Layout>
         <S.Container>
-          <S.RowBox>
-            <Slogan fontSize="40px">
-              전국 최대 규모 개발 · 창업 동아리
-              <br /> <OrangeText>멋쟁이사자처럼</OrangeText>의 숙명여대
-              지부입니다.
-              <br /> <br />
-              개발, 기획, 디자인의 열정이 가득한
-              <br /> 숙명여대 눈송이 여러분을 환영합니다!
-            </Slogan>
-            <S.ColumnBox>
-              <Img
-                src={`${process.env.REACT_APP_IMAGE_URL}/WinkingLion.svg`}
-                alt="lion"
-              />
-            </S.ColumnBox>
-          </S.RowBox>
+          <AnimatedContainer>
+            <S.RowBox>
+              <Slogan fontSize="40px">
+                전국 최대 규모 개발 · 창업 동아리
+                <br /> <OrangeText>멋쟁이사자처럼</OrangeText>의 숙명여대
+                지부입니다.
+                <br /> <br />
+                개발, 기획, 디자인의 열정이 가득한
+                <br /> 숙명여대 눈송이 여러분을 환영합니다!
+              </Slogan>
+              <S.ColumnBox>
+                <Img
+                  src={`${process.env.REACT_APP_IMAGE_URL}/WinkingLion.svg`}
+                  alt="lion"
+                />
+              </S.ColumnBox>
+            </S.RowBox>
+          </AnimatedContainer>
           <GradDiv background="linear-gradient(180deg,rgba(230, 120, 0, 0.2) 0%, rgba(217, 217, 217, 0) 100%)">
-            <BigTextDiv>함께 성장하는 기쁨, 숙명여대 멋쟁이사자처럼</BigTextDiv>
-            <SmallTextDiv className="smalltext1">
-              일주일에 한번 진행하는 정기 세미나로 꾸준히 성장하며, <br />
-              60여 개 대학과 함께하는 각종 행사에서 더 다양한 기회와 경험을
-              얻습니다.
-            </SmallTextDiv>
+            <AnimatedContainer>
+              <BigTextDiv>
+                함께 성장하는 기쁨, 숙명여대 멋쟁이사자처럼
+              </BigTextDiv>
+            </AnimatedContainer>
+            <AnimatedContainer>
+              <SmallTextDiv className="smalltext1">
+                일주일에 한번 진행하는 정기 세미나로 꾸준히 성장하며, <br />
+                60여 개 대학과 함께하는 각종 행사에서 더 다양한 기회와 경험을
+                얻습니다.
+              </SmallTextDiv>
+            </AnimatedContainer>
           </GradDiv>
           <ImgGrid>
             {imgCard.map((card, index) => (
-              <ImgSmwu key={index}>
-                <img src={card.imgUrl} alt={card.title} />
-                <div className="text-overlay">
-                  <div className="title">{card.title}</div>
-                  <div className="content">{card.content}</div>
-                </div>
-              </ImgSmwu>
+              <AnimatedContainer key={index} index={index + 1}>
+                <ImgSmwu key={index}>
+                  <img src={card.imgUrl} alt={card.title} />
+                  <div className="text-overlay">
+                    <div className="title">{card.title}</div>
+                    <div className="content">{card.content}</div>
+                  </div>
+                </ImgSmwu>
+              </AnimatedContainer>
             ))}
           </ImgGrid>
           <GradDiv background="linear-gradient(180deg, rgba(14, 50, 132, 0.50) 0%, rgba(174, 190, 249, 0.00) 51.35%, rgba(14, 50, 132, 0.50) 100%)">
-            <BigTextDiv>
-              숙명여대 멋쟁이사자처럼 활동 트랙 및 교육과정
-            </BigTextDiv>
-            <SmallTextDiv className="smalltext2">
-              기획·디자인, 프론트엔드, 백엔드&nbsp;&nbsp;
-              <UnderLineText
-                fontSize="35px"
-                marginTop="55px"
-                marginBottom="95px"
-              >
-                3가지 트랙에 한해 지원이 가능하며
-              </UnderLineText>
-            </SmallTextDiv>
-            <SmallTextDiv> 파트별로 특화된 교육과정을 제공합니다.</SmallTextDiv>
-            <RowBox>
-              <TextBox background="rgba(14, 50, 132, 0.4)">
-                <TextDiv
-                  transform="rotate(-11.719deg)"
-                  width="95px"
-                  height="80px"
-                  fontSize="60px"
-                  position="absolute"
+            <AnimatedContainer>
+              <BigTextDiv>
+                숙명여대 멋쟁이사자처럼 활동 트랙 및 교육과정
+              </BigTextDiv>
+            </AnimatedContainer>
+            <AnimatedContainer>
+              <SmallTextDiv className="smalltext2">
+                기획·디자인, 프론트엔드, 백엔드&nbsp;&nbsp;
+                <UnderLineText
+                  fontSize="35px"
+                  marginTop="55px"
+                  marginBottom="95px"
                 >
-                  💡
-                </TextDiv>
-                <TextDiv fontSize="35px" marginTop="95px">
-                  기획 · 디자인
-                </TextDiv>
-                <TextDiv
-                  fontSize="26px"
-                  marginTop="50px"
-                  lineHeight="50px"
-                  fontFamily="Noto Sans Light"
-                >
-                  Product Design, <br /> 리서치방법론, 디자인 툴링,
-                  <br /> 실전 아이디에이션 등
-                </TextDiv>
-                <TextDiv
-                  transform="rotate(7.381deg)"
-                  width="95px"
-                  height="80px"
-                  fontSize="60px"
-                  position="absolute"
-                  right="0px"
-                  bottom="20px"
-                >
-                  🎨
-                </TextDiv>
-              </TextBox>
-              <TextBox background="rgba(14, 50, 132, 0.4)">
-                <TextDiv
-                  transform="rotate(-11.719deg)"
-                  width="95px"
-                  height="80px"
-                  fontSize="60px"
-                  position="absolute"
-                >
-                  💻
-                </TextDiv>
-                <TextDiv fontSize="35px" marginTop="95px">
-                  프론트엔드
-                </TextDiv>
-                <TextDiv
-                  fontSize="26px"
-                  marginTop="105px"
-                  fontFamily="Noto Sans Light"
-                >
-                  Javascript, React 등
-                </TextDiv>
-                <TextDiv
-                  transform="rotate(7.381deg)"
-                  width="95px"
-                  height="80px"
-                  fontSize="60px"
-                  position="absolute"
-                  right="0px"
-                  bottom="20px"
-                >
-                  🪄
-                </TextDiv>
-              </TextBox>
-              <TextBox background="rgba(14, 50, 132, 0.4)">
-                <TextDiv
-                  transform="rotate(-11.719deg)"
-                  width="95px"
-                  height="80px"
-                  fontSize="60px"
-                  position="absolute"
-                >
-                  🌐
-                </TextDiv>
-                <TextDiv fontSize="35px" marginTop="95px">
-                  백엔드
-                </TextDiv>
-                <TextDiv
-                  fontSize="26px"
-                  marginTop="105px"
-                  fontFamily="Noto Sans Light"
-                >
-                  Django, Spring 등
-                </TextDiv>
-                <TextDiv
-                  transform="rotate(7.381deg)"
-                  width="95px"
-                  height="80px"
-                  fontSize="60px"
-                  position="absolute"
-                  right="0px"
-                  bottom="20px"
-                >
-                  👩🏻‍💻
-                </TextDiv>
-              </TextBox>
-              <TextBox background="rgba(239, 239, 239, 0.10)">
-                <TextDiv
-                  transform="rotate(-11.719deg)"
-                  width="95px"
-                  height="80px"
-                  fontSize="60px"
-                  position="absolute"
-                >
-                  📱
-                </TextDiv>
-                <TextDiv fontSize="35px" marginTop="95px">
-                  그 외
-                </TextDiv>
-                <TextDiv
-                  fontSize="26px"
-                  marginTop="70px"
-                  lineHeight="50px"
-                  fontFamily="Noto Sans Light"
-                >
-                  UX·Product Design, iOS, <br />
-                  블록체인 등 다양한 강의 제공
-                </TextDiv>
-                <TextDiv
-                  transform="rotate(7.381deg)"
-                  width="95px"
-                  height="80px"
-                  fontSize="60px"
-                  position="absolute"
-                  right="0px"
-                  bottom="20px"
-                >
-                  ⛓️
-                </TextDiv>
-              </TextBox>
-            </RowBox>
+                  3가지 트랙에 한해 지원이 가능하며
+                </UnderLineText>
+              </SmallTextDiv>
+              <SmallTextDiv>
+                {" "}
+                파트별로 특화된 교육과정을 제공합니다.
+              </SmallTextDiv>
+            </AnimatedContainer>
+            <AnimatedContainer>
+              <RowBox>
+                <TextBox background="rgba(14, 50, 132, 0.4)">
+                  <TextDiv
+                    transform="rotate(-11.719deg)"
+                    width="95px"
+                    height="80px"
+                    fontSize="60px"
+                    position="absolute"
+                  >
+                    💡
+                  </TextDiv>
+                  <TextDiv fontSize="35px" marginTop="95px">
+                    기획 · 디자인
+                  </TextDiv>
+                  <TextDiv
+                    fontSize="26px"
+                    marginTop="50px"
+                    lineHeight="50px"
+                    fontFamily="Noto Sans Light"
+                  >
+                    Product Design, <br /> 리서치방법론, 디자인 툴링,
+                    <br /> 실전 아이디에이션 등
+                  </TextDiv>
+                  <TextDiv
+                    transform="rotate(7.381deg)"
+                    width="95px"
+                    height="80px"
+                    fontSize="60px"
+                    position="absolute"
+                    right="0px"
+                    bottom="20px"
+                  >
+                    🎨
+                  </TextDiv>
+                </TextBox>
+                <TextBox background="rgba(14, 50, 132, 0.4)">
+                  <TextDiv
+                    transform="rotate(-11.719deg)"
+                    width="95px"
+                    height="80px"
+                    fontSize="60px"
+                    position="absolute"
+                  >
+                    💻
+                  </TextDiv>
+                  <TextDiv fontSize="35px" marginTop="95px">
+                    프론트엔드
+                  </TextDiv>
+                  <TextDiv
+                    fontSize="26px"
+                    marginTop="105px"
+                    fontFamily="Noto Sans Light"
+                  >
+                    Javascript, React 등
+                  </TextDiv>
+                  <TextDiv
+                    transform="rotate(7.381deg)"
+                    width="95px"
+                    height="80px"
+                    fontSize="60px"
+                    position="absolute"
+                    right="0px"
+                    bottom="20px"
+                  >
+                    🪄
+                  </TextDiv>
+                </TextBox>
+                <TextBox background="rgba(14, 50, 132, 0.4)">
+                  <TextDiv
+                    transform="rotate(-11.719deg)"
+                    width="95px"
+                    height="80px"
+                    fontSize="60px"
+                    position="absolute"
+                  >
+                    🌐
+                  </TextDiv>
+                  <TextDiv fontSize="35px" marginTop="95px">
+                    백엔드
+                  </TextDiv>
+                  <TextDiv
+                    fontSize="26px"
+                    marginTop="105px"
+                    fontFamily="Noto Sans Light"
+                  >
+                    Django, Spring 등
+                  </TextDiv>
+                  <TextDiv
+                    transform="rotate(7.381deg)"
+                    width="95px"
+                    height="80px"
+                    fontSize="60px"
+                    position="absolute"
+                    right="0px"
+                    bottom="20px"
+                  >
+                    👩🏻‍💻
+                  </TextDiv>
+                </TextBox>
+                <TextBox background="rgba(239, 239, 239, 0.10)">
+                  <TextDiv
+                    transform="rotate(-11.719deg)"
+                    width="95px"
+                    height="80px"
+                    fontSize="60px"
+                    position="absolute"
+                  >
+                    📱
+                  </TextDiv>
+                  <TextDiv fontSize="35px" marginTop="95px">
+                    그 외
+                  </TextDiv>
+                  <TextDiv
+                    fontSize="26px"
+                    marginTop="70px"
+                    lineHeight="50px"
+                    fontFamily="Noto Sans Light"
+                  >
+                    UX·Product Design, iOS, <br />
+                    블록체인 등 다양한 강의 제공
+                  </TextDiv>
+                  <TextDiv
+                    transform="rotate(7.381deg)"
+                    width="95px"
+                    height="80px"
+                    fontSize="60px"
+                    position="absolute"
+                    right="0px"
+                    bottom="20px"
+                  >
+                    ⛓️
+                  </TextDiv>
+                </TextBox>
+              </RowBox>
+            </AnimatedContainer>
           </GradDiv>
           <ApplyDiv>
             <SloganB>

@@ -35,16 +35,17 @@ export const notionUrl =
 
 // RECRUIT 탭 - 모집 일정 (Information 컴포넌트)
 export const recruitInfo = {
-  docSubmissionDate: "2/17(토)~2/23(금) 18:00", // 서류 접수 일정
-  passAnnounce_1st: "2/27(화)", // 1차 합격자 발표
-  interview: "2/29(목)~3/1(금)", // 면접 일정
-  passAnnounce_final: "3/5(화)", // 최종 합격자 발표
+  docSubmissionDate: "2/14(금)~2/21(금)", // 서류 접수 일정
+  passAnnounce_1st: "2/25(화)", // 1차 합격자 발표
+  interview: "2/27(목)~2/28(금)", // 면접 일정
+  passAnnounce_final: "3/2(일)", // 최종 합격자 발표
 };
 
 // CONTACT 탭 - 문의처 링크 (Contact 컴포넌트)
 export const contactInfo = {
   instagram: "https://www.instagram.com/sookmyung_likelion/", // 인스타그램 링크
-  kakaotalk: "https://open.kakao.com/me/likelion_sookmyung", // 카카오톡 오픈채팅 링크
+  kakaotalk: "https://open.kakao.com/o/sCwHovch", // 카카오톡 오픈채팅 링크
+  kakaoCode: "likelion", // 카카오톡 오픈채팅 참여코드
   email: "https://mail.google.com/mail/?view=cm&fs=1&to=sookmyung@likelion.org", // email 작성 링크
 };
 
@@ -89,5 +90,117 @@ export const faqData = [
     question: "Q. 수료 조건이 어떻게 되나요?",
     answer:
       "정기 세션, 중앙 아이디어톤, 중앙 해커톤 참여 시 수료증이 발급됩니다.",
+  },
+];
+
+// 홈페이지 개발자들 데이터 배열 (Makers 컴포넌트 - Footer 통해 진입)
+export const makers = [
+  {
+    generation: 1, // 1기
+    members: [
+      {
+        name: "소희수",
+        part: "기획/디자인",
+        img: `${process.env.REACT_APP_IMAGE_URL}/heesu.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 중어중문학부 • IT공학전공",
+      },
+      {
+        name: "나유진",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/yujin.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 컴퓨터과학전공",
+      },
+      {
+        name: "배지윤",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/jiyoon.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 수학과 • IT공학전공",
+      },
+      {
+        name: "양은수",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/eunsu.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 컴퓨터과학전공",
+      },
+      {
+        name: "이수민",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/sumin.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 컴퓨터과학전공",
+      },
+      {
+        name: "임아현",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/ahyun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 IT공학전공",
+      },
+      {
+        name: "박소윤",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/soyoon.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 10기",
+        major: "숙명여대 IT공학전공",
+      },
+    ],
+  },
+  {
+    generation: 2, // 2기
+    members: [
+      {
+        name: "강주은",
+        part: "기획/디자인",
+        img: `${process.env.REACT_APP_IMAGE_URL}/jooeun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 경영학부 • 컴퓨터과학전공",
+      },
+      {
+        name: "이선아",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/seonah.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 IT공학전공",
+      },
+      {
+        name: "이예지",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/yeji.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 IT공학전공",
+      },
+      {
+        name: "조성하",
+        part: "프론트엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/sungha.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 IT공학전공",
+      },
+      {
+        name: "김원희",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/wonhee.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 IT공학전공",
+      },
+      {
+        name: "윤서희",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/seohee.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 소프트웨어융합전공 • 통계학과",
+      },
+      {
+        name: "이서현",
+        part: "백엔드",
+        img: `${process.env.REACT_APP_IMAGE_URL}/seohyun.svg`,
+        sooklion: "멋쟁이사자처럼 숙명여대 11기",
+        major: "숙명여대 소프트웨어융합전공 • 통계학과",
+      },
+    ],
   },
 ];
