@@ -10,7 +10,7 @@ const FinalResult = ({ name, message, track }) => {
         <Img src={`${process.env.REACT_APP_IMAGE_URL}/Logo.svg`} alt="logo" />
         <PassContainer message={message}>
           <BoxContainer>
-            <Hr MobileMarginTop="-20px" />
+            <Hr />
             <Text>안녕하세요, 멋쟁이사자처럼 숙명여대 입니다.</Text>
           </BoxContainer>
           <BoxContainer>
@@ -54,12 +54,12 @@ const FinalResult = ({ name, message, track }) => {
             </AText>
           </BoxContainer>
           <BoxContainer>
-            <Lion
-              src={`${process.env.REACT_APP_IMAGE_URL}/WinkingLion.svg`}
-              alt="lion"
-            />
-            <Hr marginTop="75px" MobileMarginTop="-20px" />
+            <Hr />
           </BoxContainer>
+          <Lion
+            src={`${process.env.REACT_APP_IMAGE_URL}/WinkingLion.svg`}
+            alt="lion"
+          />
         </PassContainer>
 
         <FailContainer message={message}>
@@ -158,9 +158,15 @@ const Img = styled.img`
 `;
 
 const Lion = styled.img`
+  position: absolute;
+  bottom: 30px;
+  right: 100px;
   width: 300px;
-  margin-left: 1100px;
-  margin-top: -440px;
+  z-index: 10;
+
+  @media (max-width: 1024px) {
+    width: 150px;
+  }
 
   @media (max-width: 480px) {
     display: none;
@@ -169,18 +175,8 @@ const Lion = styled.img`
 
 const Hr = styled.hr`
   border: 1px solid #ffffff;
-  margin: 20px;
-  margin-top: ${(props) => props.marginTop};
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    margin-top: 90px;
-  }
-
-  @media (max-width: 480px) {
-    width: 340px;
-    margin: 10px;
-    margin-top: ${(props) => props.MobileMarginTop};
-  }
+  width: 100%;
+  margin-bottom: 30px;
 `;
 
 const Container = styled.div`
@@ -189,6 +185,7 @@ const Container = styled.div`
   align-items: left;
   color: white;
   width: 100%;
+  padding-top: 20px;
 `;
 
 const PassContainer = styled.div`
@@ -219,7 +216,7 @@ const BoxContainer = styled.div`
   flex-direction: column;
   align-items: left;
   padding: 25px;
-  width: 1500px;
+  width: 100%;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 800px;
