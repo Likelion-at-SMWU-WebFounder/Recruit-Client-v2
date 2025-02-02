@@ -190,13 +190,13 @@ const TextBox = styled.div`
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 30px;
     margin-top: 30px;
-    margin-left: -150px;
+    margin-left: -250px;
   }
 
   @media (max-width: 480px) {
     font-size: 20px;
     margin-top: 30px;
-    margin-left: -22px;
+    margin-left: -32px;
   }
 `;
 
