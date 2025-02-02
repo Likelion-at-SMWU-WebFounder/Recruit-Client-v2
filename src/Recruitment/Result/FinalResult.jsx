@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { generation, finalResult } from "../../seasonalData";
 
 const FinalResult = ({ name, message, track }) => {
   return (
@@ -23,8 +24,8 @@ const FinalResult = ({ name, message, track }) => {
             <Text>
               <ColorText color="#E67800">{track}</ColorText> 트랙에 지원하신
               <ColorText color="#E67800"> {name}</ColorText>님은 멋쟁이사자처럼
-              12기에
-              <ColorText color="#E67800"> 최종 합격</ColorText>하셨습니다.
+              {generation}에<ColorText color="#E67800"> 최종 합격</ColorText>
+              하셨습니다.
             </Text>
             <Text>
               오늘 중으로 카카오톡 단체방에 초대될 예정이며, 관련 공지 참고해
@@ -32,7 +33,7 @@ const FinalResult = ({ name, message, track }) => {
             </Text>
             <Text>
               또한, 최종 합격 확인 여부는 아래 구글 폼 작성으로 확인할 예정이니,
-              금일 16시까지 반드시 폼 작성 부탁드립니다.
+              {finalResult.deadline}까지 반드시 폼 작성 부탁드립니다.
             </Text>
 
             <Text>
@@ -45,12 +46,11 @@ const FinalResult = ({ name, message, track }) => {
             <Text>멋쟁이사자처럼 숙명여대 운영진 드림</Text>
           </BoxContainer>
           <BoxContainer>
-            <Text>[최종 합격 확인 회신] *금일 17시까지 반드시 제출</Text>
-            <AText
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe91tUYRMvMRiK3nAviXnNePDDpS3JhRfudOBphni011pwneg/viewform"
-              target="_blank"
-            >
-              멋쟁이사자처럼 숙명여대 13기 합격 확인 구글 폼
+            <Text>
+              [최종 합격 확인 회신] *{finalResult.deadline}까지 반드시 제출
+            </Text>
+            <AText href={finalResult.googleformUrl} target="_blank">
+              멋쟁이사자처럼 숙명여대 {generation} 합격 확인 구글 폼
             </AText>
           </BoxContainer>
           <BoxContainer>
