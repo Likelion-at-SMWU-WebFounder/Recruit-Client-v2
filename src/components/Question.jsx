@@ -337,10 +337,7 @@ const Question = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Img
-          src={`${process.env.REACT_APP_IMAGE_URL}/sm_logo.svg`}
-          alt="logo"
-        />
+        <Img src={`${process.env.REACT_APP_IMAGE_URL}/Logo.svg`} alt="logo" />
         <Row>
           <PartText background={backgroundImage}>{partName} 트랙</PartText>
           <TitleText>&nbsp;서류 작성 페이지 입니다.</TitleText>
@@ -462,7 +459,7 @@ const Question = () => {
         </Row>
         <Row>
           <FormContainer>
-            <Text fontSize="20px">프로그래머스 수강 여부 (선택)</Text>
+            <Text fontSize="20px">프로그래머스 수강 여부</Text>
             <Select
               width="125px"
               value={answers[7]}
@@ -473,7 +470,7 @@ const Question = () => {
             </Select>
           </FormContainer>
           <FormContainer>
-            <Text fontSize="20px" marginLeft="90px">
+            <Text fontSize="20px" marginLeft="145px">
               프로그래머스 수강 인증 &nbsp;
               <ProLink
                 style={{ fontWeight: "300" }}
@@ -482,9 +479,9 @@ const Question = () => {
               >
                 https://programmers.co.kr/learn/courses/2
               </ProLink>
-              <span style={{ fontWeight: "300", fontSize: "15px" }}>
+              <div style={{ fontWeight: "300", fontSize: "15px" }}>
                 - 1~11 강 *.zip 파일 1개 업로드 가능{" "}
-              </span>
+              </div>
             </Text>
           </FormContainer>
         </Row>
@@ -538,9 +535,9 @@ const Question = () => {
 
         {/* portfolio: answers[6] */}
         <QuestionContainer>
-          <Text fontSize="18px" marginTop="30px" marginLeft="30px">
+          <Text fontSize="16px" marginTop="30px" marginLeft="30px">
             7. 기술블로그, 포트폴리오, GitHub 등 자유롭게 URL 형식으로 제출해
-            주세요. *선택
+            주세요. (선택)
           </Text>
           <Textarea
             style={{ height: "100px" }}
@@ -697,6 +694,7 @@ const Textarea = styled.textarea`
   height: 200px;
   resize: vertical;
   background: #111111;
+  outline: none;
 `;
 
 const QuestionContainer = styled.div`
@@ -774,6 +772,7 @@ const Input = styled.input`
   font-size: 18px;
   background: #111111;
   border-radius: 13px;
+  outline: none;
   color: white;
   border: 1px solid #ffffff;
   width: ${(props) => props.width};
@@ -809,21 +808,9 @@ const PasswordInput = styled.input`
 `;
 
 const EyeIcon = styled.span`
-  position: absolute;
-  top: 50%;
-  right: 110px;
-  transform: translateY(-50%);
   cursor: pointer;
   font-size: 17px;
-
-  @media (max-width: 480px) {
-    position: absolute;
-    top: 30%;
-    right: 110px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 17px;
-  }
+  margin-left: 10px;
 `;
 
 const PartText = styled.div`
@@ -845,7 +832,7 @@ const TitleText = styled.div`
 `;
 
 const Img = styled.img`
-  width: 300px;
+  width: 250px;
 `;
 
 const FormContainer = styled.div`
