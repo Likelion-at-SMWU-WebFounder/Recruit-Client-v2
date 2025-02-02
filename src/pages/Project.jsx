@@ -77,75 +77,101 @@ const Project = () => {
   };
 
   return (
-    <Layout>
-      <Container>
-        <BannerContainer>
+    <Container>
+      <BannerContainer>
+        <BannerTextDiv>
           <Text
-            fontSize="4vw"
-            MobilefontSize="18px"
-            fontWeight="bolder"
-            marginLeft="10vw"
-            marginTop="10.5vw"
+            fontSize="7rem"
+            MobilefontSize="20px"
+            fontWeight="bold"
+            marginBottom="2vw"
           >
             내 아이디어를
           </Text>
           <Text
-            fontSize="4vw"
-            MobilefontSize="18px"
-            fontWeight="bolder"
-            marginLeft="10vw"
-            marginTop="2.5vw"
+            fontSize="7rem"
+            MobilefontSize="20px"
+            fontWeight="bold"
+            marginBottom="3vw"
           >
             내 손으로 실현한다
           </Text>
-          <Text
-            fontSize="2.2vw"
-            MobilefontSize="10px"
-            fontWeight="lighter"
-            marginLeft="10vw"
-            marginBottom="10vw"
-            marginTop="5.5vw"
-          >
+          <Text fontSize="3.5rem" MobilefontSize="10px" fontWeight="lighter">
             숙명여대 멋쟁이사자처럼 팀원들의 프로젝트를 둘러보세요.
           </Text>
-        </BannerContainer>
-        {sortedByYearProjects.map((project) => (
-          <ProjectCard
-            key={project.title}
-            project={project}
-            onClick={() => openModal(project.title)}
-          />
-        ))}
-        {selectedProjectId && (
-          <Modal projectId={selectedProjectId} onClose={closeModal} />
-        )}
-      </Container>
-    </Layout>
+        </BannerTextDiv>
+      </BannerContainer>
+      <FlexDiv>
+        <FilterCohort>전체</FilterCohort>
+        <FilterCohort>9기</FilterCohort>
+        <FilterCohort>10기</FilterCohort>
+        <FilterCohort>11기</FilterCohort>
+        <FilterCohort>12기</FilterCohort>
+      </FlexDiv>
+      {sortedByYearProjects.map((project) => (
+        <ProjectCard
+          key={project.title}
+          project={project}
+          onClick={() => openModal(project.title)}
+        />
+      ))}
+      {selectedProjectId && (
+        <Modal projectId={selectedProjectId} onClose={closeModal} />
+      )}
+    </Container>
   );
 };
 
 export default Project;
 
-const Layout = styled.div`
-  display: flex;
+const Container = styled.div`
   background-color: #111111;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
+  font-size: calc(1rem + 1vw);
+  margin-top: -40px;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    margin-top: -80px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: -130px;
+  }
 `;
 
-const Container = styled.div`
+const BannerContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  color: white;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  margin-top: -70px;
+  height: 50rem;
+  background: linear-gradient(
+    180deg,
+    rgba(230, 120, 0, 0.2) 0%,
+    rgba(217, 217, 217, 0) 100%
+  );
+
+  /* background-image: url("${process.env
+    .REACT_APP_IMAGE_URL}/ProjectBanner.svg"); */
+  /* background-color: #b49191; */
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+  }
+
+  @media (max-width: 480px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15rem;
+  }
 `;
 
 const Text = styled.div`
-  color: #000;
-  text-shadow: 0px 0.5vw 1.25vw rgba(0, 0, 0, 0.25);
+  color: #ffffff;
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
   align-items: left;
@@ -155,21 +181,75 @@ const Text = styled.div`
   margin-left: ${(props) => props.marginLeft};
   margin-right: ${(props) => props.marginRight};
 
+  @media (min-width: 768px) and (max-width: 1024px) {
+  }
+
   @media (max-width: 480px) {
     font-size: ${(props) => props.MobilefontSize};
   }
 `;
 
-const BannerContainer = styled.div`
-  align-items: left;
-  width: 100%;
-  background-image: url("${process.env.REACT_APP_IMAGE_URL}/ProjectBanner.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  height: 100%;
+const BannerTextDiv = styled.div`
+  width: 100rem;
+  margin-top: 6rem;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 100rem;
+    padding-left: 5vw;
+    margin-top: 3rem;
+  }
 
   @media (max-width: 480px) {
-    margin-top: -50px;
+    width: 100rem;
+    padding-left: 8vw;
+    margin-top: 0rem;
+  }
+`;
+
+const FlexDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    gap: 5vw;
+  }
+
+  @media (max-width: 480px) {
+    gap: 25px;
+  }
+`;
+
+const FilterCohort = styled.div`
+  border: 5px #ff0000;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 170px;
+  height: 40px;
+  color: #ffffff;
+  font-size: 20px;
+  padding-top: 7px;
+  /* background-color: #ffffff; */
+
+  &:hover {
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 14vw;
+    height: 30px;
+    font-size: 15px;
+  }
+
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 20px;
+    font-size: 8px;
   }
 `;
 
