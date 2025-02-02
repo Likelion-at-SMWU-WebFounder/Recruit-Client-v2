@@ -135,6 +135,7 @@ const Layout = styled.div`
   flex-direction: column;
 
   @media (max-width: 480px) {
+    margin-top: -70px;
     padding: 30px;
   }
 `;
