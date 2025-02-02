@@ -168,7 +168,7 @@ const Nav = styled.nav`
   }
 
   li {
-    font-size: 5rem;
+    font-size: 4rem;
     margin: 0 3rem;
   }
 
