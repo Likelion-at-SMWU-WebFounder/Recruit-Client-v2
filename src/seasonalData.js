@@ -24,7 +24,7 @@ export const imgCard = [
   {
     title: "그 외 친목 활동",
     content:
-      "MT, 스터디, 회식 등 친목활동을 통해\n교내 각 전공의 다양한 사람들과 더욱 돈독한 관계를 형성할 수 있습니다.",
+      "MT, 스터디, 회식 등 친목활동을 통해\n교내 각 전공의 다양한 사람들과 더욱 돈독한 관계를 \n형성할 수 있습니다.",
     imgUrl: `${process.env.REACT_APP_IMAGE_URL}/smwu4_friendship.svg`,
   },
 ];
