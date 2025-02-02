@@ -805,6 +805,7 @@ const PasswordInput = styled.input`
   height: 36px;
   margin-top: 28px;
   margin-left: 20px;
+  outline: none;
 `;
 
 const EyeIcon = styled.span`
@@ -852,12 +853,15 @@ const Select = styled.select`
   background: #111111;
   margin-left: 25px;
   margin-top: 5px;
+  cursor: pointer;
+  outline: none;
 `;
 
 const Option = styled.option`
   font-size: 25px;
   color: #111111;
   background: #ffffff;
+  cursor: pointer;
 `;
 
 const FileUploadContainer = styled.div`
