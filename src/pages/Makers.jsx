@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { makers } from "/Users/leeeyez/Desktop/Recruitment-Client/src/seasonalData.js";
+import { makers } from "../seasonalData";
 import AnimatedContainer from "../components/AnimatedContainer";
 
 const Makers = () => {
