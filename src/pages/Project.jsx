@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Modal from "../components/Modal";
 import axios from "axios";
 import { projectsData } from "../projectsData";
+import { IoIosArrowForward } from "react-icons/io";
 
 const ProjectCard = ({ project, onClick }) => {
   const { bgImg, title, no, year, summary } = project;
@@ -11,24 +12,18 @@ const ProjectCard = ({ project, onClick }) => {
     <Card onClick={() => onClick(project)}>
       {bgImg ? <CardImage src={bgImg} alt={title} /> : <CardImage />}
       <CardContent>
-        <CardText fontSize="3.5vw" fontWeight="bolder">
-          {title}
-        </CardText>
-        <CardText
-          fontSize="2.5vw"
-          fontWeight="bold"
-        >{`${no} | ${year}`}</CardText>
-        <CardText fontSize="2.3vw" fontWeight="lighter">
-          {summary}
-        </CardText>
         <Detail>
-          상세보기
-          <img
-            src={`${process.env.REACT_APP_IMAGE_URL}/ShowDetail.svg`}
-            alt="ShowDetail"
-            style={{ width: "40px", height: "auto", marginLeft: "5px" }}
-          />
+          자세히 보기
+          <IoIosArrowForward />
         </Detail>
+        <CardTitle>{title}</CardTitle>
+        <CardSummary fontSize="10px" fontWeight="lighter">
+          {summary}
+        </CardSummary>
+        <CardTagBox>
+          <CardTag>{`${no}`}</CardTag>
+          <CardTag>{`${no}`}</CardTag>
+        </CardTagBox>
       </CardContent>
     </Card>
   );
@@ -38,23 +33,6 @@ const Project = () => {
   // const [projects, setProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const sortedByYearProjects = projectsData.sort((p1, p2) => p2.year - p1.year);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  // `${process.env.REACT_APP_API_ROOT}/api/project`
-  //       );
-  //       const data = response.data;
-  //       setProjects(data.result);
-  //       console.log(data.result);
-  //     } catch (error) {
-  //       console.error("Error fetching project data:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   const openModal = (projectTitle) => {
     setSelectedProjectId(projectTitle);
@@ -108,13 +86,15 @@ const Project = () => {
         <FilterCohort>11기</FilterCohort>
         <FilterCohort>12기</FilterCohort>
       </FlexDiv>
-      {sortedByYearProjects.map((project) => (
-        <ProjectCard
-          key={project.title}
-          project={project}
-          onClick={() => openModal(project.title)}
-        />
-      ))}
+      <CardContainer>
+        {sortedByYearProjects.map((project) => (
+          <ProjectCard
+            key={project.title}
+            project={project}
+            onClick={() => openModal(project.title)}
+          />
+        ))}
+      </CardContainer>
       {selectedProjectId && (
         <Modal projectId={selectedProjectId} onClose={closeModal} />
       )}
@@ -130,11 +110,11 @@ const Container = styled.div`
   font-size: calc(1rem + 1vw);
   margin-top: -40px;
 
-  @media (min-width: 768px) and (max-width: 1024px) {
+  /* @media (min-width: 768px) and (max-width: 1024px) {
     margin-top: -80px;
-  }
+  } */
 
-  @media (max-width: 480px) {
+  @media (max-width: 1024px) {
     margin-top: -130px;
   }
 `;
@@ -155,14 +135,14 @@ const BannerContainer = styled.div`
     .REACT_APP_IMAGE_URL}/ProjectBanner.svg"); */
   /* background-color: #b49191; */
 
-  @media (min-width: 768px) and (max-width: 1024px) {
+  /* @media (min-width: 768px) and (max-width: 1024px) {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 40rem;
-  }
+  } */
 
-  @media (max-width: 480px) {
+  @media (max-width: 1024px) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,10 +161,10 @@ const Text = styled.div`
   margin-left: ${(props) => props.marginLeft};
   margin-right: ${(props) => props.marginRight};
 
-  @media (min-width: 768px) and (max-width: 1024px) {
-  }
+  /* @media (min-width: 768px) and (max-width: 1024px) {
+  } */
 
-  @media (max-width: 480px) {
+  @media (max-width: 1024px) {
     font-size: ${(props) => props.MobilefontSize};
   }
 `;
@@ -193,13 +173,13 @@ const BannerTextDiv = styled.div`
   width: 100rem;
   margin-top: 6rem;
 
-  @media (min-width: 768px) and (max-width: 1024px) {
+  /* @media (min-width: 768px) and (max-width: 1024px) {
     width: 100rem;
     padding-left: 5vw;
     margin-top: 3rem;
-  }
+  } */
 
-  @media (max-width: 480px) {
+  @media (max-width: 1024px) {
     width: 100rem;
     padding-left: 8vw;
     margin-top: 0rem;
@@ -209,19 +189,18 @@ const BannerTextDiv = styled.div`
 const FlexDiv = styled.div`
   display: flex;
   justify-content: center;
-  gap: 60px;
+  gap: 45px;
 
-  @media (min-width: 768px) and (max-width: 1024px) {
-    gap: 5vw;
+  @media (min-width: 486px) and (max-width: 1024px) {
+    gap: 25px;
   }
 
-  @media (max-width: 480px) {
-    gap: 25px;
+  @media (max-width: 486px) {
+    gap: 20px;
   }
 `;
 
 const FilterCohort = styled.div`
-  border: 5px #ff0000;
   border: 2px solid #ffffff;
   border-radius: 20px;
   align-items: center;
@@ -240,77 +219,204 @@ const FilterCohort = styled.div`
     cursor: pointer;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px) {
+  @media (min-width: 486px) and (max-width: 1024px) {
     width: 14vw;
     height: 30px;
     font-size: 15px;
+    padding-top: 5px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 486px) {
     width: 50px;
     height: 20px;
     font-size: 8px;
+    padding-top: 3px;
+  }
+`;
+
+const CardContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  gap: 5vw;
+  padding: 4vw 5vw;
+  justify-content: center;
+
+  @media (min-width: 786px) and (max-width: 1024px) {
+    display: grid;
+    grid-template-columns: repeat(3, 27vw);
+    justify-content: center;
+  }
+
+  @media (min-width: 480px) and (max-width: 786px) {
+    display: grid;
+    grid-template-columns: repeat(2, 40vw);
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    display: grid;
+    grid-template-columns: repeat(2, 150px);
+    gap: 8vw;
+    justify-content: center;
   }
 `;
 
 const Card = styled.div`
-  flex: 0 0 calc(45% - 3.5vw);
-  width: 45%;
-  background-color: #f8dbbb;
-  border-radius: 20px;
+  width: 300px;
+  height: 260px;
+  background-color: #3f3f3f;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0px 0.5vw 1.25vw rgba(0, 0, 0, 0.25);
-  margin-top: 5.5vw;
+  margin-top: 5px;
   cursor: pointer;
+  padding-bottom: 5px;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 100%;
+    height: auto;
+  }
+  // 모바일
+  @media (min-width: 480px) and (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
+
+  // 작은 모바일
+  @media (max-width: 480px) {
+    width: 100%;
+    height: auto;
+    min-width: 100px;
+  }
 `;
 
-/*
 const CardImage = styled.img`
-  width: 100%;
-  height: 300px;
   object-fit: cover;
-  border-radius: 20px;
-  background-color: #EB9537;
-`;
-*/
-
-const CardImage = styled.img`
-  width: 100%;
-  height: 20vw;
-  object-fit: cover;
-  border-radius: 20px;
-  background-color: #eb9537;
+  background-color: #3f3f3f;
+  border-color: none;
   max-width: 100%;
-  max-height: 100%;
-  height: auto;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
 `;
 
 const CardContent = styled.div`
-  padding: 1.8vw;
-`;
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
 
-const CardText = styled.div`
-  color: #000000;
-  font-size: ${(props) => props.fontSize};
-  font-weight: ${(props) => props.fontWeight};
-  margin-bottom: 0.5vw;
-  padding: 0.5vw;
-  line-height: 2.8vw;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+  }
+
+  @media (max-width: 480px) {
+    padding-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 0px;
+  }
 `;
 
 const Detail = styled.div`
-  border-radius: 3vw;
-  background-color: #eb9537;
-  color: #000000;
-  font-size: 3vw;
-  font-weight: 700;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffffff;
+  font-size: 9px;
   text-align: center;
-  padding: 1.2vw;
-  margin-top: 3vw;
 
-  &:hover {
-    background-color: #c66c0a;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 7px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 6px;
+  }
+`;
+
+const CardTitle = styled.div`
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 5px;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
     color: #ffffff;
-    cursor: pointer;
+    font-size: 15px;
+    margin-top: 3px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+    margin-top: 1px;
+  }
+`;
+
+const CardSummary = styled.div`
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: lighter;
+  margin-top: 5px;
+  height: 25px;
+  line-height: 2;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    line-height: 10px;
+    font-size: 8px;
+    height: 15px;
+  }
+
+  @media (max-width: 480px) {
+    line-height: 10px;
+    font-size: 5px;
+    height: 15px;
+  }
+`;
+
+const CardTagBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  gap: 8px;
+  margin-top: 10px;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin-top: 15px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 5px;
+    margin-top: 10px;
+  }
+`;
+
+const CardTag = styled.div`
+  width: 40px;
+  height: 16px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 9px;
+  margin-top: 5px;
+  padding-top: 3px;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+  }
+
+  @media (max-width: 480px) {
+    width: 30px;
+    height: 11px;
+    font-size: 5px;
+    margin-top: 0px;
+    padding-top: 3px;
   }
 `;

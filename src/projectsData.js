@@ -12,7 +12,7 @@
     - 백틱(`)을 통한 텍스트 형태 유지, 반복되어 사용되는 s3 url을 텍스트 문자열로 사용하기 위해 파일 형식 js 사용
 */
 
-const s3URL = process.env.REACT_APP_IMAGE_URL;
+const s3URL = process.env.REACT_APP_IMAGE_URL + "/project";
 
 export const projectsData = [
   {
