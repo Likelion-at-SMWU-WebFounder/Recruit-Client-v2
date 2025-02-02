@@ -45,12 +45,12 @@ const FinalResult = ({ name, message, track }) => {
             <Text>멋쟁이사자처럼 숙명여대 운영진 드림</Text>
           </BoxContainer>
           <BoxContainer>
-            <Text>[최종 합격 확인 회신] *금일 16시까지 반드시 제출</Text>
+            <Text>[최종 합격 확인 회신] *금일 17시까지 반드시 제출</Text>
             <AText
               href="https://docs.google.com/forms/d/e/1FAIpQLSe91tUYRMvMRiK3nAviXnNePDDpS3JhRfudOBphni011pwneg/viewform"
               target="_blank"
             >
-              멋쟁이사자처럼 숙명여대 12기 합격 확인 구글 폼
+              멋쟁이사자처럼 숙명여대 13기 합격 확인 구글 폼
             </AText>
           </BoxContainer>
           <BoxContainer>
