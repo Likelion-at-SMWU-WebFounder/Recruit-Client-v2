@@ -33,6 +33,24 @@ const Project = () => {
   // const [projects, setProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const sortedByYearProjects = projectsData.sort((p1, p2) => p2.year - p1.year);
+  const [filterByNo, setFilterByNo] = useState("전체");
+  const [filteredProjects, setFilteredProjects] = useState(projectsData);
+
+  useEffect(() => {
+    if (filterByNo === "전체") {
+      setFilteredProjects(
+        projectsData.sort((p1, p2) => {
+          const no1 = parseInt(p1.no.replace("기", ""), 10);
+          const no2 = parseInt(p2.no.replace("기", ""), 10);
+          return no2 - no1; // 높은 숫자부터 정렬
+        })
+      );
+    } else {
+      setFilteredProjects(
+        projectsData.filter((project) => project.no === filterByNo)
+      );
+    }
+  }, [filterByNo]);
 
   const openModal = (projectTitle) => {
     setSelectedProjectId(projectTitle);
@@ -80,14 +98,14 @@ const Project = () => {
         </BannerTextDiv>
       </BannerContainer>
       <FlexDiv>
-        <FilterCohort>전체</FilterCohort>
-        <FilterCohort>9기</FilterCohort>
-        <FilterCohort>10기</FilterCohort>
-        <FilterCohort>11기</FilterCohort>
-        <FilterCohort>12기</FilterCohort>
+        <FilterCohort onClick={() => setFilterByNo("전체")}>전체</FilterCohort>
+        <FilterCohort onClick={() => setFilterByNo("9기")}>9기</FilterCohort>
+        <FilterCohort onClick={() => setFilterByNo("10기")}>10기</FilterCohort>
+        <FilterCohort onClick={() => setFilterByNo("11기")}>11기</FilterCohort>
+        <FilterCohort onClick={() => setFilterByNo("12기")}>12기</FilterCohort>
       </FlexDiv>
       <CardContainer>
-        {sortedByYearProjects.map((project) => (
+        {filteredProjects.map((project) => (
           <ProjectCard
             key={project.title}
             project={project}
@@ -361,11 +379,11 @@ const CardTitle = styled.div`
 
 const CardSummary = styled.div`
   color: #ffffff;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: lighter;
-  margin-top: 5px;
-  height: 25px;
-  line-height: 2;
+  margin-top: 7px;
+  height: 27px;
+  line-height: 1.5;
 
   @media (min-width: 480px) and (max-width: 1024px) {
     line-height: 10px;
