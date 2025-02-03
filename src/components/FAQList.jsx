@@ -91,7 +91,8 @@ const Answer = styled.div`
   font-size: 20px;
   padding: 20px;
   line-height: 25px;
-  font-weight: 300;
+  font-family: "Noto Sans light";
+  white-space: pre-line;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 18px;

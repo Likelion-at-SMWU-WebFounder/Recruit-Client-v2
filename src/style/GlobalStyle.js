@@ -1,10 +1,10 @@
-import { createGlobalStyle, css } from 'styled-components';
-import notosanBlack from '../assets/font/NotoSansKR-Black.woff2';
-import notosanBold from '../assets/font/NotoSansKR-Bold.woff2';
-import notosanLight from '../assets/font/NotoSansKR-Light.woff2';
-import notosanMedium from '../assets/font/NotoSansKR-Medium.woff2';
-import notosanRegular from '../assets/font/NotoSansKR-Regular.woff2';
-import notosanThin from '../assets/font/NotoSansKR-Thin.woff2';
+import { createGlobalStyle, css } from "styled-components";
+import notosanBlack from "../assets/font/NotoSansKR-Black.woff2";
+import notosanBold from "../assets/font/NotoSansKR-Bold.woff2";
+import notosanLight from "../assets/font/NotoSansKR-Light.woff2";
+import notosanMedium from "../assets/font/NotoSansKR-Medium.woff2";
+import notosanRegular from "../assets/font/NotoSansKR-Regular.woff2";
+import notosanThin from "../assets/font/NotoSansKR-Thin.woff2";
 const reset = css`
   html,
   body,
@@ -130,7 +130,7 @@ const reset = css`
   blockquote:after,
   q:before,
   q:after {
-    content: '';
+    content: "";
     content: none;
   }
   table {
@@ -197,7 +197,7 @@ ${reset}
 * {
     font-family: 'Noto Sans Medium';
     box-sizing: border-box;
-
+    scrollbar-width: none;
 }
     
 `;

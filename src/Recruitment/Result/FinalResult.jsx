@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { generation, finalResult } from "../../seasonalData";
 
 const FinalResult = ({ name, message, track }) => {
   return (
@@ -9,7 +10,7 @@ const FinalResult = ({ name, message, track }) => {
         <Img src={`${process.env.REACT_APP_IMAGE_URL}/Logo.svg`} alt="logo" />
         <PassContainer message={message}>
           <BoxContainer>
-            <Hr MobileMarginTop="-20px" />
+            <Hr />
             <Text>안녕하세요, 멋쟁이사자처럼 숙명여대 입니다.</Text>
           </BoxContainer>
           <BoxContainer>
@@ -23,8 +24,8 @@ const FinalResult = ({ name, message, track }) => {
             <Text>
               <ColorText color="#E67800">{track}</ColorText> 트랙에 지원하신
               <ColorText color="#E67800"> {name}</ColorText>님은 멋쟁이사자처럼
-              12기에
-              <ColorText color="#E67800"> 최종 합격</ColorText>하셨습니다.
+              {generation}에<ColorText color="#E67800"> 최종 합격</ColorText>
+              하셨습니다.
             </Text>
             <Text>
               오늘 중으로 카카오톡 단체방에 초대될 예정이며, 관련 공지 참고해
@@ -32,7 +33,7 @@ const FinalResult = ({ name, message, track }) => {
             </Text>
             <Text>
               또한, 최종 합격 확인 여부는 아래 구글 폼 작성으로 확인할 예정이니,
-              금일 16시까지 반드시 폼 작성 부탁드립니다.
+              {finalResult.deadline}까지 반드시 폼 작성 부탁드립니다.
             </Text>
 
             <Text>
@@ -45,21 +46,20 @@ const FinalResult = ({ name, message, track }) => {
             <Text>멋쟁이사자처럼 숙명여대 운영진 드림</Text>
           </BoxContainer>
           <BoxContainer>
-            <Text>[최종 합격 확인 회신] *금일 16시까지 반드시 제출</Text>
-            <AText
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe91tUYRMvMRiK3nAviXnNePDDpS3JhRfudOBphni011pwneg/viewform"
-              target="_blank"
-            >
-              멋쟁이사자처럼 숙명여대 12기 합격 확인 구글 폼
+            <Text>
+              [최종 합격 확인 회신] *{finalResult.deadline}까지 반드시 제출
+            </Text>
+            <AText href={finalResult.googleformUrl} target="_blank">
+              멋쟁이사자처럼 숙명여대 {generation} 합격 확인 구글 폼
             </AText>
           </BoxContainer>
           <BoxContainer>
-            <Lion
-              src={`${process.env.REACT_APP_IMAGE_URL}/WinkingLion.svg`}
-              alt="lion"
-            />
-            <Hr marginTop="75px" MobileMarginTop="-20px" />
+            <Hr />
           </BoxContainer>
+          <Lion
+            src={`${process.env.REACT_APP_IMAGE_URL}/WinkingLion.svg`}
+            alt="lion"
+          />
         </PassContainer>
 
         <FailContainer message={message}>
@@ -158,9 +158,15 @@ const Img = styled.img`
 `;
 
 const Lion = styled.img`
+  position: absolute;
+  bottom: 30px;
+  right: 100px;
   width: 300px;
-  margin-left: 1100px;
-  margin-top: -440px;
+  z-index: 10;
+
+  @media (max-width: 1024px) {
+    width: 150px;
+  }
 
   @media (max-width: 480px) {
     display: none;
@@ -169,18 +175,8 @@ const Lion = styled.img`
 
 const Hr = styled.hr`
   border: 1px solid #ffffff;
-  margin: 20px;
-  margin-top: ${(props) => props.marginTop};
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    margin-top: 90px;
-  }
-
-  @media (max-width: 480px) {
-    width: 340px;
-    margin: 10px;
-    margin-top: ${(props) => props.MobileMarginTop};
-  }
+  width: 100%;
+  margin-bottom: 30px;
 `;
 
 const Container = styled.div`
@@ -189,6 +185,7 @@ const Container = styled.div`
   align-items: left;
   color: white;
   width: 100%;
+  padding-top: 20px;
 `;
 
 const PassContainer = styled.div`
@@ -219,7 +216,7 @@ const BoxContainer = styled.div`
   flex-direction: column;
   align-items: left;
   padding: 25px;
-  width: 1500px;
+  width: 100%;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 800px;

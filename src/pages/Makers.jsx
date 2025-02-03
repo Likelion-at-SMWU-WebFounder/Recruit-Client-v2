@@ -13,51 +13,61 @@ const Makers = () => {
       <Container>
         <Title>
           <div style={{ display: window.innerWidth <= 700 ? "block" : "flex" }}>
-            <span className="bold">멋쟁이사자처럼 숙명여대 홈페이지</span>를
-            {window.innerWidth <= 700 && <br />} 만든 멋쟁이 개발자들입니다.
+            <span className="bold">멋쟁이사자처럼 숙명여대 홈페이지</span>
+            <span>
+              를{window.innerWidth <= 700 && <br />} 만든 멋쟁이 개발자들입니다.
+            </span>
           </div>
-          <Hr />
         </Title>
+        <Hr />
 
         <RowProfile>
           {makers[0].members.map((item, index) => (
-            <AnimatedContainer key={index} index={index}>
-              <ProfileContainer>
-                <Img src={item.img} alt="profileimg" />
-                <BoxContainer>
-                  <ProfileNameText>
-                    {item.name} | {item.part}
-                  </ProfileNameText>
-                  <ProfileText>{item.sooklion}</ProfileText>
-                  <ProfileText>{item.major}</ProfileText>
-                </BoxContainer>
-              </ProfileContainer>
-            </AnimatedContainer>
+            <>
+              <div style={{ width: "100%" }}>
+                <AnimatedContainer key={index} index={index}>
+                  <ProfileContainer>
+                    <Img src={item.img} alt="profileimg" />
+                    <BoxContainer>
+                      <ProfileNameText>
+                        {item.name} | {item.part}
+                      </ProfileNameText>
+                      <ProfileText>{item.sooklion}</ProfileText>
+                      <ProfileText>{item.major}</ProfileText>
+                    </BoxContainer>
+                  </ProfileContainer>
+                </AnimatedContainer>
+              </div>
+            </>
           ))}
         </RowProfile>
 
+        <Hr style={{ marginTop: "30px" }} />
         <Title>
-          <Hr />
           <div className="bold">🛠️ Web-Founders 2nd</div>
         </Title>
 
         <RowProfile>
           {makers[1].members.map((item, index) => (
-            <AnimatedContainer
-              key={index + makers[0].members.length}
-              index={index + makers[0].members.length}
-            >
-              <ProfileContainer>
-                <Img src={item.img} alt="profileimg" />
-                <BoxContainer>
-                  <ProfileNameText>
-                    {item.name} | {item.part}
-                  </ProfileNameText>
-                  <ProfileText>{item.sooklion}</ProfileText>
-                  <ProfileText>{item.major}</ProfileText>
-                </BoxContainer>
-              </ProfileContainer>
-            </AnimatedContainer>
+            <>
+              <div style={{ width: "100%" }}>
+                <AnimatedContainer
+                  key={index + makers[0].members.length}
+                  index={index + makers[0].members.length}
+                >
+                  <ProfileContainer>
+                    <Img src={item.img} alt="profileimg" />
+                    <BoxContainer>
+                      <ProfileNameText>
+                        {item.name} | {item.part}
+                      </ProfileNameText>
+                      <ProfileText>{item.sooklion}</ProfileText>
+                      <ProfileText>{item.major}</ProfileText>
+                    </BoxContainer>
+                  </ProfileContainer>
+                </AnimatedContainer>
+              </div>
+            </>
           ))}
         </RowProfile>
       </Container>
@@ -70,6 +80,7 @@ export default Makers;
 const Title = styled.div`
   color: white;
   width: 100%;
+  margin: 30px 0;
 
   div,
   span {
@@ -124,13 +135,13 @@ const Layout = styled.div`
   flex-direction: column;
 
   @media (max-width: 480px) {
+    margin-top: -70px;
     padding: 30px;
   }
 `;
 
 const Hr = styled.hr`
   border: 0.5px solid #9e9e9e;
-  margin: 60px 0;
   width: 100%;
 
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -167,8 +178,12 @@ const ProfileContainer = styled.div`
   align-items: center;
   margin-left: 0px;
   gap: 5%;
-  margin-bottom: 30px;
+  margin-top: 60px;
   width: 100%;
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+  }
 `;
 
 const RowProfile = styled.div`
