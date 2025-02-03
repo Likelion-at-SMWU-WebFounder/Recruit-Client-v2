@@ -354,7 +354,7 @@ const CardTitle = styled.div`
   }
 
   @media (max-width: 480px) {
-    font-size: 13px;
+    font-size: 11px;
     margin-top: 1px;
   }
 `;
@@ -370,13 +370,13 @@ const CardSummary = styled.div`
   @media (min-width: 480px) and (max-width: 1024px) {
     line-height: 10px;
     font-size: 8px;
-    height: 15px;
+    height: 14px;
   }
 
   @media (max-width: 480px) {
     line-height: 10px;
     font-size: 5px;
-    height: 15px;
+    height: 14px;
   }
 `;
 
@@ -391,11 +391,13 @@ const CardTagBox = styled.div`
 
   @media (min-width: 480px) and (max-width: 1024px) {
     margin-top: 15px;
+    margin-bottom: 10px;
   }
 
   @media (max-width: 480px) {
     gap: 5px;
     margin-top: 10px;
+    margin-bottom: 3px;
   }
 `;
 
