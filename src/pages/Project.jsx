@@ -6,7 +6,7 @@ import { projectsData } from "../projectsData";
 import { IoIosArrowForward } from "react-icons/io";
 
 const ProjectCard = ({ project, onClick }) => {
-  const { bgImg, title, no, year, summary } = project;
+  const { bgImg, title, no, category, summary } = project;
 
   return (
     <Card onClick={() => onClick(project)}>
@@ -22,7 +22,7 @@ const ProjectCard = ({ project, onClick }) => {
         </CardSummary>
         <CardTagBox>
           <CardTag>{`${no}`}</CardTag>
-          <CardTag>{`${no}`}</CardTag>
+          <CardTag>{`${category}`}</CardTag>
         </CardTagBox>
       </CardContent>
     </Card>
@@ -35,6 +35,8 @@ const Project = () => {
   const sortedByYearProjects = projectsData.sort((p1, p2) => p2.year - p1.year);
   const [filterByNo, setFilterByNo] = useState("전체");
   const [filteredProjects, setFilteredProjects] = useState(projectsData);
+
+  const cohorts = ["전체", "9기", "10기", "11기", "12기"];
 
   useEffect(() => {
     if (filterByNo === "전체") {
@@ -98,11 +100,15 @@ const Project = () => {
         </BannerTextDiv>
       </BannerContainer>
       <FlexDiv>
-        <FilterCohort onClick={() => setFilterByNo("전체")}>전체</FilterCohort>
-        <FilterCohort onClick={() => setFilterByNo("9기")}>9기</FilterCohort>
-        <FilterCohort onClick={() => setFilterByNo("10기")}>10기</FilterCohort>
-        <FilterCohort onClick={() => setFilterByNo("11기")}>11기</FilterCohort>
-        <FilterCohort onClick={() => setFilterByNo("12기")}>12기</FilterCohort>
+        {cohorts.map((cohort) => (
+          <FilterCohort
+            key={cohort}
+            onClick={() => setFilterByNo(cohort)}
+            isSelected={filterByNo === cohort}
+          >
+            {cohort}
+          </FilterCohort>
+        ))}
       </FlexDiv>
       <CardContainer>
         {filteredProjects.map((project) => (
@@ -226,10 +232,11 @@ const FilterCohort = styled.div`
   justify-content: center;
   width: 170px;
   height: 40px;
-  color: #ffffff;
+  color: ${(props) => (props.isSelected ? "#000000" : "#ffffff")};
   font-size: 20px;
   padding-top: 7px;
-  /* background-color: #ffffff; */
+  background-color: ${(props) =>
+    props.isSelected ? "#ffffff" : "transparent"};
 
   &:hover {
     background-color: #ffffff;
@@ -420,23 +427,24 @@ const CardTagBox = styled.div`
 `;
 
 const CardTag = styled.div`
-  width: 40px;
-  height: 16px;
+  width: auto;
+  height: 18px;
   border-radius: 10px;
   background-color: #ffffff;
-  color: #000000;
+  border: 1px solid rgba(63, 63, 63, 0.8);
+  color: rgba(63, 63, 63, 0.8);
   font-size: 9px;
   margin-top: 5px;
   padding-top: 3px;
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-  }
+  padding-left: 10px;
+  padding-right: 10px;
 
   @media (max-width: 480px) {
-    width: 30px;
-    height: 11px;
+    height: 12px;
     font-size: 5px;
     margin-top: 0px;
     padding-top: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 `;
