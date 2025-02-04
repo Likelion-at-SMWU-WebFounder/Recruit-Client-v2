@@ -149,7 +149,7 @@ const Nav = styled.nav`
   justify-content: center;
   text-align: center;
   /* padding: 4rem 3rem 2rem; */
-  background-color: #111111;
+  background-color: #000000;
   color: white;
   padding-bottom: 2rem;
   z-index: 1000;
@@ -168,7 +168,7 @@ const Nav = styled.nav`
   }
 
   li {
-    font-size: 5rem;
+    font-size: 4rem;
     margin: 0 3rem;
   }
 
@@ -189,7 +189,7 @@ const MobileNav = styled.div`
   z-index: 1000; */
   display: flex;
   padding: 2rem;
-  background-color: #111111;
+  background-color: #000000;
   color: white;
   flex-direction: column;
 

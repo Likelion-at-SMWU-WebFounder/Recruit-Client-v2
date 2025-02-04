@@ -3,32 +3,27 @@ import styled from "styled-components";
 import Modal from "../components/Modal";
 import axios from "axios";
 import { projectsData } from "../projectsData";
+import { IoIosArrowForward } from "react-icons/io";
 
 const ProjectCard = ({ project, onClick }) => {
-  const { bgImg, title, no, year, summary } = project;
+  const { bgImg, title, no, category, summary } = project;
 
   return (
     <Card onClick={() => onClick(project)}>
       {bgImg ? <CardImage src={bgImg} alt={title} /> : <CardImage />}
       <CardContent>
-        <CardText fontSize="3.5vw" fontWeight="bolder">
-          {title}
-        </CardText>
-        <CardText
-          fontSize="2.5vw"
-          fontWeight="bold"
-        >{`${no} | ${year}`}</CardText>
-        <CardText fontSize="2.3vw" fontWeight="lighter">
-          {summary}
-        </CardText>
         <Detail>
-          상세보기
-          <img
-            src={`${process.env.REACT_APP_IMAGE_URL}/ShowDetail.svg`}
-            alt="ShowDetail"
-            style={{ width: "40px", height: "auto", marginLeft: "5px" }}
-          />
+          자세히 보기
+          <IoIosArrowForward />
         </Detail>
+        <CardTitle>{title}</CardTitle>
+        <CardSummary fontSize="10px" fontWeight="lighter">
+          {summary}
+        </CardSummary>
+        <CardTagBox>
+          <CardTag>{`${no}`}</CardTag>
+          <CardTag>{`${category}`}</CardTag>
+        </CardTagBox>
       </CardContent>
     </Card>
   );
@@ -38,23 +33,26 @@ const Project = () => {
   // const [projects, setProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const sortedByYearProjects = projectsData.sort((p1, p2) => p2.year - p1.year);
+  const [filterByNo, setFilterByNo] = useState("전체");
+  const [filteredProjects, setFilteredProjects] = useState(projectsData);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  // `${process.env.REACT_APP_API_ROOT}/api/project`
-  //       );
-  //       const data = response.data;
-  //       setProjects(data.result);
-  //       console.log(data.result);
-  //     } catch (error) {
-  //       console.error("Error fetching project data:", error);
-  //     }
-  //   };
+  const cohorts = ["전체", "9기", "10기", "11기", "12기"];
 
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    if (filterByNo === "전체") {
+      setFilteredProjects(
+        projectsData.sort((p1, p2) => {
+          const no1 = parseInt(p1.no.replace("기", ""), 10);
+          const no2 = parseInt(p2.no.replace("기", ""), 10);
+          return no2 - no1; // 높은 숫자부터 정렬
+        })
+      );
+    } else {
+      setFilteredProjects(
+        projectsData.filter((project) => project.no === filterByNo)
+      );
+    }
+  }, [filterByNo]);
 
   const openModal = (projectTitle) => {
     setSelectedProjectId(projectTitle);
@@ -77,75 +75,107 @@ const Project = () => {
   };
 
   return (
-    <Layout>
-      <Container>
-        <BannerContainer>
+    <Container>
+      <BannerContainer>
+        <BannerTextDiv>
           <Text
-            fontSize="4vw"
-            MobilefontSize="18px"
-            fontWeight="bolder"
-            marginLeft="10vw"
-            marginTop="10.5vw"
+            fontSize="7rem"
+            MobilefontSize="20px"
+            fontWeight="bold"
+            marginBottom="2vw"
           >
             내 아이디어를
           </Text>
           <Text
-            fontSize="4vw"
-            MobilefontSize="18px"
-            fontWeight="bolder"
-            marginLeft="10vw"
-            marginTop="2.5vw"
+            fontSize="7rem"
+            MobilefontSize="20px"
+            fontWeight="bold"
+            marginBottom="3vw"
           >
             내 손으로 실현한다
           </Text>
-          <Text
-            fontSize="2.2vw"
-            MobilefontSize="10px"
-            fontWeight="lighter"
-            marginLeft="10vw"
-            marginBottom="10vw"
-            marginTop="5.5vw"
-          >
+          <Text fontSize="3.5rem" MobilefontSize="10px" fontWeight="lighter">
             숙명여대 멋쟁이사자처럼 팀원들의 프로젝트를 둘러보세요.
           </Text>
-        </BannerContainer>
-        {sortedByYearProjects.map((project) => (
+        </BannerTextDiv>
+      </BannerContainer>
+      <FlexDiv>
+        {cohorts.map((cohort) => (
+          <FilterCohort
+            key={cohort}
+            onClick={() => setFilterByNo(cohort)}
+            isSelected={filterByNo === cohort}
+          >
+            {cohort}
+          </FilterCohort>
+        ))}
+      </FlexDiv>
+      <CardContainer>
+        {filteredProjects.map((project) => (
           <ProjectCard
             key={project.title}
             project={project}
             onClick={() => openModal(project.title)}
           />
         ))}
-        {selectedProjectId && (
-          <Modal projectId={selectedProjectId} onClose={closeModal} />
-        )}
-      </Container>
-    </Layout>
+      </CardContainer>
+      {selectedProjectId && (
+        <Modal projectId={selectedProjectId} onClose={closeModal} />
+      )}
+    </Container>
   );
 };
 
 export default Project;
 
-const Layout = styled.div`
-  display: flex;
+const Container = styled.div`
   background-color: #111111;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
+  font-size: calc(1rem + 1vw);
+  margin-top: -40px;
+
+  /* @media (min-width: 768px) and (max-width: 1024px) {
+    margin-top: -80px;
+  } */
+
+  @media (max-width: 1024px) {
+    margin-top: -130px;
+  }
 `;
 
-const Container = styled.div`
+const BannerContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  color: white;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  margin-top: -70px;
+  height: 50rem;
+  background: linear-gradient(
+    180deg,
+    rgba(230, 120, 0, 0.2) 0%,
+    rgba(217, 217, 217, 0) 100%
+  );
+
+  /* background-image: url("${process.env
+    .REACT_APP_IMAGE_URL}/ProjectBanner.svg"); */
+  /* background-color: #b49191; */
+
+  /* @media (min-width: 768px) and (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+  } */
+
+  @media (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15rem;
+  }
 `;
 
 const Text = styled.div`
-  color: #000;
-  text-shadow: 0px 0.5vw 1.25vw rgba(0, 0, 0, 0.25);
+  color: #ffffff;
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
   align-items: left;
@@ -155,82 +185,266 @@ const Text = styled.div`
   margin-left: ${(props) => props.marginLeft};
   margin-right: ${(props) => props.marginRight};
 
-  @media (max-width: 480px) {
+  /* @media (min-width: 768px) and (max-width: 1024px) {
+  } */
+
+  @media (max-width: 1024px) {
     font-size: ${(props) => props.MobilefontSize};
   }
 `;
 
-const BannerContainer = styled.div`
-  align-items: left;
-  width: 100%;
-  background-image: url("${process.env.REACT_APP_IMAGE_URL}/ProjectBanner.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  height: 100%;
+const BannerTextDiv = styled.div`
+  width: 100rem;
+  margin-top: 6rem;
+
+  /* @media (min-width: 768px) and (max-width: 1024px) {
+    width: 100rem;
+    padding-left: 5vw;
+    margin-top: 3rem;
+  } */
+
+  @media (max-width: 1024px) {
+    width: 100rem;
+    padding-left: 8vw;
+    margin-top: 0rem;
+  }
+`;
+
+const FlexDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+
+  @media (min-width: 486px) and (max-width: 1024px) {
+    gap: 25px;
+  }
+
+  @media (max-width: 486px) {
+    gap: 20px;
+  }
+`;
+
+const FilterCohort = styled.div`
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 170px;
+  height: 40px;
+  color: ${(props) => (props.isSelected ? "#000000" : "#ffffff")};
+  font-size: 20px;
+  padding-top: 7px;
+  background-color: ${(props) =>
+    props.isSelected ? "#ffffff" : "transparent"};
+
+  &:hover {
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+  }
+
+  @media (min-width: 486px) and (max-width: 1024px) {
+    width: 14vw;
+    height: 30px;
+    font-size: 15px;
+    padding-top: 5px;
+  }
+
+  @media (max-width: 486px) {
+    width: 50px;
+    height: 20px;
+    font-size: 8px;
+    padding-top: 3px;
+  }
+`;
+
+const CardContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  gap: 5vw;
+  padding: 4vw 5vw;
+  justify-content: center;
+
+  @media (min-width: 786px) and (max-width: 1024px) {
+    display: grid;
+    grid-template-columns: repeat(3, 27vw);
+    justify-content: center;
+  }
+
+  @media (min-width: 480px) and (max-width: 786px) {
+    display: grid;
+    grid-template-columns: repeat(2, 40vw);
+    justify-content: center;
+  }
 
   @media (max-width: 480px) {
-    margin-top: -50px;
+    display: grid;
+    grid-template-columns: repeat(2, 150px);
+    gap: 8vw;
+    justify-content: center;
   }
 `;
 
 const Card = styled.div`
-  flex: 0 0 calc(45% - 3.5vw);
-  width: 45%;
-  background-color: #f8dbbb;
-  border-radius: 20px;
+  width: 300px;
+  height: 260px;
+  background-color: #3f3f3f;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0px 0.5vw 1.25vw rgba(0, 0, 0, 0.25);
-  margin-top: 5.5vw;
+  margin-top: 5px;
   cursor: pointer;
+  padding-bottom: 5px;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 100%;
+    height: auto;
+  }
+  // 모바일
+  @media (min-width: 480px) and (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
+
+  // 작은 모바일
+  @media (max-width: 480px) {
+    width: 100%;
+    height: auto;
+    min-width: 100px;
+  }
 `;
 
-/*
 const CardImage = styled.img`
-  width: 100%;
-  height: 300px;
   object-fit: cover;
-  border-radius: 20px;
-  background-color: #EB9537;
-`;
-*/
-
-const CardImage = styled.img`
-  width: 100%;
-  height: 20vw;
-  object-fit: cover;
-  border-radius: 20px;
-  background-color: #eb9537;
+  background-color: #3f3f3f;
+  border-color: none;
   max-width: 100%;
-  max-height: 100%;
-  height: auto;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
 `;
 
 const CardContent = styled.div`
-  padding: 1.8vw;
-`;
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
 
-const CardText = styled.div`
-  color: #000000;
-  font-size: ${(props) => props.fontSize};
-  font-weight: ${(props) => props.fontWeight};
-  margin-bottom: 0.5vw;
-  padding: 0.5vw;
-  line-height: 2.8vw;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+  }
+
+  @media (max-width: 480px) {
+    padding-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 0px;
+  }
 `;
 
 const Detail = styled.div`
-  border-radius: 3vw;
-  background-color: #eb9537;
-  color: #000000;
-  font-size: 3vw;
-  font-weight: 700;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffffff;
+  font-size: 9px;
   text-align: center;
-  padding: 1.2vw;
-  margin-top: 3vw;
 
-  &:hover {
-    background-color: #c66c0a;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 7px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 6px;
+  }
+`;
+
+const CardTitle = styled.div`
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 5px;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
     color: #ffffff;
-    cursor: pointer;
+    font-size: 15px;
+    margin-top: 3px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 11px;
+    margin-top: 1px;
+  }
+`;
+
+const CardSummary = styled.div`
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: lighter;
+  margin-top: 7px;
+  height: 27px;
+  line-height: 1.5;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    line-height: 10px;
+    font-size: 8px;
+    height: 14px;
+  }
+
+  @media (max-width: 480px) {
+    line-height: 10px;
+    font-size: 5px;
+    height: 14px;
+  }
+`;
+
+const CardTagBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  gap: 8px;
+  margin-top: 10px;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 5px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+  }
+`;
+
+const CardTag = styled.div`
+  width: auto;
+  height: 18px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid rgba(63, 63, 63, 0.8);
+  color: rgba(63, 63, 63, 0.8);
+  font-size: 9px;
+  margin-top: 5px;
+  padding-top: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  @media (max-width: 480px) {
+    height: 12px;
+    font-size: 5px;
+    margin-top: 0px;
+    padding-top: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 `;
