@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { projectsData } from "../projectsData";
+import { IoClose } from "react-icons/io5";
 
 const Modal = ({ projectId, onClose }) => {
   // const [project, setProject] = useState(null);
@@ -53,7 +54,9 @@ const Modal = ({ projectId, onClose }) => {
   return (
     <ModalOverlay>
       <ModalContent>
-        <CloseButton onClick={onClose}>X</CloseButton>
+        <CloseButton onClick={onClose}>
+          <IoClose />
+        </CloseButton>
         {bgImg ? (
           <ModalImage src={bgImg} alt={title} />
         ) : (
