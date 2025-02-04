@@ -24,7 +24,7 @@ export const imgCard = [
   {
     title: "그 외 친목 활동",
     content:
-      "MT, 스터디, 회식 등 친목활동을 통해\n교내 각 전공의 다양한 사람들과 더욱 돈독한 관계를 형성할 수 있습니다.",
+      "MT, 스터디, 회식 등 친목활동을 통해\n교내 각 전공의 다양한 사람들과 더욱 돈독한 관계를 \n형성할 수 있습니다.",
     imgUrl: `${process.env.REACT_APP_IMAGE_URL}/smwu4_friendship.svg`,
   },
 ];
@@ -89,9 +89,16 @@ export const faqData = [
   {
     question: "Q. 수료 조건이 어떻게 되나요?",
     answer:
-      "정기 세션, 중앙 아이디어톤, 중앙 해커톤 참여 시 수료증이 발급됩니다.",
+      "중앙 멋쟁이사자처럼 수료 조건: 정기 세션, 중앙 아이디어톤, 중앙 해커톤 참여 \n 숙명여대 멋쟁이사자처럼 수료 조건: 중앙 멋쟁이사자처럼 수료 조건 + 연합 해커톤 및 파이널 프로젝트 참여",
   },
 ];
+
+// FinalResult 컴포넌트 (최종 합격 발표 페이지)
+export const finalResult = {
+  deadline: "금일 17시", // 최종 합격 확인 구글폼 제출 기한
+  googleformUrl:
+    "https://docs.google.com/forms/d/e/1FAIpQLSe91tUYRMvMRiK3nAviXnNePDDpS3JhRfudOBphni011pwneg/viewform", // 최종 합격 확인 구글폼 url
+};
 
 // 홈페이지 개발자들 데이터 배열 (Makers 컴포넌트 - Footer 통해 진입)
 export const makers = [

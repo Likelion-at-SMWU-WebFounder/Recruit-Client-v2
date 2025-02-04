@@ -480,6 +480,9 @@ const ImgSmwu = styled.div`
       @media (max-width: 1024px) {
         font-size: 22px;
       }
+      @media (max-width: 480px) {
+        font-size: 17px;
+      }
     }
     .content {
       line-height: 22px;
@@ -488,6 +491,9 @@ const ImgSmwu = styled.div`
       font-weight: 500;
       font-family: "Noto Sans Light";
       font-size: 18px;
+      @media (max-width: 480px) {
+        font-size: 12px;
+      }
     }
   }
 `;
