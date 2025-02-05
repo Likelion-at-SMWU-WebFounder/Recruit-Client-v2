@@ -57,7 +57,7 @@ const Recruit = () => {
         </PartContainer>
 
         <NotionBox href={notionUrl} target="_blank">
-          숙명여대 멋쟁이사자처럼 리쿠르팅 홍보 노션 확인하기
+          숙명여대 멋쟁이사자처럼 리쿠르팅 홍보 노션 확인하기 {">>>"}
         </NotionBox>
 
         <Information />
@@ -190,19 +190,17 @@ const PartBox = styled.button`
 `;
 
 const NotionBox = styled.a`
-  width: 900px;
-  height: 80px;
-  border: 2px solid #ffffff;
-  border-radius: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 27px;
+  font-style: "Noto Sans Regular";
   color: #ffffff;
   margin-top: 70px;
-  text-decoration: none;
+  text-decoration: underline;
+  &:hover {
+    text-shadow: 1px 1px 8px #f9b56b;
+  }
 
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 700px;
