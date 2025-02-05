@@ -36,7 +36,7 @@ const Project = () => {
   const [filterByNo, setFilterByNo] = useState("전체");
   const [filteredProjects, setFilteredProjects] = useState(projectsData);
 
-  const cohorts = ["전체", "9기", "10기", "11기", "12기"];
+  const cohorts = ["전체", "12기", "11기", "10기", "9기"];
 
   useEffect(() => {
     if (filterByNo === "전체") {
