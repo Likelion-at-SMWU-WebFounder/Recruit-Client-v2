@@ -35,10 +35,10 @@ export const notionUrl =
 
 // RECRUIT 탭 - 모집 일정 (Information 컴포넌트)
 export const recruitInfo = {
-  docSubmissionDate: "2/14(금)~2/21(금)", // 서류 접수 일정
-  passAnnounce_1st: "2/25(화)", // 1차 합격자 발표
-  interview: "2/27(목)~2/28(금)", // 면접 일정
-  passAnnounce_final: "3/2(일)", // 최종 합격자 발표
+  docSubmissionDate: "2025.02.14(금) - 02.21(금)", // 서류 접수 일정
+  passAnnounce_1st: "2025.02.25(화)", // 1차 합격자 발표
+  interview: "2025.02.27(목) - 02.28(금)", // 면접 일정
+  passAnnounce_final: "2025.03.02(일)", // 최종 합격자 발표
 };
 
 // CONTACT 탭 - 문의처 링크 (Contact 컴포넌트)
