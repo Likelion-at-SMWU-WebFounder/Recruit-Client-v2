@@ -8,7 +8,7 @@ const SubmitSuccess = () => {
       <Img src={`${process.env.REACT_APP_IMAGE_URL}/Logo.svg`} alt="logo" />
       <Container>
         <Img
-          src={`${process.env.REACT_APP_IMAGE_URL}/StarLion.svg`}
+          src={`${process.env.REACT_APP_IMAGE_URL}/RecruitLion.svg`}
           alt="lion"
         />
         <Text fontSize="26px" fontWeight="800">
