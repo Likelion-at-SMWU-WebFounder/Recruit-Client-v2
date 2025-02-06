@@ -13,7 +13,10 @@ const Information = () => {
     <FormContainer>
       <Line />
       <Text>
-        <img src="/emoji_eye.svg" alt="eye" />
+        <img
+          src={`${process.env.REACT_APP_IMAGE_URL}/emoji_eye.svg`}
+          alt="eye"
+        />
         <div>숙명여대 멋쟁이사자처럼은 이런 사람을 찾습니다!</div>
       </Text>
       <SmallContainer>
@@ -49,7 +52,10 @@ const Information = () => {
       </SmallContainer>
       <Line />
       <Text>
-        <img src="/emoji_calendar.svg" alt="calendar" />
+        <img
+          src={`${process.env.REACT_APP_IMAGE_URL}/emoji_calendar.svg`}
+          alt="calendar"
+        />
         <div>모집일정</div>
         <WarnText>*최종 합격 시, 활동 기간 1년을 준수해야 합니다. </WarnText>
       </Text>

@@ -44,7 +44,15 @@ const Makers = () => {
 
         <Hr style={{ marginTop: "30px" }} />
         <Title>
-          <div className="bold">🛠️ Web-Founders 2nd</div>
+          <img
+            src={`${process.env.REACT_APP_IMAGE_URL}/emoji_hammer.svg`}
+            alt="hammer"
+          />
+          <img
+            src={`${process.env.REACT_APP_IMAGE_URL}/emoji_roadwork.svg`}
+            alt="roadwork"
+          />
+          <div className="bold"> Web-Founders 2nd</div>
         </Title>
 
         <RowProfile>
@@ -81,12 +89,16 @@ const Title = styled.div`
   color: white;
   width: 100%;
   margin: 30px 0;
+  display: flex;
+  gap: 10px;
 
   div,
-  span {
+  span,
+  img {
     font-family: "Noto Sans Regular";
     font-size: 30px;
     line-height: 33px;
+    height: 33px;
   }
 
   .bold {
