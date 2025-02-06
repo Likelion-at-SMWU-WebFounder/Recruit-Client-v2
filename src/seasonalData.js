@@ -31,7 +31,7 @@ export const imgCard = [
 
 // RECRUIT 탭 - 홍보 노션 url (NonRecruit, Recruit 컴포넌트)
 export const notionUrl =
-  "https://tattered-cabinet-6cd.notion.site/12-at-Sookmyung-db2f25f1f35c48a6b068dbc5e33577e4?pvs=4";
+  "https://cold-ton-68c.notion.site/13-at-Sookmyung-171696b3a71380ddb46bd80dafe87890?pvs=74";
 
 // RECRUIT 탭 - 모집 일정 (Information 컴포넌트)
 export const recruitInfo = {
