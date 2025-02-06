@@ -3,12 +3,20 @@ import styled from "styled-components";
 import { recruitInfo } from "../seasonalData";
 
 const Information = () => {
+  const steps = [
+    { title: "서류 접수", date: recruitInfo.docSubmissionDate },
+    { title: "서류 합격자 발표", date: recruitInfo.passAnnounce_1st },
+    { title: "면접", date: recruitInfo.interview },
+    { title: "최종 합격자 발표", date: recruitInfo.passAnnounce_final },
+  ];
   return (
     <FormContainer>
-      <Text marginTop="130px" marginLeft="-450px">
-        멋쟁이사자처럼 숙명여대는 이런 사람을 찾습니다!
+      <Line />
+      <Text>
+        <img src="/emoji_eye.svg" alt="eye" />
+        <div>숙명여대 멋쟁이사자처럼은 이런 사람을 찾습니다!</div>
       </Text>
-      <SmallContainer marginLeft="-500px">
+      <SmallContainer>
         <SmallText>
           • 코딩을 배워보고 싶은 <BoldText>왕초보</BoldText>
         </SmallText>
@@ -39,62 +47,88 @@ const Information = () => {
           • 완성형인 사람보다 <BoldText>함께 성장하고자 하는 사람</BoldText>
         </SmallText>
       </SmallContainer>
-      <TextBox>
-        모집일정
+      <Line />
+      <Text>
+        <img src="/emoji_calendar.svg" alt="calendar" />
+        <div>모집일정</div>
         <WarnText>*최종 합격 시, 활동 기간 1년을 준수해야 합니다. </WarnText>
-      </TextBox>
-      <BoxContainer>
-        <RoundedBox background="linear-gradient(rgba(255, 222, 185, 1) 0%, rgba(255, 255, 255, 0.8) 100%)">
-          <div className="title">서류 접수</div>
-          <ChangeText fontSize="24px">
-            {recruitInfo.docSubmissionDate}
-          </ChangeText>
-        </RoundedBox>
-        <RoundedBox background="linear-gradient(rgba(255, 200, 140, 1) 0%, rgba(255, 255, 255, 0.8) 100%)">
-          <div className="title">1차 합격자 발표</div>
-          <ChangeText fontSize="24px">
-            {recruitInfo.passAnnounce_1st}
-          </ChangeText>
-        </RoundedBox>
-        <RoundedBox background="linear-gradient(rgba(255, 182, 102, 1) 0%, rgba(255, 255, 255, 0.8) 100%)">
-          <div className="title">
-            면접 <span>*대면 원칙</span>
-          </div>
-          <ChangeText fontSize="24px">{recruitInfo.interview}</ChangeText>
-        </RoundedBox>
-        <RoundedBox background="linear-gradient(rgba(255, 156, 47, 1) 0%, rgba(255, 255, 255, 0.8) 100%)">
-          <div className="title">최종 합격자 발표</div>
-          <ChangeText fontSize="24px">
-            {recruitInfo.passAnnounce_final}
-          </ChangeText>
-        </RoundedBox>
-      </BoxContainer>
+      </Text>
+      <TimelineContainer>
+        <TimelineWrapper>
+          <TimelineLine />
+          <TimelineSteps>
+            {steps.map((step, index) => (
+              <Step key={index}>
+                <Marker />
+                <Title>
+                  {step.title}{" "}
+                  {step.title === "면접" && <span>*대면 원칙</span>}
+                </Title>
+                <DivLine />
+                <Date>
+                  <div>{step.date}</div>
+                </Date>
+              </Step>
+            ))}
+          </TimelineSteps>
+        </TimelineWrapper>
+      </TimelineContainer>
     </FormContainer>
   );
 };
 
 export default Information;
 
-const Text = styled.div`
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   color: white;
-  font-size: 43px;
-  font-weight: 700;
-  line-height: 65px;
-  margin-top: ${(props) => props.marginTop};
-  margin-bottom: ${(props) => props.marginBottom};
-  margin-left: ${(props) => props.marginLeft};
-  margin-right: ${(props) => props.marginRight};
+  width: 100%;
+  padding: 0 100px;
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    font-size: 28px;
-    line-height: 26px;
-    margin-left: 5px;
+    padding: 30px;
   }
 
   @media (max-width: 480px) {
-    font-size: 16px;
-    line-height: 20px;
-    margin-left: 5px;
+    padding: 20px;
+  }
+`;
+
+const Line = styled.hr`
+  width: 100%;
+  border: none;
+  height: 0.5px;
+  background-color: #fff;
+  margin: 100px 0;
+`;
+
+const Text = styled.div`
+  color: white;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  div,
+  img {
+    font-size: 35px;
+    font-weight: 700;
+    height: 35px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    div,
+    img {
+      font-size: 28px;
+      height: 28px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    div,
+    img {
+      font-size: 13px;
+      height: 13px;
+    }
   }
 `;
 
@@ -131,11 +165,10 @@ const BoldText = styled.span`
   }
 `;
 
-const WarnText = styled.div`
+const WarnText = styled.span`
   font-family: "Noto Sans Thin";
   font-size: 13px;
   margin-top: 25px;
-  margin-left: 15px;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 15px;
@@ -148,113 +181,93 @@ const WarnText = styled.div`
   }
 `;
 
-const ChangeText = styled.span`
-  font-family: "Noto Sans Regular";
-  font-size: ${(props) => props.fontSize};
-  text-align: right;
-
-  @media (max-width: 480px) {
-    font-size: 12px;
-  }
-`;
-
 const SmallContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: ${(props) => props.marginLeft};
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    align-items: left;
-    margin: 40px;
-  }
-
-  @media (max-width: 480px) {
-    align-items: left;
-    margin: 27px;
-  }
 `;
 
-const TextBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  font-size: 43px;
-  font-weight: 700;
-  margin-top: 120px;
-  margin-left: -880px;
-  margin-bottom: ${(props) => props.marginBottom};
-  margin-left: ${(props) => props.marginLeft};
-  margin-right: ${(props) => props.marginRight};
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    font-size: 30px;
-    margin-top: 30px;
-    margin-left: -250px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 20px;
-    margin-top: 30px;
-    margin-left: -32px;
-  }
+const TimelineContainer = styled.div`
+  color: white;
+  padding: 50px 0;
 `;
 
-const FormContainer = styled.div`
+const TimelineWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: fit-content;
+`;
+
+const TimelineLine = styled.div`
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  height: 3px;
+  background-color: #ff6b00;
+  z-index: 1;
+`;
+
+const TimelineSteps = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  z-index: 2;
+  gap: 10%;
+
+  /* @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  } */
+`;
+
+const Step = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
+  text-align: center;
+`;
+
+const Marker = styled.div`
+  width: 20px;
+  aspect-ratio: 1/1;
+  background-color: #e67800;
+  border: 4px solid #fff5ea;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+`;
+
+const Title = styled.h3`
+  font-size: 25px;
+  font-weight: 500;
+  margin-top: 20px;
+  white-space: nowrap;
+`;
+
+const DivLine = styled.hr`
+  border: none;
+  height: 1px;
+  background-color: #ffc88c;
   width: 100%;
+  filter: blur(1px);
+  margin: 10px 0;
 `;
 
-const BoxContainer = styled.div`
+const Date = styled.p`
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 40px;
-  padding-bottom: 100px;
+  justify-content: center; /* 내부 div를 가운데 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
 
-  @media (max-width: 480px) {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 0 20px;
-  }
-`;
-
-const RoundedBox = styled.div`
-  width: 330px;
-  height: 230px;
-  border: 2px solid #333;
-  border-radius: 30px;
-  display: flex;
-  align-items: left;
-  justify-content: center;
-  padding: 40px;
-  background: ${(props) => props.background};
-  line-height: 75px;
-  flex-direction: column;
-  color: #111111;
-
-  .title {
-    font-size: 34px;
-    font-weight: 700;
-    white-space: pre-line;
-  }
-
-  @media (max-width: 480px) {
-    width: calc(50% - 10px);
-    line-height: 36px;
-    height: 110px;
-    .title {
-      font-size: 14px;
-    }
-    border: 1px solid #333;
-    border-radius: 17px;
-    padding: 15px;
-    margin-bottom: 20px;
+  div {
+    width: 100%; /* 부모의 전체 너비를 차지 */
+    max-width: 300px; /* 너무 커지지 않도록 적절한 크기 설정 */
+    font-size: 25px;
+    font-family: "Noto Sans Light";
+    margin: 0 auto; /* div 자체를 중앙 배치 */
+    opacity: 0.9;
+    text-align: right; /* 텍스트는 여전히 오른쪽 정렬 */
   }
 `;
