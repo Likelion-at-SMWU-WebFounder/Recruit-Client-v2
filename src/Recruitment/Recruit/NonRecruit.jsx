@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Information from "../../components/Information";
-import { notionUrl } from "../../seasonalData";
 
 const NonRecruit = () => {
   const [email, setEmail] = useState("");
@@ -74,9 +73,6 @@ const NonRecruit = () => {
             알림 신청
           </button>
         </form>
-        <NotionBox href={notionUrl} target="_blank">
-          멋쟁이사자처럼 숙명여대 리쿠르팅 홍보 노션 확인하기
-        </NotionBox>
         <Information />
       </Container>
     </Layout>
@@ -146,11 +142,12 @@ const Container = styled.div`
     height: 60px;
     padding: 0.5em;
     border-radius: 15px;
-    border: 2px solid #ffad54;
+    border: 2px solid #e67800;
     background-color: #111111;
     color: #ffffff;
     font-size: 22px;
     margin-left: 40px;
+    outline: none;
 
     @media (max-width: 480px) {
       width: 220px;
@@ -170,10 +167,10 @@ const Container = styled.div`
   }
 
   button {
-    background-color: #ffad54;
+    background-color: #e67800;
     height: 60px;
     width: 160px;
-    color: #000000;
+    color: #fff;
     padding: 0.4em 1em;
     margin-left: 20px;
     border: none;
@@ -189,6 +186,9 @@ const Container = styled.div`
       font-size: 11px;
       margin-left: 10px;
     }
+  }
+  button:hover {
+    background-color: #d06100;
   }
 `;
 
