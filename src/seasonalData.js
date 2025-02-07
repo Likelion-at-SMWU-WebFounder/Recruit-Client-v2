@@ -1,5 +1,6 @@
 // ABOUTUS 탭 - 지원하기 버튼 텍스트 (AboutUs 컴포넌트)
 export const generation = "13기"; // 모집 기수
+export const year = "2025"; // 년도
 
 // ABOUTUS 탭 - 활동 소개 그리드 (AboutUs 컴포넌트)
 export const imgCard = [
@@ -92,6 +93,13 @@ export const faqData = [
       "중앙 멋쟁이사자처럼 수료 조건: 정기 세션, 중앙 아이디어톤, 중앙 해커톤 참여 \n 숙명여대 멋쟁이사자처럼 수료 조건: 중앙 멋쟁이사자처럼 수료 조건 + 연합 해커톤 및 파이널 프로젝트 참여",
   },
 ];
+
+// FirstResult 컴포넌트 (서류 합격 발표 페이지)
+export const interviewData = {
+  interview_place: "본교 프라임관 202호 (대면 면접)", // 면접 장소
+  standby_place: "프라임관105호", // 대기 장소
+  deadline: "금일 17시", // 서류 합격 회신 기한
+};
 
 // FinalResult 컴포넌트 (최종 합격 발표 페이지)
 export const finalResult = {
