@@ -8,13 +8,13 @@ const Question = () => {
   const { part } = useParams();
   const navigate = useNavigate();
 
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  // const [selectedFiles, setSelectedFiles] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleFileSelect = (e) => {
-    const files = Array.from(e.target.files);
-    setSelectedFiles(files);
-  };
+  // const handleFileSelect = (e) => {
+  //   const files = Array.from(e.target.files);
+  //   setSelectedFiles(files);
+  // };
 
   let partName = "";
   let backgroundImage = "";
@@ -78,7 +78,7 @@ const Question = () => {
 
   const [answers, setAnswers] = useState(initialAnswers);
   const maxLength = 600; // 최대 글자수
-  const [fileName, setFileName] = useState("");
+  //const [fileName, setFileName] = useState("");
 
   const handleInputChange = (index, value) => {
     const newAnswers = [...answers];
@@ -128,7 +128,7 @@ const Question = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleEnd = () => {
-    window.alert("2/23(금) 18:00 서류 제출 마감 시간이 초과되었습니다. ");
+    window.alert("서류 제출 마감 시간이 초과되었습니다. ");
   };
 
   const handleSubmit = async (e) => {
@@ -297,42 +297,42 @@ const Question = () => {
     }
   };
 
-  const uploadImageToS3 = async (imageFile) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", imageFile);
+  // const uploadImageToS3 = async (imageFile) => {
+  //   try {
+  //     const formData = new FormData();
+  //     formData.append("file", imageFile);
 
-      // AWS S3 업로드 API 엔드포인트와 업로드 설정에 따라 수정 필요
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_ROOT}/api/recruit/docs?track=${shortTrack}`,
-        formData
-      );
+  //     // AWS S3 업로드 API 엔드포인트와 업로드 설정에 따라 수정 필요
+  //     const response = await axios.post(
+  //       `${process.env.REACT_APP_API_ROOT}/api/recruit/docs?track=${shortTrack}`,
+  //       formData
+  //     );
 
-      // 업로드된 이미지의 URL 반환
-      return response.data.imageUrl;
-    } catch (error) {
-      console.error("이미지를 AWS S3에 업로드하는 중 오류 발생:", error);
-      throw error;
-    }
-  };
+  //     // 업로드된 이미지의 URL 반환
+  //     return response.data.imageUrl;
+  //   } catch (error) {
+  //     console.error("이미지를 AWS S3에 업로드하는 중 오류 발생:", error);
+  //     throw error;
+  //   }
+  // };
 
-  const handleImageUpload = async (e) => {
-    const imageFile = e.target.files[0];
+  // const handleImageUpload = async (e) => {
+  //   const imageFile = e.target.files[0];
 
-    try {
-      // 이미지를 AWS S3에 업로드하고 URL을 가져옴
-      const imageUrl = await uploadImageToS3(imageFile);
+  //   try {
+  //     // 이미지를 AWS S3에 업로드하고 URL을 가져옴
+  //     const imageUrl = await uploadImageToS3(imageFile);
 
-      // programmersImg 상태 업데이트
-      handleInputChange(23, imageUrl);
-      setFileName(imageFile.name);
-    } catch (error) {
-      console.error("이미지 업로드 중 오류 발생:", error);
+  //     // programmersImg 상태 업데이트
+  //     handleInputChange(23, imageUrl);
+  //     setFileName(imageFile.name);
+  //   } catch (error) {
+  //     console.error("이미지 업로드 중 오류 발생:", error);
 
-      // S3 임시방편!! S3 수정시 하단 코드 삭제할것
-      setFileName(imageFile.name);
-    }
-  };
+  //     // S3 임시방편!! S3 수정시 하단 코드 삭제할것
+  //     setFileName(imageFile.name);
+  //   }
+  // };
 
   return (
     <>
@@ -488,7 +488,17 @@ const Question = () => {
         <Row>
           <FormContainer>
             <FileUploadContainer>
-              {/*programmersImg*/}
+              <UploadBtn
+                href="https://forms.gle/5wC4XiW7yeP8QJ3H8"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                파일 업로드 +
+              </UploadBtn>
+              <div style={{ fontWeight: "300", fontSize: "15px" }}>
+                ** 파일 업로드+ 을 눌러 구글 폼에 업로드 해주세요.
+              </div>
+              {/* programmersImg
               <FileInputLabel style={{ marginLeft: "30px" }}>
                 {fileName ? fileName : "파일 업로드  +"}
                 <FileInput
@@ -501,7 +511,7 @@ const Question = () => {
                 {selectedFiles.map((file, index) => (
                   <SelectedFile key={index}>{file.name}</SelectedFile>
                 ))}
-              </SelectedFilesContainer>
+              </SelectedFilesContainer> */}
             </FileUploadContainer>
           </FormContainer>
         </Row>
@@ -869,6 +879,7 @@ const FileUploadContainer = styled.div`
   align-items: center;
   flex-direction: row;
   margin-left: 468px;
+  gap: 10px;
 `;
 
 const FileInput = styled.input`
@@ -884,6 +895,19 @@ const FileInputLabel = styled.label`
   color: #111111;
   background: #ffffff;
   margin-left: 25px;
+`;
+
+// 프로그래머스 인증 이미지 업로드 임시 버튼 (구글폼으로 이동)
+const UploadBtn = styled.a`
+  cursor: pointer;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  font-size: 20px;
+  color: #111111;
+  background: #ffffff;
+  margin-left: 25px;
+  text-decoration: none;
 `;
 
 const SelectedFilesContainer = styled.div`
