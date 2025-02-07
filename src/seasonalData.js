@@ -104,8 +104,7 @@ export const interviewData = {
 // FinalResult 컴포넌트 (최종 합격 발표 페이지)
 export const finalResult = {
   deadline: "금일 17시", // 최종 합격 확인 구글폼 제출 기한
-  googleformUrl:
-    "https://docs.google.com/forms/d/e/1FAIpQLSe91tUYRMvMRiK3nAviXnNePDDpS3JhRfudOBphni011pwneg/viewform", // 최종 합격 확인 구글폼 url
+  googleformUrl: "https://forms.gle/nxHrsYE69z9wQVFr9", // 최종 합격 확인 구글폼 url
 };
 
 // 홈페이지 개발자들 데이터 배열 (Makers 컴포넌트 - Footer 통해 진입)
