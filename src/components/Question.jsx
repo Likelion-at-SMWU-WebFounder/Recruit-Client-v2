@@ -172,6 +172,12 @@ const Question = () => {
     } else if (emailCheck(answers[22])) {
       alert("유효한 이메일 형식으로 입력해주세요.");
       return;
+    } else if (answers[2].length !== 7) {
+      alert("학번은 7자리로 입력해주세요."); // 학번 길이 확인
+      return;
+    } else if (answers[1].length !== 11) {
+      alert("전화번호는 ‘-’없이 11자리로 입력해주세요."); // 전화번호 길이 확인
+      return;
     } else {
       // 모든 필수 입력 폼이 작성된 경우, 서버로 데이터 전송 후 페이지 이동
       try {
