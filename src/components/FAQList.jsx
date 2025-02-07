@@ -93,6 +93,7 @@ const Answer = styled.div`
   line-height: 25px;
   font-family: "Noto Sans light";
   white-space: pre-line;
+  text-align: left;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 18px;
