@@ -155,6 +155,8 @@ const Nav = styled.nav`
   z-index: 1000;
   height: 120px;
   width: 100vw;
+  max-width: 1500px; /* 최대 너비를 설정하여 너무 커지지 않게 함 */
+  margin: 0 auto; /* 가운데 정렬 */
   img {
     padding-top: 30px;
     width: 30rem;
