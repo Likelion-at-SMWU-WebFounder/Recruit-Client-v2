@@ -10,6 +10,7 @@ const Question = () => {
 
   // const [selectedFiles, setSelectedFiles] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false); // 로딩 상태 추가
 
   // const handleFileSelect = (e) => {
   //   const files = Array.from(e.target.files);
@@ -225,22 +226,27 @@ const Question = () => {
         );
         if (confirmation) {
           try {
+            setLoading(true);
             const response = await axios.post(apiUrl, requestBody);
 
             if (response.data.code === 404) {
               window.alert(response.data.message);
+              setLoading(false);
               return;
             } else {
               setSubmitted(true);
               navigate("/recruitment/submit-success");
+              setLoading(false);
             }
           } catch (error) {
             console.error("서버 전송 중 오류 발생:", error);
+            setLoading(false);
           }
           setSubmitted(true);
         }
       } catch (error) {
         console.error("서버 전송 중 오류 발생:", error);
+        setLoading(false);
       }
     }
 
@@ -343,6 +349,16 @@ const Question = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
+        {loading && (
+          <LoadingScreen>
+            <img
+              src={`${process.env.REACT_APP_IMAGE_URL}/RecruitLion.svg`}
+              alt="recruitlion"
+            />
+            <h3>서류를 제출 중입니다 ...</h3>
+            <p>잠시만 기다려주세요!</p>
+          </LoadingScreen>
+        )}
         <Img src={`${process.env.REACT_APP_IMAGE_URL}/Logo.svg`} alt="logo" />
         <Row>
           <PartText background={backgroundImage}>{partName} 트랙</PartText>
@@ -681,6 +697,33 @@ const Question = () => {
 };
 
 export default Question;
+
+const LoadingScreen = styled.div`
+  position: fixed; /* 화면 전체 덮기 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8); /* 검은색 배경, 투명도 50% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999; /* 다른 요소 위에 배치 */
+
+  img {
+    width: 300px;
+  }
+  h3 {
+    font-family: "Noto Sans Bold";
+    font-size: 35px;
+  }
+  p {
+    font-family: "Noto Sans Thin";
+    font-size: 20px;
+    margin-top: 20px;
+  }
+`;
 
 const Hr = styled.hr`
   border: 1px solid #ffffff;
