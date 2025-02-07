@@ -10,80 +10,90 @@ const Information = () => {
     { title: "최종 합격자 발표", date: recruitInfo.passAnnounce_final },
   ];
   return (
-    <FormContainer>
-      <Line />
-      <Text>
-        <img
-          src={`${process.env.REACT_APP_IMAGE_URL}/emoji_eye.svg`}
-          alt="eye"
-        />
-        <div>숙명여대 멋쟁이사자처럼은 이런 사람을 찾습니다!</div>
-      </Text>
-      <SmallContainer>
-        <SmallText>
-          • 코딩을 배워보고 싶은 <BoldText>왕초보</BoldText>
-        </SmallText>
-        <SmallText>
-          • 나만의 아이디어를 <BoldText>웹 서비스로 구현 및 배포</BoldText>{" "}
-          해보고 싶은 사람
-        </SmallText>
-        <SmallText>
-          • 혼자 공부는 그만! 사람들과 <BoldText>함께 웹 개발을 공부</BoldText>
-          하고, <BoldText>개발 인적 네트워킹을 형성</BoldText>하고 싶은 사람
-        </SmallText>
-        <SmallText>
-          • 1년 간 멋쟁이사자처럼에서 활동하고 여름방학 동안 진행하는{" "}
-          <BoldText>장기 해커톤</BoldText>에 참가할 수 있는 사람
-        </SmallText>
-        <SmallText>
-          • <BoldText>매주 화요일 저녁 7시 ~ 9시</BoldText>에 동아리에 참여할 수
-          있는 사람
-        </SmallText>
-        <SmallText>
-          • 포기하지 않고 <BoldText>도전하는 사람</BoldText>
-        </SmallText>
-        <SmallText>
-          • 모르는 것을 창피해 하지 않는 사람 모른다고 숨는 사람보다는{" "}
-          <BoldText>적극적으로 질문하고 성장</BoldText>하려는 사람
-        </SmallText>
-        <SmallText>
-          • 완성형인 사람보다 <BoldText>함께 성장하고자 하는 사람</BoldText>
-        </SmallText>
-      </SmallContainer>
-      <Line />
-      <Text>
-        <img
-          src={`${process.env.REACT_APP_IMAGE_URL}/emoji_calendar.svg`}
-          alt="calendar"
-        />
-        <div>모집일정</div>
-        <WarnText>*최종 합격 시, 활동 기간 1년을 준수해야 합니다. </WarnText>
-      </Text>
-      <TimelineContainer>
-        <TimelineWrapper>
-          <TimelineLine />
-          <TimelineSteps>
-            {steps.map((step, index) => (
-              <Step key={index}>
-                <Marker />
-                <Title>
-                  {step.title}{" "}
-                  {step.title === "면접" && <span>*대면 원칙</span>}
-                </Title>
-                <DivLine />
-                <Date>
-                  <div>{step.date}</div>
-                </Date>
-              </Step>
-            ))}
-          </TimelineSteps>
-        </TimelineWrapper>
-      </TimelineContainer>
-    </FormContainer>
+    <Wrapper>
+      <FormContainer>
+        <Line />
+        <Text>
+          <img
+            src={`${process.env.REACT_APP_IMAGE_URL}/emoji_eye.svg`}
+            alt="eye"
+          />
+          <div>숙명여대 멋쟁이사자처럼은 이런 사람을 찾습니다!</div>
+        </Text>
+        <SmallContainer>
+          <SmallText>
+            • 코딩을 배워보고 싶은 <BoldText>왕초보</BoldText>
+          </SmallText>
+          <SmallText>
+            • 나만의 아이디어를 <BoldText>웹 서비스로 구현 및 배포</BoldText>{" "}
+            해보고 싶은 사람
+          </SmallText>
+          <SmallText>
+            • 혼자 공부는 그만! 사람들과{" "}
+            <BoldText>함께 웹 개발을 공부</BoldText>
+            하고, <BoldText>개발 인적 네트워킹을 형성</BoldText>하고 싶은 사람
+          </SmallText>
+          <SmallText>
+            • 1년 간 멋쟁이사자처럼에서 활동하고 여름방학 동안 진행하는{" "}
+            <BoldText>장기 해커톤</BoldText>에 참가할 수 있는 사람
+          </SmallText>
+          <SmallText>
+            • <BoldText>매주 화요일 저녁 7시 ~ 9시</BoldText>에 동아리에 참여할
+            수 있는 사람
+          </SmallText>
+          <SmallText>
+            • 포기하지 않고 <BoldText>도전하는 사람</BoldText>
+          </SmallText>
+          <SmallText>
+            • 모르는 것을 창피해 하지 않는 사람 모른다고 숨는 사람보다는{" "}
+            <BoldText>적극적으로 질문하고 성장</BoldText>하려는 사람
+          </SmallText>
+          <SmallText>
+            • 완성형인 사람보다 <BoldText>함께 성장하고자 하는 사람</BoldText>
+          </SmallText>
+        </SmallContainer>
+
+        <Line />
+        <Text>
+          <img
+            src={`${process.env.REACT_APP_IMAGE_URL}/emoji_calendar.svg`}
+            alt="calendar"
+          />
+          <div>모집일정</div>
+          <WarnText>*최종 합격 시, 활동 기간 1년을 준수해야 합니다. </WarnText>
+        </Text>
+        <TimelineContainer>
+          <TimelineWrapper>
+            <TimelineLine />
+            <TimelineSteps>
+              {steps.map((step, index) => (
+                <Step key={index}>
+                  <Marker />
+                  <Title>
+                    {step.title}{" "}
+                    {step.title === "면접" && <span>*대면 원칙</span>}
+                  </Title>
+                  <DivLine />
+                  <Date>
+                    <span>{step.date}</span>
+                  </Date>
+                </Step>
+              ))}
+            </TimelineSteps>
+          </TimelineWrapper>
+        </TimelineContainer>
+      </FormContainer>
+    </Wrapper>
   );
 };
 
 export default Information;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
 
 const FormContainer = styled.div`
   display: flex;
@@ -94,6 +104,10 @@ const FormContainer = styled.div`
 
   @media (min-width: 768px) and (max-width: 1024px) {
     padding: 30px;
+  }
+
+  @media (min-width: 480px) and (max-width: 768px) {
+    padding: 25px;
   }
 
   @media (max-width: 480px) {
@@ -129,6 +143,14 @@ const Text = styled.div`
     }
   }
 
+  @media (min-width: 480px) and (max-width: 768px) {
+    div,
+    img {
+      font-size: 20px;
+      height: 20px;
+    }
+  }
+
   @media (max-width: 480px) {
     div,
     img {
@@ -144,10 +166,16 @@ const SmallText = styled.div`
   margin-top: 15px;
   font-size: 20px;
   font-family: "Noto Sans Light";
+  word-break: keep-all;
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    font-size: 25px;
-    line-height: 34px;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  @media (min-width: 480px) and (max-width: 768px) {
+    font-size: 18px;
+    line-height: 25px;
   }
 
   @media (max-width: 480px) {
@@ -161,8 +189,13 @@ const BoldText = styled.span`
   font-size: 20px;
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    font-size: 25px;
-    line-height: 34px;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  @media (min-width: 480px) and (max-width: 768px) {
+    font-size: 18px;
+    line-height: 25px;
   }
 
   @media (max-width: 480px) {
@@ -174,16 +207,20 @@ const BoldText = styled.span`
 const WarnText = styled.span`
   font-family: "Noto Sans Thin";
   font-size: 13px;
-  margin-top: 25px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 15px;
-    margin-top: 20px;
+  }
+
+  @media (min-width: 480px) and (max-width: 768px) {
+    font-size: 12px;
   }
 
   @media (max-width: 480px) {
     font-size: 10px;
-    margin-top: 10px;
   }
 `;
 
@@ -214,19 +251,28 @@ const TimelineLine = styled.div`
   height: 3px;
   background-color: #ff6b00;
   z-index: 1;
+  border-radius: 2px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 6px;
+    top: 51%;
+    transform: translateY(-43%) rotate(40deg); /* 꺾쇠 방향 */
+    width: 30px; /* 꺾쇠 크기 */
+    height: 30px;
+    border-top: 3px solid #ff6b00;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+  }
 `;
 
 const TimelineSteps = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 20%);
   position: relative;
   z-index: 2;
-  gap: 10%;
-
-  /* @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  } */
+  gap: 5%;
 `;
 
 const Step = styled.div`
@@ -240,7 +286,7 @@ const Marker = styled.div`
   width: 20px;
   aspect-ratio: 1/1;
   background-color: #e67800;
-  border: 4px solid #fff5ea;
+  border: 2px solid #fff5ea;
   border-radius: 50%;
   margin-bottom: 1rem;
 `;
@@ -250,6 +296,14 @@ const Title = styled.h3`
   font-weight: 500;
   margin-top: 20px;
   white-space: nowrap;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 const DivLine = styled.hr`
@@ -261,19 +315,24 @@ const DivLine = styled.hr`
   margin: 10px 0;
 `;
 
-const Date = styled.p`
+const Date = styled.div`
   width: 100%;
   display: flex;
   justify-content: center; /* 내부 div를 가운데 정렬 */
   align-items: center; /* 세로 중앙 정렬 */
 
-  div {
-    width: 100%; /* 부모의 전체 너비를 차지 */
-    max-width: 300px; /* 너무 커지지 않도록 적절한 크기 설정 */
+  span {
+    width: fit-content;
     font-size: 25px;
     font-family: "Noto Sans Light";
-    margin: 0 auto; /* div 자체를 중앙 배치 */
-    opacity: 0.9;
     text-align: right; /* 텍스트는 여전히 오른쪽 정렬 */
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 10px;
+    }
   }
 `;
