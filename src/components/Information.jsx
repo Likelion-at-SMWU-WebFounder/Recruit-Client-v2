@@ -253,6 +253,10 @@ const TimelineLine = styled.div`
   z-index: 1;
   border-radius: 2px;
 
+  @media (max-width: 768px) {
+    top: 7.5px;
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -289,6 +293,10 @@ const Marker = styled.div`
   border: 2px solid #fff5ea;
   border-radius: 50%;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    width: 15px;
+  }
 `;
 
 const Title = styled.h3`
@@ -316,7 +324,7 @@ const DivLine = styled.hr`
 `;
 
 const Date = styled.div`
-  width: 100%;
+  width: fit-content;
   display: flex;
   justify-content: center; /* 내부 div를 가운데 정렬 */
   align-items: center; /* 세로 중앙 정렬 */
