@@ -20,6 +20,13 @@ const AboutUs = () => {
     );
   };
 
+  const IGClick = () => {
+    window.open(
+      "https://www.instagram.com/p/DFwgs8nSucu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "_blank"
+    );
+  };
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Layout>
@@ -93,7 +100,7 @@ const AboutUs = () => {
               </SmallTextDiv>
               <SmallTextDiv>
                 {" "}
-                파트별로 특화된 교육과정을 제공합니다.
+                파트별로 특화된 교육과정 및 다양한 강의를 제공합니다.
               </SmallTextDiv>
             </AnimatedContainer>
             <AnimatedContainer>
@@ -196,9 +203,20 @@ const AboutUs = () => {
                     👩🏻‍💻
                   </TextDiv>
                 </TextBox>
-                <TextBox background="rgba(239, 239, 239, 0.10)">
-                  <img src={`${process.env.REACT_APP_IMAGE_URL}/svg`} />
-                </TextBox>
+                <IGBox background="rgba(239, 300, 260, 0.10)">
+                  <div>
+                    <img src={`ReviewIG.svg`} />
+                    <IGText
+                      fontSize="15px"
+                      marginTop="10px"
+                      marginLeft="30px"
+                      fontFamily="Noto Sans Light"
+                      onClick={IGClick}
+                    >
+                      더보기 &nbsp; &gt;
+                    </IGText>
+                  </div>
+                </IGBox>
               </RowBox>
             </AnimatedContainer>
           </GradDiv>
@@ -412,6 +430,16 @@ const RowBox = styled.div`
     flex-direction: column;
     margin-bottom: 0;
   }
+
+  @media (max-width: 786px) {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
 `;
 
 const ImgGrid = styled.div`
@@ -535,8 +563,8 @@ const UnderLineText = styled.span`
 
 const TextBox = styled.div`
   position: relative;
-  width: 339px;
-  height: 435px;
+  width: 22%;
+  height: 440px;
   flex-shrink: 0;
   border-radius: 30px;
   background: ${(props) => props.background};
@@ -546,6 +574,40 @@ const TextBox = styled.div`
     width: 90%;
     margin-bottom: 20px;
   }
+`;
+
+const IGBox = styled.div`
+  display: flex;
+  width: 22%;
+  align-items: center;
+  justify-content: center;
+  height: 440px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  padding-top: 20px;
+  background: ${(props) => props.background};
+
+  @media (max-width: 1024px) {
+    height: auto;
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 480px) {
+    height: auto;
+    width: 90%;
+    padding-top: 45px;
+    padding-bottom: 25px;
+    margin-bottom: 20px;
+  }
+`;
+
+const IGText = styled.div`
+  margin-top: 10px;
+  text-align: right;
+  font-size: 16px;
+  padding-top: 10px;
+  cursor: pointer;
 `;
 
 const ApplyDiv = styled.div`
