@@ -49,6 +49,8 @@ const Modal = ({ projectId, onClose }) => {
     gitBeUrl,
     gitFeUrl,
     servLaunch,
+    no,
+    category,
   } = project;
 
   return (
@@ -66,13 +68,21 @@ const Modal = ({ projectId, onClose }) => {
           />
         )}
         <ModalHeader>
-          <ModalTitle>{title}</ModalTitle>
+          <TitleWrapper>
+            <ModalTitle>{title}</ModalTitle>
+            <TagWrapper>
+              <ModalTag>{`${no}`}</ModalTag>
+              <ModalTag>{`${category}`}</ModalTag>
+            </TagWrapper>
+          </TitleWrapper>
           <ModalSubtitle>{`${teamName} | ${teamMember}`}</ModalSubtitle>
         </ModalHeader>
 
         <ModalText>{summary}</ModalText>
         <Hr />
-        <ModalText marginTop="1vw">{content}</ModalText>
+        <ModalBody>
+          <ModalText marginTop="1vw">{content}</ModalText>
+        </ModalBody>
 
         <ButtonWrapper>
           {servIntro && (
@@ -141,7 +151,7 @@ const ModalContent = styled.div`
   width: 80vw;
   max-width: 700px;
   max-height: 95vh;
-  overflow-y: auto;
+  overflow-y: none;
   position: relative;
   color: #000000;
 
@@ -163,13 +173,16 @@ const CloseButton = styled.div`
   }
 `;
 
-const ModalHeader = styled.div`
-  text-align: left;
+const ModalHeader = styled.div``;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 `;
 
 const ModalTitle = styled.h2`
   font-size: 1.5vw;
-  margin-bottom: 0.3vw;
   font-weight: 700;
   padding-top: 1vw;
   padding-bottom: 1vw;
@@ -190,6 +203,58 @@ const ModalSubtitle = styled.p`
   }
 `;
 
+const TagWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  gap: 8px;
+  padding-bottom: 10px;
+`;
+
+const ModalTag = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 30px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  border: 2px solid #333333;
+  color: #333333;
+  font-size: 1vw;
+  font-weight: bold;
+  margin-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  white-space: nowrap;
+
+  @media (min-width: 786px) and (max-width: 1024px) {
+    width: auto;
+    height: 20px;
+    font-size: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  @media (min-width: 480px) and (max-width: 786px) {
+    width: auto;
+    height: 20px;
+    font-size: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  @media (max-width: 480px) {
+    width: auto;
+    height: 20px;
+    font-size: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+`;
+
 const ModalImage = styled.img`
   width: 100%;
   object-fit: cover;
@@ -199,6 +264,12 @@ const ModalImage = styled.img`
   padding: 1vw;
   display: block;
   height: auto;
+`;
+
+const ModalBody = styled.div`
+  max-height: 25vh;
+  overflow-y: auto;
+  margin-bottom: 10px;
 `;
 
 const ModalText = styled.p`
@@ -232,14 +303,14 @@ const ErrorMessage = styled.p`
 `;
 
 const ModalButton = styled.button`
-  border-radius: 0.8vw;
-  background-color: #eb9537;
-  color: #fff;
+  border-radius: 0.6vw;
+  border: 3px solid #eb9537;
+  background-color: #fff5ea;
+  color: #eb9537;
   font-size: 1vw;
   font-weight: 700;
   text-align: center;
   cursor: pointer;
-  border: none;
   text-decoration: none;
   display: inline-block;
   padding: 0.5vw 0.5vw;
@@ -253,13 +324,18 @@ const ModalButton = styled.button`
     width: 80px;
     border-radius: 5px;
   }
+
+  &:hover {
+    background-color: #eb9537;
+    color: #fefefe;
+    cursor: pointer;
+  }
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 1vw;
 `;
 
 export default Modal;
