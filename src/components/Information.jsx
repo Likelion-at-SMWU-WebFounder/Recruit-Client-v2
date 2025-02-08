@@ -75,7 +75,7 @@ const Information = () => {
                   </Title>
                   <DivLine />
                   <Date>
-                    <span>{step.date}</span>
+                    <p>{step.date}</p>
                   </Date>
                 </Step>
               ))}
@@ -324,22 +324,28 @@ const DivLine = styled.hr`
 `;
 
 const Date = styled.div`
-  width: fit-content;
+  width: 100%;
   display: flex;
   justify-content: center; /* 내부 div를 가운데 정렬 */
   align-items: center; /* 세로 중앙 정렬 */
+  text-align: right;
 
-  span {
-    width: fit-content;
+  p {
     font-size: 25px;
     font-family: "Noto Sans Light";
-    text-align: right; /* 텍스트는 여전히 오른쪽 정렬 */
+    width: fit-content;
+    margin: 0 auto;
+    white-space: pre-line;
 
     @media (min-width: 768px) and (max-width: 1024px) {
       font-size: 20px;
     }
 
-    @media (max-width: 768px) {
+    @media (min-width: 480px) and (max-width: 768px) {
+      font-size: 10px;
+    }
+
+    @media (max-width: 480px) {
       font-size: 10px;
     }
   }
