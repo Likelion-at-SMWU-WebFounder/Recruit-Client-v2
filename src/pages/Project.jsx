@@ -32,27 +32,63 @@ const ProjectCard = ({ project, onClick }) => {
 const Project = () => {
   // const [projects, setProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
-  const sortedByYearProjects = projectsData.sort((p1, p2) => p2.year - p1.year);
   const [filterByNo, setFilterByNo] = useState("전체");
   const [filteredProjects, setFilteredProjects] = useState(projectsData);
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 12;
 
   const cohorts = ["전체", "12기", "11기", "10기", "9기"];
 
   useEffect(() => {
     if (filterByNo === "전체") {
-      setFilteredProjects(
-        projectsData.sort((p1, p2) => {
-          const no1 = parseInt(p1.no.replace("기", ""), 10);
-          const no2 = parseInt(p2.no.replace("기", ""), 10);
-          return no2 - no1; // 높은 숫자부터 정렬
-        })
-      );
+      const sortedProjects = [...projectsData].sort((p1, p2) => {
+        const no1 = parseInt(p1.no.replace("기", ""), 10);
+        const no2 = parseInt(p2.no.replace("기", ""), 10);
+        return no2 - no1; // 높은 숫자부터 정렬
+      });
+      setFilteredProjects(sortedProjects);
     } else {
       setFilteredProjects(
         projectsData.filter((project) => project.no === filterByNo)
       );
     }
-  }, [filterByNo]);
+  }, [filterByNo, projectsData]);
+
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  const pageNumbers = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const getVisiblePages = () => {
+    const startPage = Math.floor((currentPage - 1) / 3) * 3 + 1;
+    const endPage = Math.min(startPage + 2, totalPages);
+    return pageNumbers.slice(startPage - 1, endPage);
+  };
+
+  const handleNextGroup = () => {
+    const nextPage = Math.min(currentPage + 3, totalPages);
+    const newPage = Math.min(nextPage, totalPages);
+    setCurrentPage(newPage - ((newPage - 1) % 3)); // 그룹의 첫 번째 페이지로 설정
+  };
+
+  const handlePrevGroup = () => {
+    const prevPage = Math.max(currentPage - 3, 1);
+    const newPage = Math.max(prevPage, 1);
+    setCurrentPage(newPage - ((newPage - 1) % 3)); // 그룹의 첫 번째 페이지로 설정
+  };
+
+  // 현재 페이지에 맞는 프로젝트 계산
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = filteredProjects.slice(
+    indexOfFirstProject,
+    indexOfLastProject
+  );
 
   const openModal = (projectTitle) => {
     setSelectedProjectId(projectTitle);
@@ -103,7 +139,10 @@ const Project = () => {
         {cohorts.map((cohort) => (
           <FilterCohort
             key={cohort}
-            onClick={() => setFilterByNo(cohort)}
+            onClick={() => {
+              setFilterByNo(cohort);
+              setCurrentPage(1);
+            }}
             isSelected={filterByNo === cohort}
           >
             {cohort}
@@ -111,7 +150,7 @@ const Project = () => {
         ))}
       </FlexDiv>
       <CardContainer>
-        {filteredProjects.map((project) => (
+        {currentProjects.map((project) => (
           <ProjectCard
             key={project.title}
             project={project}
@@ -119,6 +158,29 @@ const Project = () => {
           />
         ))}
       </CardContainer>
+      <Pagination>
+        <PageButton onClick={handlePrevGroup} disabled={currentPage === 1}>
+          &lt;
+        </PageButton>
+        {getVisiblePages().map((number) => (
+          <PageButton
+            key={number}
+            onClick={() => handlePageChange(number)}
+            style={{
+              fontWeight: currentPage === number ? "bolder" : "",
+              textDecoration: currentPage === number ? "underline" : "none",
+            }}
+          >
+            {number}
+          </PageButton>
+        ))}
+        <PageButton
+          onClick={handleNextGroup}
+          disabled={currentPage >= totalPages}
+        >
+          &gt;
+        </PageButton>
+      </Pagination>
       {selectedProjectId && (
         <Modal projectId={selectedProjectId} onClose={closeModal} />
       )}
@@ -447,4 +509,20 @@ const CardTag = styled.div`
     padding-left: 5px;
     padding-right: 5px;
   }
+`;
+
+const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+`;
+
+const PageButton = styled.button`
+  margin: 0 5px;
+  padding: 10px;
+  background-color: #111111;
+  border: none;
+  font-size: 1vw;
+  color: #ffffff;
+  cursor: pointer;
 `;
