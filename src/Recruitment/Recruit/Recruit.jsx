@@ -83,7 +83,7 @@ const Text = styled.div`
     line-height: 38px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     font-size: 13px;
     line-height: 22px;
   }
@@ -105,7 +105,7 @@ const ChangeText = styled.span`
     line-height: 30px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     font-size: 12px;
     font-weight: 300;
     margin-bottom: 10px;
@@ -119,7 +119,7 @@ const Img = styled.img`
   margin-top: 30px;
   width: 300px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     width: 150px;
   }
 `;
@@ -139,7 +139,7 @@ const Container = styled.div`
     margin-top: -123px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     margin-top: -123px;
   }
 `;
@@ -153,7 +153,7 @@ const PartContainer = styled.div`
     gap: 50px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     gap: 30px;
   }
 `;
@@ -178,7 +178,7 @@ const PartBox = styled.button`
     font-size: 22px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     width: 100px;
     height: 36px;
     border: 2px solid #333;
@@ -209,7 +209,7 @@ const NotionBox = styled.a`
     margin-top: 40px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     width: 340px;
     height: 35px;
     font-size: 12px;
