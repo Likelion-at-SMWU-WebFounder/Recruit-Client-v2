@@ -207,8 +207,8 @@ export const projectsData = [
 오프라인 모임 시 게임 툴 제공입니다.`,
     servIntro:
       "https://drive.google.com/file/d/14SARSOnEt43esqkatEWruxNWOiaX8XES/view?usp=share_link",
-    gitBeUrl: "",
-    gitFeUrl: "",
+    gitBeUrl: "https://github.com/BDNS-AWARDS/BDNS-server",
+    gitFeUrl: "https://github.com/BDNS-AWARDS/BDNS-client",
     servLaunch: null,
     no: "11기",
     category: "4호선톤",
@@ -230,8 +230,8 @@ export const projectsData = [
 타인이 나의 회고록 또한 작성해줄 수 있는 기능 구현`,
     servIntro:
       "https://drive.google.com/file/d/1fX-choQyXCq_GL9RGOtD8J-nWtjj5qIm/view?usp=share_link",
-    gitBeUrl: "",
-    gitFeUrl: "",
+    gitBeUrl: "https://github.com/FAREWELL2023/Farewell_BE",
+    gitFeUrl: "https://github.com/FAREWELL2023/Farewell_FE",
     servLaunch: null,
     no: "11기",
     category: "4호선톤",
@@ -245,7 +245,7 @@ export const projectsData = [
     content: `‘커핑’은 커피를 맛보며 파악하는 행위로, 커피를 좋아하는 사람들이 모여 다양한 원두를 맛 보며 커피를 즐기는 문화입니다. 모임 참여자를 모집하는 방식으로는 주로 네이버 카페에 글을 올려 수요를 확인하는 것이 일반적이었습니다. 글을 올려 사람들의 반응을 기다리고 모임을 주최하기까지 시간이 많이 소요되는 것을 보고, 사용자가 원하는 장소와 시간대에 참여할 수 있는 모임을 신청하면 신청자와 모임이 매칭되는 서비스를 구상하게 되었습니다.`,
     servIntro:
       "https://drive.google.com/file/d/1FqGGZH48UDZCuqTL-cX2CS11zwhxbIIn/view?usp=share_link",
-    gitBeUrl: "",
+    gitBeUrl: "https://github.com/Coffee-ing",
     gitFeUrl: "",
     servLaunch: null,
     no: "11기",
@@ -268,8 +268,8 @@ export const projectsData = [
 사진을 검사하여 클린한 포토꾸러미 사용 가능`,
     servIntro:
       "https://drive.google.com/file/d/1yrvWHVGUTgXjOQyUNdOIG0CNCrgJ7TYd/view?usp=share_link",
-    gitBeUrl: "",
-    gitFeUrl: "",
+    gitBeUrl: "https://github.com/Kureomi/Server",
+    gitFeUrl: "https://github.com/Kureomi/Kureomi_FE",
     servLaunch: null,
     no: "11기",
     category: "4호선톤",
@@ -322,11 +322,51 @@ export const projectsData = [
 결과와 관련된 다양한 매거진을 볼 수 있어요. 어디가서 어떻게 사야할지, 어떻게 마셔야할지, 무엇이랑 마셔야할지 고민할 필요 없어요!!`,
     servIntro:
       "https://drive.google.com/file/d/1-l3SsM3uqtPEzDqU2G7x-E0shq80Ei7U/view?usp=share_link",
-    gitBeUrl: "",
-    gitFeUrl: "",
+    gitBeUrl: "https://github.com/WhiskeyLikey/WhiskeyLikey-BE",
+    gitFeUrl: "https://github.com/WhiskeyLikey/WhiskeyLikey-Client",
     servLaunch: null,
     no: "11기",
     category: "4호선톤",
+  },
+  {
+    bgImg: `${s3URL}/songyeechallenge.svg`,
+    title: "송이의 숲",
+    teamName: "송이의 숲",
+    teamMember:
+      "박연빈, 서연경, 한다인, 강주은, 이예지, 조성하, 문유진, 이서현",
+    summary: "숙명 눈송이만을 위한 챌린지 쉐어 플랫폼",
+    content: `숙명인들이 원하는 챌린지를 쉽게 생성하고 꾸준히 실천해 나갈 수 있도록 도움을 주기 위해 기획한 서비스입니다.
+
+<주요 기능>
+
+나만의 챌린지 생성 (개설하고 싶은 스터디를 자유롭게 생성, 미션 내용 및 날짜 입력 등)
+
+미션 수행 (참가한 스터디 미션 수행, 체크리스트로 미션 관리)
+
+소감 남기기 (자유롭게 스터디 소감 작성, 공감 기능을 통한 유대감 형성)`,
+    servIntro: "https://github.com/Songyee-Challenge",
+    gitBeUrl: "https://github.com/Songyee-Challenge/Server",
+    gitFeUrl: "https://github.com/Songyee-Challenge/FE",
+    servLaunch: null,
+    no: "11기",
+    category: "미니프로젝트",
+  },
+  {
+    bgImg: `${s3URL}/sendmyheart.svg`,
+    title: "전하기(SendMyHeart)",
+    teamName: "전하기",
+    teamMember:
+      "박연빈, 서연경, 한다인, 강주은, 이예지, 김원희, 윤서희, 이예린",
+    summary: "내 주변 소중한 사람들에게 안부 전하는 서비스",
+    content: `당신은 소중한 사람에게 안부 인사를 자주 건네고 있나요?
+
+안부를 보낼 친구(엄마, 외할머니, 할아버지 등)를 설정 및 선택하고, 안부 종류를 선택하여, 나만의 언어로 수정하고 마음을 전할 수 있는 서비스입니다.`,
+    servIntro: null,
+    gitBeUrl: "https://github.com/Likelion-at-SMWU-11th/SendMyHeart-Server",
+    gitFeUrl: "https://github.com/Likelion-at-SMWU-11th/SendMyHeart-Client",
+    servLaunch: null,
+    no: "11기",
+    category: "미니프로젝트",
   },
   {
     bgImg: `${s3URL}/voyage.svg`,
@@ -380,11 +420,9 @@ export const projectsData = [
     teamName: "PTN",
     teamMember: "이현정(FE) 외 5명",
     summary: "평가가 아닌 성장의 기회, 대학생 프로젝트를 위한 피드백 플랫폼",
-    content: `서비스의 기획의도, 기능 등 상세설명을 적습니다.
+    content: `문제해결능력과 피드백은 필요충분조건이라는 것을 비롯하여 기획된 서비스입니다.
 
-진술의 것 인정한, 것 중용에 아동이 같여 지나다. 언제나 낳는 아니지 보아 의한 삼아요. 놓칩니다 바다에 소년은 하고, 최근으로 주장이니 전해진다. 있지 번, 무역이 그도 변호사로 오늘을 느껴지지 된 성장하자 파악됩니다.
-
-애부터 아래에 곳한테 가는 진행하여서 있어 만납니다. 때도 붙인 있게 묘에, 이른바 18톤 질문한 예 나오니 있다. 사람일 높인다 우선순위가 제목에서 칼날을, 과정을 면으로 가고 늘어서고 생활이 뵈다. 언론을 제기하여야, 수사다 하나에서 가능하다. 만든다 서럽는데 풍장에 떼는 피우는 접어들게, 지치다.`,
+기존의 공유 플랫폼은 대학생 프로젝트를 진행할 때에 성장 과정에 맞지 않는 구조이거나, 직접적인 조언을 얻기 어려운 경우이므로 발전 방향을 찾기 어렵다는 한계점을 가집니다. 이를 극복하고자 P-ROG은 다양한 시각에서의 피드백을 중점으로 받아 프로젝트를 한층 더 성장시키는 과정을 제공하고자 합니다. 따라서 별점, 좋아요, 랭킹 등의 평가적인 요소를 최대한 없애고, 프로젝트에 대한 설명과 함께 고민 부분들도 같이 작성하여 프로젝트를 등록할 수 있습니다. 이용자는 게시된 프로젝트를 보고 피드백 작성을 할 수 있으며,  채택될 경우 포인트를 받을 수 있습니다. 또한 Ai 피드백 정리 보고서 기능도 구현하여, 적립한 포인트로 다량의 피드백을 손쉽게 정리할 수 있습니다.`,
     servIntro: null,
     gitBeUrl: "https://github.com/mmig01/Line4-Hackathon-backend-team1.git",
     gitFeUrl: "https://github.com/Line4thon-PROG",

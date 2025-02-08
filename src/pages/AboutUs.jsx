@@ -13,8 +13,22 @@ const AboutUs = () => {
     window.scrollTo(0, 0);
   };
 
+  const ReviewClick = () => {
+    window.open(
+      "https://www.instagram.com/p/DFwgs8nSucu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "_blank"
+    );
+  };
+
+  const IGClick = () => {
+    window.open(
+      "https://www.instagram.com/p/DFwgs8nSucu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "_blank"
+    );
+  };
+
   return (
-    <>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <Layout>
         <S.Container>
           <AnimatedContainer>
@@ -62,6 +76,11 @@ const AboutUs = () => {
               </AnimatedContainer>
             ))}
           </ImgGrid>
+          <AnimatedContainer>
+            <Review onClick={ReviewClick}>
+              숙명여대 멋쟁이사자처럼 12기 활동 돌아보기 &gt;&gt;
+            </Review>
+          </AnimatedContainer>
           <GradDiv background="linear-gradient(180deg, rgba(14, 50, 132, 0.50) 0%, rgba(174, 190, 249, 0.00) 51.35%, rgba(14, 50, 132, 0.50) 100%)">
             <AnimatedContainer>
               <BigTextDiv>
@@ -81,7 +100,7 @@ const AboutUs = () => {
               </SmallTextDiv>
               <SmallTextDiv>
                 {" "}
-                파트별로 특화된 교육과정을 제공합니다.
+                파트별로 특화된 교육과정 및 다양한 강의를 제공합니다.
               </SmallTextDiv>
             </AnimatedContainer>
             <AnimatedContainer>
@@ -184,40 +203,20 @@ const AboutUs = () => {
                     👩🏻‍💻
                   </TextDiv>
                 </TextBox>
-                <TextBox background="rgba(239, 239, 239, 0.10)">
-                  <TextDiv
-                    transform="rotate(-11.719deg)"
-                    width="95px"
-                    height="80px"
-                    fontSize="60px"
-                    position="absolute"
-                  >
-                    📱
-                  </TextDiv>
-                  <TextDiv fontSize="35px" marginTop="95px">
-                    그 외
-                  </TextDiv>
-                  <TextDiv
-                    fontSize="26px"
-                    marginTop="70px"
-                    lineHeight="50px"
-                    fontFamily="Noto Sans Light"
-                  >
-                    UX·Product Design, iOS, <br />
-                    블록체인 등 다양한 강의 제공
-                  </TextDiv>
-                  <TextDiv
-                    transform="rotate(7.381deg)"
-                    width="95px"
-                    height="80px"
-                    fontSize="60px"
-                    position="absolute"
-                    right="0px"
-                    bottom="20px"
-                  >
-                    ⛓️
-                  </TextDiv>
-                </TextBox>
+                <IGBox background="rgba(239, 300, 260, 0.10)">
+                  <div>
+                    <img src={`ReviewIG.svg`} />
+                    <IGText
+                      fontSize="15px"
+                      marginTop="10px"
+                      marginLeft="30px"
+                      fontFamily="Noto Sans Light"
+                      onClick={IGClick}
+                    >
+                      더보기 &nbsp; &gt;
+                    </IGText>
+                  </div>
+                </IGBox>
               </RowBox>
             </AnimatedContainer>
           </GradDiv>
@@ -255,7 +254,7 @@ const AboutUs = () => {
           </ApplyDiv>
         </S.Container>
       </Layout>
-    </>
+    </div>
   );
 };
 
@@ -310,6 +309,9 @@ const OrangeText = styled.span`
 `;
 
 const Img = styled.img`
+  @media (max-width: 1024px) {
+    width: 300px;
+  }
   @media (max-width: 768px) {
     width: 200px;
   }
@@ -428,6 +430,16 @@ const RowBox = styled.div`
     flex-direction: column;
     margin-bottom: 0;
   }
+
+  @media (max-width: 786px) {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
 `;
 
 const ImgGrid = styled.div`
@@ -436,13 +448,47 @@ const ImgGrid = styled.div`
   grid-template-rows: repeat(2, 1fr);
   gap: 50px; /* 그리드 항목 간 간격 */
   justify-content: center;
-  padding-bottom: 100px;
 
   @media (max-width: 1024px) {
     display: flex;
     flex-direction: column;
     margin-bottom: 0;
     gap: 0;
+  }
+`;
+
+const Review = styled.div`
+  color: #fefefe;
+  text-align: right;
+  font-size: 25px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-right: 10vw;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+
+  @media (max-width: 1024px) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 5vw;
+    font-size: 25px;
+    word-break: keep-all;
+    word-spacing: 4px;
+    min-width: auto;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+
+  cursor: pointer;
+  &:hover {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.6);
   }
 `;
 
@@ -518,8 +564,8 @@ const UnderLineText = styled.span`
 
 const TextBox = styled.div`
   position: relative;
-  width: 339px;
-  height: 435px;
+  width: 22%;
+  height: 440px;
   flex-shrink: 0;
   border-radius: 30px;
   background: ${(props) => props.background};
@@ -529,6 +575,40 @@ const TextBox = styled.div`
     width: 90%;
     margin-bottom: 20px;
   }
+`;
+
+const IGBox = styled.div`
+  display: flex;
+  width: 22%;
+  align-items: center;
+  justify-content: center;
+  height: 440px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  padding-top: 20px;
+  background: ${(props) => props.background};
+
+  @media (max-width: 1024px) {
+    height: auto;
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 480px) {
+    height: auto;
+    width: 90%;
+    padding-top: 45px;
+    padding-bottom: 25px;
+    margin-bottom: 20px;
+  }
+`;
+
+const IGText = styled.div`
+  margin-top: 10px;
+  text-align: right;
+  font-size: 16px;
+  padding-top: 10px;
+  cursor: pointer;
 `;
 
 const ApplyDiv = styled.div`
@@ -639,7 +719,8 @@ const LinkToAboutUsContainer = styled.div`
   position: relative;
   cursor: pointer;
   &:hover {
-    text-shadow: 1px 1px 8px #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.6);
   }
 `;
 
