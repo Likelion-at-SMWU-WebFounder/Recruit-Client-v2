@@ -329,6 +329,46 @@ export const projectsData = [
     category: "4호선톤",
   },
   {
+    bgImg: `${s3URL}/songyeechallenge.svg`,
+    title: "송이의 숲",
+    teamName: "송이의 숲",
+    teamMember:
+      "박연빈, 서연경, 한다인, 강주은, 이예지, 조성하, 문유진, 이서현",
+    summary: "숙명 눈송이만을 위한 챌린지 쉐어 플랫폼",
+    content: `숙명인들이 원하는 챌린지를 쉽게 생성하고 꾸준히 실천해 나갈 수 있도록 도움을 주기 위해 기획한 서비스입니다.
+
+<주요 기능>
+
+나만의 챌린지 생성 (개설하고 싶은 스터디를 자유롭게 생성, 미션 내용 및 날짜 입력 등)
+
+미션 수행 (참가한 스터디 미션 수행, 체크리스트로 미션 관리)
+
+소감 남기기 (자유롭게 스터디 소감 작성, 공감 기능을 통한 유대감 형성)`,
+    servIntro: "https://github.com/Songyee-Challenge",
+    gitBeUrl: "https://github.com/Songyee-Challenge/Server",
+    gitFeUrl: "https://github.com/Songyee-Challenge/FE",
+    servLaunch: null,
+    no: "11기",
+    category: "미니프로젝트",
+  },
+  {
+    bgImg: `${s3URL}/sendmyheart.svg`,
+    title: "전하기(SendMyHeart)",
+    teamName: "전하기",
+    teamMember:
+      "박연빈, 서연경, 한다인, 강주은, 이예지, 김원희, 윤서희, 이예린",
+    summary: "내 주변 소중한 사람들에게 안부 전하는 서비스",
+    content: `당신은 소중한 사람에게 안부 인사를 자주 건네고 있나요?
+
+안부를 보낼 친구(엄마, 외할머니, 할아버지 등)를 설정 및 선택하고, 안부 종류를 선택하여, 나만의 언어로 수정하고 마음을 전할 수 있는 서비스입니다.`,
+    servIntro: null,
+    gitBeUrl: "https://github.com/Likelion-at-SMWU-11th/SendMyHeart-Server",
+    gitFeUrl: "https://github.com/Likelion-at-SMWU-11th/SendMyHeart-Client",
+    servLaunch: null,
+    no: "11기",
+    category: "미니프로젝트",
+  },
+  {
     bgImg: `${s3URL}/voyage.svg`,
     title: "VOYAGE",
     teamName: "VOYAGE",
