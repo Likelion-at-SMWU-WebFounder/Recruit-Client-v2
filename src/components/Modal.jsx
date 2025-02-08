@@ -320,7 +320,7 @@ const ModalButton = styled.button`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: right;
   flex-wrap: wrap;
 `;
 
