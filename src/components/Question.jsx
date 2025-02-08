@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -346,16 +346,33 @@ const Question = () => {
   //   }
   // };
 
+  // 로딩화면 ... 애니메이션
+  const fullText = "...";
+  const [displayedText, setDisplayedText] = useState("");
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDisplayedText(fullText.substring(0, index + 1)); // 한 글자씩 추가
+      setIndex((prevIndex) => (prevIndex + 1) % (fullText.length + 1)); // 루프 반복
+    }, 300); // 150ms 간격으로 글자 표시
+
+    return () => clearInterval(interval); // 컴포넌트가 언마운트되면 정리
+  }, [index]);
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         {loading && (
           <LoadingScreen>
             <img
-              src={`${process.env.REACT_APP_IMAGE_URL}/RecruitLion.svg`}
+              src={`${process.env.REACT_APP_IMAGE_URL}/lion.svg`}
               alt="recruitlion"
             />
-            <h3>서류를 제출 중입니다 ...</h3>
+            <div style={{ display: "flex" }}>
+              <h3>서류를 제출 중입니다</h3>
+              <h3 className="dots">{displayedText}</h3>
+            </div>
             <p>잠시만 기다려주세요!</p>
           </LoadingScreen>
         )}
@@ -458,7 +475,7 @@ const Question = () => {
             <Text fontSize="20px">졸업 예정 연도 *</Text>
             <Input
               autocomplete="off"
-              placeholder="2026년 2월"
+              placeholder="2027년 2월"
               width="150px"
               value={answers[6]}
               onChange={(e) => handleInputChange(6, e.target.value)}
@@ -575,7 +592,7 @@ const Question = () => {
             style={{ height: "100px" }}
             value={answers[14]}
             onChange={(e) => handleInputChange(14, e.target.value)}
-            placeholder="URL을 입력해 주세요."
+            placeholder="URL을 입력해 주세요. (열람이 가능하도록 권한을 허용해주세요.)"
           />
         </QuestionContainer>
         <Hr marginTop="60px" marginBottom="30px" />
@@ -722,6 +739,10 @@ const LoadingScreen = styled.div`
     font-family: "Noto Sans Thin";
     font-size: 20px;
     margin-top: 20px;
+  }
+  .dots {
+    width: 40px;
+    text-align: left;
   }
 `;
 
