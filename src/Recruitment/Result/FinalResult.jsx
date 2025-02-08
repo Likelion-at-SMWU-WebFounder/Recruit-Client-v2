@@ -50,7 +50,7 @@ const FinalResult = ({ name, message, track }) => {
               [최종 합격 확인 회신] *{finalResult.deadline}까지 반드시 제출
             </Text>
             <AText href={finalResult.googleformUrl} target="_blank">
-              멋쟁이사자처럼 숙명여대 {generation} 합격 확인 구글 폼
+              숙명여대 멋쟁이사자처럼 {generation} 합격 확인 구글 폼
             </AText>
           </BoxContainer>
           <BoxContainer>
@@ -159,16 +159,16 @@ const Img = styled.img`
 
 const Lion = styled.img`
   position: absolute;
-  bottom: 30px;
-  right: 100px;
-  width: 300px;
+  bottom: 70px;
+  right: 30px;
+  width: 20vw;
   z-index: 10;
 
-  @media (max-width: 1024px) {
+  /* @media (max-width: 1024px) {
     width: 150px;
-  }
+  } */
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -195,6 +195,7 @@ const PassContainer = styled.div`
   background-position: left top;
   background-repeat: no-repeat;
   padding: 25px;
+  position: relative;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     background-size: 110% auto;

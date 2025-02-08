@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -8,13 +8,14 @@ const Question = () => {
   const { part } = useParams();
   const navigate = useNavigate();
 
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  // const [selectedFiles, setSelectedFiles] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false); // 로딩 상태 추가
 
-  const handleFileSelect = (e) => {
-    const files = Array.from(e.target.files);
-    setSelectedFiles(files);
-  };
+  // const handleFileSelect = (e) => {
+  //   const files = Array.from(e.target.files);
+  //   setSelectedFiles(files);
+  // };
 
   let partName = "";
   let backgroundImage = "";
@@ -78,7 +79,7 @@ const Question = () => {
 
   const [answers, setAnswers] = useState(initialAnswers);
   const maxLength = 600; // 최대 글자수
-  const [fileName, setFileName] = useState("");
+  //const [fileName, setFileName] = useState("");
 
   const handleInputChange = (index, value) => {
     const newAnswers = [...answers];
@@ -128,7 +129,7 @@ const Question = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleEnd = () => {
-    window.alert("2/23(금) 18:00 서류 제출 마감 시간이 초과되었습니다. ");
+    window.alert("서류 제출 마감 시간이 초과되었습니다. ");
   };
 
   const handleSubmit = async (e) => {
@@ -171,6 +172,12 @@ const Question = () => {
       return;
     } else if (emailCheck(answers[22])) {
       alert("유효한 이메일 형식으로 입력해주세요.");
+      return;
+    } else if (answers[2].length !== 7) {
+      alert("학번은 7자리로 입력해주세요."); // 학번 길이 확인
+      return;
+    } else if (answers[1].length !== 11) {
+      alert("전화번호는 ‘-’없이 11자리로 입력해주세요."); // 전화번호 길이 확인
       return;
     } else {
       // 모든 필수 입력 폼이 작성된 경우, 서버로 데이터 전송 후 페이지 이동
@@ -219,22 +226,27 @@ const Question = () => {
         );
         if (confirmation) {
           try {
+            setLoading(true);
             const response = await axios.post(apiUrl, requestBody);
 
             if (response.data.code === 404) {
               window.alert(response.data.message);
+              setLoading(false);
               return;
             } else {
               setSubmitted(true);
               navigate("/recruitment/submit-success");
+              setLoading(false);
             }
           } catch (error) {
             console.error("서버 전송 중 오류 발생:", error);
+            setLoading(false);
           }
           setSubmitted(true);
         }
       } catch (error) {
         console.error("서버 전송 중 오류 발생:", error);
+        setLoading(false);
       }
     }
 
@@ -297,46 +309,73 @@ const Question = () => {
     }
   };
 
-  const uploadImageToS3 = async (imageFile) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", imageFile);
+  // const uploadImageToS3 = async (imageFile) => {
+  //   try {
+  //     const formData = new FormData();
+  //     formData.append("file", imageFile);
 
-      // AWS S3 업로드 API 엔드포인트와 업로드 설정에 따라 수정 필요
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_ROOT}/api/recruit/docs?track=${shortTrack}`,
-        formData
-      );
+  //     // AWS S3 업로드 API 엔드포인트와 업로드 설정에 따라 수정 필요
+  //     const response = await axios.post(
+  //       `${process.env.REACT_APP_API_ROOT}/api/recruit/docs?track=${shortTrack}`,
+  //       formData
+  //     );
 
-      // 업로드된 이미지의 URL 반환
-      return response.data.imageUrl;
-    } catch (error) {
-      console.error("이미지를 AWS S3에 업로드하는 중 오류 발생:", error);
-      throw error;
-    }
-  };
+  //     // 업로드된 이미지의 URL 반환
+  //     return response.data.imageUrl;
+  //   } catch (error) {
+  //     console.error("이미지를 AWS S3에 업로드하는 중 오류 발생:", error);
+  //     throw error;
+  //   }
+  // };
 
-  const handleImageUpload = async (e) => {
-    const imageFile = e.target.files[0];
+  // const handleImageUpload = async (e) => {
+  //   const imageFile = e.target.files[0];
 
-    try {
-      // 이미지를 AWS S3에 업로드하고 URL을 가져옴
-      const imageUrl = await uploadImageToS3(imageFile);
+  //   try {
+  //     // 이미지를 AWS S3에 업로드하고 URL을 가져옴
+  //     const imageUrl = await uploadImageToS3(imageFile);
 
-      // programmersImg 상태 업데이트
-      handleInputChange(23, imageUrl);
-      setFileName(imageFile.name);
-    } catch (error) {
-      console.error("이미지 업로드 중 오류 발생:", error);
+  //     // programmersImg 상태 업데이트
+  //     handleInputChange(23, imageUrl);
+  //     setFileName(imageFile.name);
+  //   } catch (error) {
+  //     console.error("이미지 업로드 중 오류 발생:", error);
 
-      // S3 임시방편!! S3 수정시 하단 코드 삭제할것
-      setFileName(imageFile.name);
-    }
-  };
+  //     // S3 임시방편!! S3 수정시 하단 코드 삭제할것
+  //     setFileName(imageFile.name);
+  //   }
+  // };
+
+  // 로딩화면 ... 애니메이션
+  const fullText = "...";
+  const [displayedText, setDisplayedText] = useState("");
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDisplayedText(fullText.substring(0, index + 1)); // 한 글자씩 추가
+      setIndex((prevIndex) => (prevIndex + 1) % (fullText.length + 1)); // 루프 반복
+    }, 300); // 150ms 간격으로 글자 표시
+
+    return () => clearInterval(interval); // 컴포넌트가 언마운트되면 정리
+  }, [index]);
 
   return (
     <>
       <form onSubmit={handleSubmit}>
+        {loading && (
+          <LoadingScreen>
+            <img
+              src={`${process.env.REACT_APP_IMAGE_URL}/lion.svg`}
+              alt="recruitlion"
+            />
+            <div style={{ display: "flex" }}>
+              <h3>서류를 제출 중입니다</h3>
+              <h3 className="dots">{displayedText}</h3>
+            </div>
+            <p>잠시만 기다려주세요!</p>
+          </LoadingScreen>
+        )}
         <Img src={`${process.env.REACT_APP_IMAGE_URL}/Logo.svg`} alt="logo" />
         <Row>
           <PartText background={backgroundImage}>{partName} 트랙</PartText>
@@ -436,7 +475,7 @@ const Question = () => {
             <Text fontSize="20px">졸업 예정 연도 *</Text>
             <Input
               autocomplete="off"
-              placeholder="2026년 2월"
+              placeholder="2027년 2월"
               width="150px"
               value={answers[6]}
               onChange={(e) => handleInputChange(6, e.target.value)}
@@ -488,7 +527,17 @@ const Question = () => {
         <Row>
           <FormContainer>
             <FileUploadContainer>
-              {/*programmersImg*/}
+              <UploadBtn
+                href="https://forms.gle/5wC4XiW7yeP8QJ3H8"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                파일 업로드 +
+              </UploadBtn>
+              <div style={{ fontWeight: "300", fontSize: "15px" }}>
+                ** 파일 업로드+ 을 눌러 구글 폼에 업로드 해주세요.
+              </div>
+              {/* programmersImg
               <FileInputLabel style={{ marginLeft: "30px" }}>
                 {fileName ? fileName : "파일 업로드  +"}
                 <FileInput
@@ -501,7 +550,7 @@ const Question = () => {
                 {selectedFiles.map((file, index) => (
                   <SelectedFile key={index}>{file.name}</SelectedFile>
                 ))}
-              </SelectedFilesContainer>
+              </SelectedFilesContainer> */}
             </FileUploadContainer>
           </FormContainer>
         </Row>
@@ -543,7 +592,7 @@ const Question = () => {
             style={{ height: "100px" }}
             value={answers[14]}
             onChange={(e) => handleInputChange(14, e.target.value)}
-            placeholder="URL을 입력해 주세요."
+            placeholder="URL을 입력해 주세요. (열람이 가능하도록 권한을 허용해주세요.)"
           />
         </QuestionContainer>
         <Hr marginTop="60px" marginBottom="30px" />
@@ -665,6 +714,37 @@ const Question = () => {
 };
 
 export default Question;
+
+const LoadingScreen = styled.div`
+  position: fixed; /* 화면 전체 덮기 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8); /* 검은색 배경, 투명도 50% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999; /* 다른 요소 위에 배치 */
+
+  img {
+    width: 300px;
+  }
+  h3 {
+    font-family: "Noto Sans Bold";
+    font-size: 35px;
+  }
+  p {
+    font-family: "Noto Sans Thin";
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .dots {
+    width: 40px;
+    text-align: left;
+  }
+`;
 
 const Hr = styled.hr`
   border: 1px solid #ffffff;
@@ -869,6 +949,7 @@ const FileUploadContainer = styled.div`
   align-items: center;
   flex-direction: row;
   margin-left: 468px;
+  gap: 10px;
 `;
 
 const FileInput = styled.input`
@@ -884,6 +965,19 @@ const FileInputLabel = styled.label`
   color: #111111;
   background: #ffffff;
   margin-left: 25px;
+`;
+
+// 프로그래머스 인증 이미지 업로드 임시 버튼 (구글폼으로 이동)
+const UploadBtn = styled.a`
+  cursor: pointer;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  font-size: 20px;
+  color: #111111;
+  background: #ffffff;
+  margin-left: 25px;
+  text-decoration: none;
 `;
 
 const SelectedFilesContainer = styled.div`

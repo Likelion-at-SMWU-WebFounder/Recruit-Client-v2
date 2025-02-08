@@ -30,6 +30,7 @@ import Project from "./pages/Project";
 
 const Div = styled.div`
   margin-top: 120px;
+  min-height: 100vh;
 `;
 function App() {
   const LayOut = (Component) => (
@@ -44,38 +45,48 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Router>
-        <div>
-          <Routes>
-            <Route path="*" element={LayOut(NotFound)} />
-            <Route path="/" element={LayOut(Landing)} />
-            <Route path="/home" element={LayOut(AboutUs)} />
-            <Route path="/project" element={LayOut(Project)} />
-            <Route
-              path="/recruitment"
-              element={LayOut(Recruit) /*[--] Recruit 앞 부분 수정하기*/}
-            />
-            {/* Recruit(리쿠르팅 중) or NonRecruit(리쿠르팅 기간 X) or FirstRecruit(1차 서류 발표 이후) or FinalRecruit(최종 발표 이후) 변경 */}
-            <Route path="/recruitment/:part" element={<ApplyPage />} />
-            <Route
-              path="/recruitment/submit-success"
-              element={<SubmitSuccess />}
-            />
-            <Route path="/recruitment/submit-fail" element={<SubmitFail />} />
+      <Wrapper>
+        <Router>
+          <div>
+            <Routes>
+              <Route path="*" element={LayOut(NotFound)} />
+              <Route path="/" element={LayOut(Landing)} />
+              <Route path="/home" element={LayOut(AboutUs)} />
+              <Route path="/project" element={LayOut(Project)} />
+              <Route
+                path="/recruitment"
+                element={LayOut(Recruit) /*[--] Recruit 앞 부분 수정하기*/}
+              />
+              {/* Recruit(리쿠르팅 중) or NonRecruit(리쿠르팅 기간 X) or FirstRecruit(1차 서류 발표 이후) or FinalRecruit(최종 발표 이후) 변경 */}
+              <Route path="/recruitment/:part" element={<ApplyPage />} />
+              <Route
+                path="/recruitment/submit-success"
+                element={<SubmitSuccess />}
+              />
+              <Route path="/recruitment/submit-fail" element={<SubmitFail />} />
 
-            {/* 1차 발표 때 FirstVerification, 최종 발표 때 FinalVerification */}
-            {/*
+              {/* 1차 발표 때 FirstVerification, 최종 발표 때 FinalVerification */}
+              {/*
             <Route
               path="/recruitment/result-verification"
               element={<FirstVerification />}
             />*/}
-            <Route path="/contact" element={LayOut(Contact)} />
-            <Route path="/makers" element={LayOut(Makers)} />
-          </Routes>
-        </div>
-      </Router>
+              <Route path="/contact" element={LayOut(Contact)} />
+              <Route path="/makers" element={LayOut(Makers)} />
+            </Routes>
+          </div>
+        </Router>
+      </Wrapper>
     </ThemeProvider>
   );
 }
 
 export default App;
+
+const Wrapper = styled.div`
+  max-width: 1500px; /* 최대 너비를 설정하여 너무 커지지 않게 함 */
+  margin: 0 auto; /* 가운데 정렬 */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
