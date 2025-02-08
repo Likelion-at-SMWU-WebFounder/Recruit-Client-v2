@@ -275,7 +275,7 @@ const BannerTextDiv = styled.div`
 const FlexDiv = styled.div`
   display: flex;
   justify-content: center;
-  gap: 45px;
+  gap: 40px;
 
   @media (min-width: 486px) and (max-width: 1024px) {
     gap: 25px;
@@ -287,22 +287,22 @@ const FlexDiv = styled.div`
 `;
 
 const FilterCohort = styled.div`
-  border: 2px solid #ffffff;
   border-radius: 20px;
   align-items: center;
   text-align: center;
   justify-content: center;
-  width: 170px;
-  height: 40px;
-  color: ${(props) => (props.isSelected ? "#000000" : "#ffffff")};
+  width: 150px;
+  height: 38px;
+  color: ${(props) => (props.isSelected ? "#3F3F3F" : "#ffffff")};
   font-size: 20px;
   padding-top: 7px;
-  background-color: ${(props) =>
-    props.isSelected ? "#ffffff" : "transparent"};
+  background-color: ${(props) => (props.isSelected ? "#ffffff" : "#3F3F3F")};
+  box-shadow: ${(props) =>
+    props.isSelected ? "inset 1px 1px 3px rgba(0, 0, 0, 0.5)" : "none"};
 
   &:hover {
     background-color: #ffffff;
-    color: #000000;
+    color: #3f3f3f;
     cursor: pointer;
   }
 
@@ -522,7 +522,11 @@ const PageButton = styled.button`
   padding: 10px;
   background-color: #111111;
   border: none;
-  font-size: 1vw;
+  font-size: 15px;
   color: #ffffff;
   cursor: pointer;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
