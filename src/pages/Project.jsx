@@ -317,7 +317,7 @@ const FilterCohort = styled.div`
     width: 50px;
     height: 20px;
     font-size: 8px;
-    padding-top: 3px;
+    padding-top: 5px;
   }
 `;
 

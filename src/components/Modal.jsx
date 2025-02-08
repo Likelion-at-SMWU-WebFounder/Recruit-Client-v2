@@ -188,6 +188,8 @@ const ModalTitle = styled.h2`
   padding-bottom: 1vw;
 
   @media (max-width: 480px) {
+    padding-top: 1.5vw;
+    padding-bottom: 0.5vw;
     font-size: 15.5px;
   }
 `;
@@ -230,23 +232,7 @@ const ModalTag = styled.div`
   padding-right: 15px;
   white-space: nowrap;
 
-  @media (min-width: 786px) and (max-width: 1024px) {
-    width: auto;
-    height: 20px;
-    font-size: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  @media (min-width: 480px) and (max-width: 786px) {
-    width: auto;
-    height: 20px;
-    font-size: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  @media (max-width: 480px) {
+  @media (max-width: 1024px) {
     width: auto;
     height: 20px;
     font-size: 8px;
@@ -267,7 +253,7 @@ const ModalImage = styled.img`
 `;
 
 const ModalBody = styled.div`
-  max-height: 25vh;
+  max-height: 18vh;
   overflow-y: auto;
   margin-bottom: 10px;
 `;

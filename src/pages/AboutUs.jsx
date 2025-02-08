@@ -487,7 +487,8 @@ const Review = styled.div`
 
   cursor: pointer;
   &:hover {
-    text-shadow: 1px 1px 8px #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.6);
   }
 `;
 
@@ -718,7 +719,8 @@ const LinkToAboutUsContainer = styled.div`
   position: relative;
   cursor: pointer;
   &:hover {
-    text-shadow: 0px 0px 10px #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.6);
   }
 `;
 
