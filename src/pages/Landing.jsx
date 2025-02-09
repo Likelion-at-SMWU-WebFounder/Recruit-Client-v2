@@ -38,11 +38,8 @@ const Landing = () => {
   return (
     <>
       <Helmet>
-        <title>멋쟁이사자처럼 숙명여대 Home</title>
-        <meta
-          name="description"
-          content="멋쟁이사자처럼 숙명여대 웹사이트 Home"
-        />
+        <title>숙명여자대학교 멋쟁이사자처럼</title>
+        <meta name="description" content="숙명여자대학교 멋쟁이사자처럼 Home" />
       </Helmet>
       <Desktop>
         <Layout>
