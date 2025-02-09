@@ -53,6 +53,10 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "reactSnap": {
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
     "include": [
       "/",
       "/home",
