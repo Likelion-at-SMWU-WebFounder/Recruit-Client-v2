@@ -352,13 +352,14 @@ const Question = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    if (!loading) return;
     const interval = setInterval(() => {
       setDisplayedText(fullText.substring(0, index + 1)); // 한 글자씩 추가
       setIndex((prevIndex) => (prevIndex + 1) % (fullText.length + 1)); // 루프 반복
     }, 300); // 150ms 간격으로 글자 표시
 
     return () => clearInterval(interval); // 컴포넌트가 언마운트되면 정리
-  }, [index]);
+  }, [index, loading]);
 
   return (
     <>
