@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as S from "../style/LayoutStyle";
 import { Desktop, Mobile } from "../MediaQuery/useMediaQuery";
+import { Helmet } from "react-helmet-async";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -36,6 +37,13 @@ const Landing = () => {
 
   return (
     <>
+      <Helmet>
+        <title>멋쟁이사자처럼 숙명여대 Home</title>
+        <meta
+          name="description"
+          content="멋쟁이사자처럼 숙명여대 웹사이트 Home"
+        />
+      </Helmet>
       <Desktop>
         <Layout>
           <PcContainer>
