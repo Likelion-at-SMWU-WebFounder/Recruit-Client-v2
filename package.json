@@ -60,7 +60,7 @@
     "include": [
       "/",
       "/home",
-      "recruitment",
+      "/recruitment",
       "/contact",
       "/project"
     ]
