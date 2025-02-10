@@ -490,14 +490,14 @@ const CardTagBox = styled.div`
 
 const CardTag = styled.div`
   width: auto;
-  height: 18px;
+  height: 20px;
   border-radius: 10px;
   background-color: #ffffff;
   border: 1px solid rgba(63, 63, 63, 0.8);
   color: rgba(63, 63, 63, 0.8);
   font-size: 9px;
   margin-top: 5px;
-  padding-top: 3px;
+  padding-top: 4px;
   padding-left: 10px;
   padding-right: 10px;
 
