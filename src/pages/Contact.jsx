@@ -145,7 +145,7 @@ const Text = styled.div`
   margin-bottom: ${(props) => props.marginBottom};
   margin-left: ${(props) => props.marginLeft};
   margin-right: ${(props) => props.marginRight};
-  font-family: Noto Sans KR Thin;
+  font-family: "Noto Sans Regular";
 
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: ${(props) => props.TabletfontSize};
