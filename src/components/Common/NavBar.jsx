@@ -185,10 +185,10 @@ const Nav = styled.nav`
 `;
 
 const MobileNav = styled.div`
-  position: fixed;
+  /* position: fixed;
   top: 0;
   width: 100vw;
-  z-index: 1000;
+  z-index: 1000; */
   display: flex;
   padding: 2rem;
   background-color: #000000;

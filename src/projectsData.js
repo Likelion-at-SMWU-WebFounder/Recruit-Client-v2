@@ -349,7 +349,7 @@ export const projectsData = [
     gitFeUrl: "https://github.com/Songyee-Challenge/FE",
     servLaunch: null,
     no: "11기",
-    category: "미니프로젝트",
+    category: "파이널프로젝트",
   },
   {
     bgImg: `${s3URL}/sendmyheart.svg`,
@@ -366,7 +366,7 @@ export const projectsData = [
     gitFeUrl: "https://github.com/Likelion-at-SMWU-11th/SendMyHeart-Client",
     servLaunch: null,
     no: "11기",
-    category: "미니프로젝트",
+    category: "파이널프로젝트",
   },
   {
     bgImg: `${s3URL}/voyage.svg`,
@@ -378,8 +378,8 @@ export const projectsData = [
     content:
       "현대인의 심리적 건강을 위해 중장년층의 자기효능감과 청년층의 자기확신감 증대를 목표로 기획된 서비스로, 중장년층과 청년층이 서로의 멘토이자 멘티가 되어 도움을 주는 서비스. 멘토는 멘티의 고민에 해답을 제시하고, 채팅을 통한 멘토링을 진행할 수 있으며, 커뮤니티 칼럼 작성 및 스크랩이 가능하다. 한편, 멘티는 한 줄 고민 작성, 관심 멘토 설정, 자동 멘토 매칭 및 멘토링에 참여하는 등 고민을 해결하는 데에 도움을 얻을 수 있다.",
     servIntro: null,
-    gitBeUrl: "https://github.com/Likelion-at-SMWU-12th/CheongpaGamja-Client",
-    gitFeUrl: null,
+    gitBeUrl: "https://github.com/Likelion-at-SMWU-12th/CheongpaGamja-Server",
+    gitFeUrl: "https://github.com/Likelion-at-SMWU-12th/CheongpaGamja-Client",
     servLaunch: null,
     no: "12기",
     category: "중앙해커톤",
@@ -442,7 +442,7 @@ export const projectsData = [
     servIntro: null,
     gitBeUrl: "https://github.com/2024-line4-earth/gachi_BE",
     gitFeUrl: "https://github.com/2024-line4-earth/Join_us_FE",
-    servLaunch: "https://fe-tostar-turtle0204s-projects.vercel.app/login",
+    servLaunch: "https://join-earth.vercel.app/",
     no: "12기",
     category: "4호선톤",
   },
@@ -630,7 +630,7 @@ export const projectsData = [
     gitFeUrl: null,
     servLaunch: null,
     no: "12기",
-    category: "미니프로젝트",
+    category: "파이널프로젝트",
   },
   {
     bgImg: `${s3URL}/imfine.svg`,
@@ -647,7 +647,7 @@ export const projectsData = [
     gitFeUrl: null,
     servLaunch: null,
     no: "12기",
-    category: "미니프로젝트",
+    category: "파이널프로젝트",
   },
   {
     bgImg: `${s3URL}/erumi.svg`,
@@ -664,6 +664,6 @@ export const projectsData = [
     gitFeUrl: null,
     servLaunch: null,
     no: "12기",
-    category: "미니프로젝트",
+    category: "파이널프로젝트",
   },
 ];

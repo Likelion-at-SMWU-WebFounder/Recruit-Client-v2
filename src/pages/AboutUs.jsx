@@ -22,7 +22,7 @@ const AboutUs = () => {
 
   const IGClick = () => {
     window.open(
-      "https://www.instagram.com/p/DFwgs8nSucu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "https://www.instagram.com/p/DF4Vn2Zymvn/?utm_source=ig_web_copy_link",
       "_blank"
     );
   };
@@ -205,7 +205,9 @@ const AboutUs = () => {
                 </TextBox>
                 <IGBox background="rgba(239, 300, 260, 0.10)">
                   <div>
-                    <img src={`ReviewIG.svg`} />
+                    <img
+                      src={`${process.env.REACT_APP_IMAGE_URL}/curriculum_thumbnail.svg`}
+                    />
                     <IGText
                       fontSize="15px"
                       marginTop="10px"

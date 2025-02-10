@@ -295,7 +295,7 @@ const FilterCohort = styled.div`
   height: 38px;
   color: ${(props) => (props.isSelected ? "#3F3F3F" : "#ffffff")};
   font-size: 20px;
-  padding-top: 7px;
+  padding-top: 8px;
   background-color: ${(props) => (props.isSelected ? "#ffffff" : "#3F3F3F")};
   box-shadow: ${(props) =>
     props.isSelected ? "inset 1px 1px 3px rgba(0, 0, 0, 0.5)" : "none"};
@@ -490,14 +490,14 @@ const CardTagBox = styled.div`
 
 const CardTag = styled.div`
   width: auto;
-  height: 18px;
+  height: 20px;
   border-radius: 10px;
   background-color: #ffffff;
   border: 1px solid rgba(63, 63, 63, 0.8);
   color: rgba(63, 63, 63, 0.8);
   font-size: 9px;
   margin-top: 5px;
-  padding-top: 3px;
+  padding-top: 4px;
   padding-left: 10px;
   padding-right: 10px;
 

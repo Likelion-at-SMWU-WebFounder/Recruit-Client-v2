@@ -525,7 +525,7 @@ const Question = () => {
                 https://programmers.co.kr/learn/courses/2
               </ProLink>
               <div style={{ fontWeight: "300", fontSize: "15px" }}>
-                - 1~11 강 *.zip 파일 1개 업로드 가능{" "}
+                - 1-8강, 10-11강 *.zip 파일 1개 업로드 가능{" "}
               </div>
             </Text>
           </FormContainer>
