@@ -295,7 +295,7 @@ const FilterCohort = styled.div`
   height: 38px;
   color: ${(props) => (props.isSelected ? "#3F3F3F" : "#ffffff")};
   font-size: 20px;
-  padding-top: 7px;
+  padding-top: 8px;
   background-color: ${(props) => (props.isSelected ? "#ffffff" : "#3F3F3F")};
   box-shadow: ${(props) =>
     props.isSelected ? "inset 1px 1px 3px rgba(0, 0, 0, 0.5)" : "none"};
