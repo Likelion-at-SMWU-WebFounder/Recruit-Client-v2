@@ -10,7 +10,7 @@ const Question = () => {
 
   // const [selectedFiles, setSelectedFiles] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false); // 로딩 상태 추가
+  const [loading, setLoading] = useState(false); // 로딩 상태
 
   // const handleFileSelect = (e) => {
   //   const files = Array.from(e.target.files);
