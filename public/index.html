@@ -26,7 +26,14 @@
     />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src https:; connect-src 'self' https://smwulion.com https://api.smwulion.com http://54.180.86.155:8080;"
+      content="
+      default-src 'self' https: data: blob:;
+      connect-src 'self' https://smwulion.com https://api.smwulion.com http://54.180.86.155:8080;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;
+      style-src 'self' 'unsafe-inline' https:;
+      img-src 'self' data: https:;
+      font-src 'self' data: https:;
+    "
     />
 
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
