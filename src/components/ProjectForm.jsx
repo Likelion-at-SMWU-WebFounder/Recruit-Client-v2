@@ -37,7 +37,14 @@ const ProjectForm = () => {
       } else {
         const response = await axios.post(
           `${process.env.REACT_APP_API_ROOT}/api/project`,
-          formData
+          formData,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
         );
         console.log("Create Response:", response.data);
       }
