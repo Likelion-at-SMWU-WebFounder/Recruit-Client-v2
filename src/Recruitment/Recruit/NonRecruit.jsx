@@ -24,7 +24,14 @@ const NonRecruit = () => {
 
       const response = await axios.post(
         `${process.env.REACT_APP_API_ROOT}/api/recruit/mail`,
-        { emailAdd: email }
+        { emailAdd: email },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
       );
 
       // console.log("Response data:", response.data);

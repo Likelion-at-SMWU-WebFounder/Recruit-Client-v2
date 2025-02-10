@@ -227,7 +227,13 @@ const Question = () => {
         if (confirmation) {
           try {
             setLoading(true);
-            const response = await axios.post(apiUrl, requestBody);
+            const response = await axios.post(apiUrl, requestBody, {
+              withCredentials: true,
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`,
+              },
+            });
 
             if (response.data.code === 404) {
               window.alert(response.data.message);
