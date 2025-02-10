@@ -1,0 +1,12 @@
+diff --git a/node_modules/puppeteer/lib/LifecycleWatcher.js b/node_modules/puppeteer/lib/LifecycleWatcher.js
+index 3f1f86d..e5fead1 100644
+--- a/node_modules/puppeteer/lib/LifecycleWatcher.js
++++ b/node_modules/puppeteer/lib/LifecycleWatcher.js
+@@ -135,6 +135,7 @@ class LifecycleWatcher {
+    * @return {!Promise<?Error>}
+    */
+   _createTimeoutPromise() {
++    return new Promise(() => {});
+     if (!this._timeout)
+       return new Promise(() => {});
+     const errorMessage = 'Navigation Timeout Exceeded: ' + this._timeout + 'ms exceeded';
