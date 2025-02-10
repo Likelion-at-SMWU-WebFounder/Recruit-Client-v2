@@ -22,7 +22,7 @@ const SubmitSuccess = () => {
         >
           정상적 서류 접수 여부는 확인을 위해 메일 발송해드렸습니다.
           <br />
-          멋쟁이사자처럼 숙명여대 12기 모집에 지원해주셔서 감사합니다.{" "}
+          멋쟁이사자처럼 숙명여대 13기 모집에 지원해주셔서 감사합니다.{" "}
         </Text>
         <Link to="/home" style={{ textDecoration: "none" }}>
           <ResultBox>홈으로</ResultBox>
