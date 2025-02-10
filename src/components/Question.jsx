@@ -231,7 +231,6 @@ const Question = () => {
               withCredentials: true,
               headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${accessToken}`,
               },
             });
 
