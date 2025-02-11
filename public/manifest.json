@@ -1,0 +1,15 @@
+{
+  "short_name": "숙명여자대학교 멋쟁이사자처럼",
+  "name": "숙명여자대학교 멋쟁이사자처럼",
+  "icons": [
+    {
+      "src": "Icon.svg",
+      "type": "image/svg",
+      "sizes": "180x180"
+    }
+  ],
+  "start_url": ".",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
