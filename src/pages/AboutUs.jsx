@@ -124,8 +124,8 @@ const AboutUs = () => {
                     lineHeight="50px"
                     fontFamily="Noto Sans Light"
                   >
-                    Product Design, <br /> 리서치방법론, 디자인 툴링,
-                    <br /> 실전 아이디에이션 등
+                    Figma, UI/UX,
+                    <br /> 데이터 분석 등
                   </TextDiv>
                   <TextDiv
                     transform="rotate(7.381deg)"
