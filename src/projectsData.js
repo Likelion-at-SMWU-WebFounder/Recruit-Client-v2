@@ -24,6 +24,7 @@ export const projectsData = [
     content:
       "2인 이상의 그룹 내의 구성원들은 각자의 가용시간과 출발위치를 입력합니다. 타임 테이블에 색의 농도에 따라 구별된 가용 시간을 표기하고, 이를 바탕으로 최적의 만남 시간을 추천합니다. 그룹원들의 출발 위치를 기반으로 중간위치에 가장 가까운 지하철 역을 추천하며, 해당 역 주변의 만남 장소들을 유형별로 추천합니다.",
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-at-SMWU/meetwizard",
     gitFeUrl: null,
     servLaunch: null,
@@ -42,6 +43,7 @@ export const projectsData = [
 `,
     servIntro:
       "https://drive.google.com/file/d/1SjbNFRp78t4AY0AQiZiAEqVz3xqyIEhu/view?usp=sharing",
+    gitOrgUrl: null,
     gitBeUrl: null,
     gitFeUrl: null,
     servLaunch: null,
@@ -59,6 +61,7 @@ export const projectsData = [
       "증상 관련 설문 조사를 통해 발병 가능성이 있는 암의 종류를 확인할 수 있고 이에 대한 정보도 제공 받을 수 있다. 이외에도 사용자 주변의 병원 위치도 신속하게 확인 가능하고 커뮤니티 기능을 통해 사용자 간에 병원 혹은 투병 후기를 공유할 수 있다.",
     servIntro:
       "https://drive.google.com/file/d/1lbUF10pj_AgKTYjOAjLOs1Rl9TvFYfQ7/view?usp=sharing",
+    gitOrgUrl: null,
     gitBeUrl: null,
     gitFeUrl: null,
     servLaunch: null,
@@ -78,6 +81,7 @@ export const projectsData = [
 3. 게시글 검색 및 공고 검색 기능이 활용가능합니다. 
 4. 포트폴리오 공개/비공개 설정이 가능하며 수정/삭제 또한 가능합니다. `,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/LikeLion-snowball",
     gitFeUrl: null,
     servLaunch: null,
@@ -94,6 +98,7 @@ export const projectsData = [
       "MY_Healing은 힐링플레이스 검색 서비스로, 힐링 장소를 찾을 때 검색 시간을 단축하고 힐링 장소 선정에 편리함을 주는 서비스입니다. 여러 키워드를 제공하며, 가이드(ex. 비오는 날 가기 좋은 장소)를 제공하여 장소에 대한 구체적인 후기를 남길 수 있고, 추억도 남길 수 있습니다.",
     servIntro:
       "https://web-myhealing-cloud-3y5ng24l70c1iqe.gksl1.cloudtype.app/home",
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-at-SMWU-10th/MYHEALING-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-10th/MYHEALING-Client",
     servLaunch: null,
@@ -117,6 +122,7 @@ export const projectsData = [
 마음을 전하는 rememBirthday 🍰🎂`,
     servIntro:
       "https://drive.google.com/drive/folders/1Fak_bh57c6TCeAZvCqwL8_C9f0yrcZXz",
+    gitOrgUrl: null,
     gitBeUrl: null,
     gitFeUrl: null,
     servLaunch: null,
@@ -132,6 +138,7 @@ export const projectsData = [
     content:
       "죽음에 대한 생각을 정리할 수 있도록 도와줌으로써 삶을 다시 돌아볼 수 있게 해주는 디지털 임종 체험 서비스입니다. 서비스명인 'Otr.'은 'Over the rainbow'와 'Off the record'의 줄임말로, 죽음에 대해 생각해보며 나의 진솔한 생각을 돌아보자는 의미를 지닙니다. 7일간 죽음에 대해 생각해 볼 수 있는 문답을 작성하면, 이를 바탕으로 유서를 작성하여 스스로를 되돌아보고 궁극적으로 웰다잉을 추구하도록 돕습니다.",
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-at-SMWU-10th/Otr-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-10th/OTR_client",
     servLaunch: null,
@@ -148,6 +155,7 @@ export const projectsData = [
       "디지털 격차 ,정보의 분산으로 인해 이용하지 못했던 기관별 지원프로그램을 한눈에 볼 수 있도록 통합하여 제공하고, 기존 4-5 단계의 복잡하고 불편한 심사와 신청자격에 관한 단계를 생략하여 마이페이지에 심사결과를 한 번만 등록하면 쉽게 웹사이트에서 프로그램을 지원하실 수 있습니다. 보호자와 가정 뿐 아니라, 발달장애인분들도 직접 신청할 수 있도록 편안한 ui제공 및 추후 챗봇 지원예정입니다.",
     servIntro:
       "https://drive.google.com/file/d/1eN87dwYzK3rDrvE4HJbXMvNINs7TyhSt/view?usp=sharing",
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-at-SMWU-11th/LoveBridge-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-11th/LoveBridge-Client",
     servLaunch: null,
@@ -165,6 +173,7 @@ export const projectsData = [
       "데이터 시각화/언택트 서비스가 활발히 이용되면서 시각 장애인과 고령층의 정보에 대한 접근이 더욱 어려워졌습니다. D:raw에서는 이러한 디지털 격차를 해소하기 위해 디지털 안내사를 1:1 매칭하여 불편함을 덜고자 했습니다. D:raw는 자원봉사 플랫폼으로, 봉사시간이 필요한 청소년과 대학생이 안내사 활동의 메인 타겟층입니다. 이용자는 D:raw 안내사 매칭을 통해 간단한 금융처리, 전자상거래, 공공 서비스 업무까지 직접적인 도움을 받을 수 있습니다.",
     servIntro:
       "https://drive.google.com/file/d/1mved5wqRSKIu-DNp76A4colDqqeue52o/view?usp=sharing",
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-at-SMWU-11th/D_raw-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-11th/D_raw-Client",
     servLaunch: null,
@@ -181,6 +190,7 @@ export const projectsData = [
       "유기 동물 보호소의 디지털 격차를 줄여 전국 사설보호소 입양을 활성화하고, 긍정적인 입양문화 확대까지 기대할 수 있는 우리 서비스는 나의 반려동물 짝꿍을 찾는다는 의미에서 '반짝'이라는 이름을 지닌다.",
     servIntro:
       "https://drive.google.com/file/d/1sjHZyZGayUTJyrpaueF-D06Fb7JF7VdG/view?usp=sharing",
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-at-SMWU-11th/BanJjak-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-11th/BanJjak-Client",
     servLaunch: null,
@@ -207,6 +217,7 @@ export const projectsData = [
 오프라인 모임 시 게임 툴 제공입니다.`,
     servIntro:
       "https://drive.google.com/file/d/14SARSOnEt43esqkatEWruxNWOiaX8XES/view?usp=share_link",
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/BDNS-AWARDS/BDNS-server",
     gitFeUrl: "https://github.com/BDNS-AWARDS/BDNS-client",
     servLaunch: null,
@@ -230,6 +241,7 @@ export const projectsData = [
 타인이 나의 회고록 또한 작성해줄 수 있는 기능 구현`,
     servIntro:
       "https://drive.google.com/file/d/1fX-choQyXCq_GL9RGOtD8J-nWtjj5qIm/view?usp=share_link",
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/FAREWELL2023/Farewell_BE",
     gitFeUrl: "https://github.com/FAREWELL2023/Farewell_FE",
     servLaunch: null,
@@ -245,6 +257,7 @@ export const projectsData = [
     content: `‘커핑’은 커피를 맛보며 파악하는 행위로, 커피를 좋아하는 사람들이 모여 다양한 원두를 맛 보며 커피를 즐기는 문화입니다. 모임 참여자를 모집하는 방식으로는 주로 네이버 카페에 글을 올려 수요를 확인하는 것이 일반적이었습니다. 글을 올려 사람들의 반응을 기다리고 모임을 주최하기까지 시간이 많이 소요되는 것을 보고, 사용자가 원하는 장소와 시간대에 참여할 수 있는 모임을 신청하면 신청자와 모임이 매칭되는 서비스를 구상하게 되었습니다.`,
     servIntro:
       "https://drive.google.com/file/d/1FqGGZH48UDZCuqTL-cX2CS11zwhxbIIn/view?usp=share_link",
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Coffee-ing",
     gitFeUrl: "",
     servLaunch: null,
@@ -268,6 +281,7 @@ export const projectsData = [
 사진을 검사하여 클린한 포토꾸러미 사용 가능`,
     servIntro:
       "https://drive.google.com/file/d/1yrvWHVGUTgXjOQyUNdOIG0CNCrgJ7TYd/view?usp=share_link",
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Kureomi/Server",
     gitFeUrl: "https://github.com/Kureomi/Kureomi_FE",
     servLaunch: null,
@@ -297,6 +311,7 @@ export const projectsData = [
 제공된 오픈채팅 링크로 연결해 적극적으로 협업 제안 해보기`,
     servIntro:
       "https://drive.google.com/file/d/1D7luOGAXKu3nVFsZsHnku0ObyEb03og-/view?usp=share_link",
+    gitOrgUrl: null,
     gitBeUrl: "",
     gitFeUrl: "",
     servLaunch: null,
@@ -322,6 +337,7 @@ export const projectsData = [
 결과와 관련된 다양한 매거진을 볼 수 있어요. 어디가서 어떻게 사야할지, 어떻게 마셔야할지, 무엇이랑 마셔야할지 고민할 필요 없어요!!`,
     servIntro:
       "https://drive.google.com/file/d/1-l3SsM3uqtPEzDqU2G7x-E0shq80Ei7U/view?usp=share_link",
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/WhiskeyLikey/WhiskeyLikey-BE",
     gitFeUrl: "https://github.com/WhiskeyLikey/WhiskeyLikey-Client",
     servLaunch: null,
@@ -345,6 +361,7 @@ export const projectsData = [
 
 소감 남기기 (자유롭게 스터디 소감 작성, 공감 기능을 통한 유대감 형성)`,
     servIntro: "https://github.com/Songyee-Challenge",
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Songyee-Challenge/Server",
     gitFeUrl: "https://github.com/Songyee-Challenge/FE",
     servLaunch: null,
@@ -356,12 +373,13 @@ export const projectsData = [
     title: "전하기(SendMyHeart)",
     teamName: "전하기",
     teamMember:
-      "박연빈, 서연경, 한다인, 강주은, 이예지, 김원희, 윤서희, 이예린",
+      "박연빈, 서연경, 한다인, 박상아, 이선아, 김원희, 윤서희, 이예린",
     summary: "내 주변 소중한 사람들에게 안부 전하는 서비스",
     content: `당신은 소중한 사람에게 안부 인사를 자주 건네고 있나요?
 
 안부를 보낼 친구(엄마, 외할머니, 할아버지 등)를 설정 및 선택하고, 안부 종류를 선택하여, 나만의 언어로 수정하고 마음을 전할 수 있는 서비스입니다.`,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-at-SMWU-11th/SendMyHeart-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-11th/SendMyHeart-Client",
     servLaunch: null,
@@ -378,6 +396,7 @@ export const projectsData = [
     content:
       "현대인의 심리적 건강을 위해 중장년층의 자기효능감과 청년층의 자기확신감 증대를 목표로 기획된 서비스로, 중장년층과 청년층이 서로의 멘토이자 멘티가 되어 도움을 주는 서비스. 멘토는 멘티의 고민에 해답을 제시하고, 채팅을 통한 멘토링을 진행할 수 있으며, 커뮤니티 칼럼 작성 및 스크랩이 가능하다. 한편, 멘티는 한 줄 고민 작성, 관심 멘토 설정, 자동 멘토 매칭 및 멘토링에 참여하는 등 고민을 해결하는 데에 도움을 얻을 수 있다.",
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-at-SMWU-12th/CheongpaGamja-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-12th/CheongpaGamja-Client",
     servLaunch: null,
@@ -393,6 +412,7 @@ export const projectsData = [
     content:
       "‘빵돌이’, ‘빵순이의 일상’과 같은 키워드처럼 다이어트나 건강을 생각하는 사람들 사이에서도 빵을 포기하지 못하는 소비자들을 위해 건강빵을 통해 맛있게 먹으면서도 건강을 관리할 수 있는 플랫폼을 만들고자 기획한 서비스 (빵 유형 테스트, 웰니스 빵, 레시피, 기록 등)",
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-at-SMWU-12th/DreamPatissier-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-12th/DreamPatissier-Client",
     servLaunch: null,
@@ -408,6 +428,7 @@ export const projectsData = [
     content:
       "한의학/한의원 정보 및 식습관 기반 건강관리 서비스를 제공하여 현대인의 신체적 건강 문제를 해결하기 위해 기획. 한의원 찾기나 한의학 관련 칼럼 제공, 또는 캘린더에 한의원 예약 기록이나 일정을 관리할 수 있는 서비스를 제공한다. ",
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-at-SMWU-12th/Hanappun-Server",
     gitFeUrl: "https://github.com/Likelion-at-SMWU-12th/Hanappun-Client",
     servLaunch: null,
@@ -424,8 +445,9 @@ export const projectsData = [
 
 기존의 공유 플랫폼은 대학생 프로젝트를 진행할 때에 성장 과정에 맞지 않는 구조이거나, 직접적인 조언을 얻기 어려운 경우이므로 발전 방향을 찾기 어렵다는 한계점을 가집니다. 이를 극복하고자 P-ROG은 다양한 시각에서의 피드백을 중점으로 받아 프로젝트를 한층 더 성장시키는 과정을 제공하고자 합니다. 따라서 별점, 좋아요, 랭킹 등의 평가적인 요소를 최대한 없애고, 프로젝트에 대한 설명과 함께 고민 부분들도 같이 작성하여 프로젝트를 등록할 수 있습니다. 이용자는 게시된 프로젝트를 보고 피드백 작성을 할 수 있으며,  채택될 경우 포인트를 받을 수 있습니다. 또한 Ai 피드백 정리 보고서 기능도 구현하여, 적립한 포인트로 다량의 피드백을 손쉽게 정리할 수 있습니다.`,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/mmig01/Line4-Hackathon-backend-team1.git",
-    gitFeUrl: "https://github.com/Line4thon-PROG",
+    gitFeUrl: "https://github.com/Line4thon-PROG/prog-frontend",
     servLaunch: "https://p-rog.netlify.app/",
     no: "12기",
     category: "4호선톤",
@@ -440,6 +462,7 @@ export const projectsData = [
 
 실천 카드를 통해 모인 작은 행동들과 공유를 통해 만들어지는 작은 관심들이 기후와 환경을 향한 큰 관심이 되고, 모인 관심이 세상을 조금 더 푸르게 만들 것입니다.`,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/2024-line4-earth/gachi_BE",
     gitFeUrl: "https://github.com/2024-line4-earth/Join_us_FE",
     servLaunch: "https://join-earth.vercel.app/",
@@ -464,6 +487,7 @@ export const projectsData = [
 
 다함께 즐기는, 누구 테스트(소유자와 접속자가 서로를  더 잘 알 수 있는 퀴즈)`,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Line4Thon-Nugu/Nugu-Backend",
     gitFeUrl: "https://github.com/Line4Thon-Nugu/Nugu-Frontend",
     servLaunch: "https://nugu-line4.vercel.app/",
@@ -480,6 +504,7 @@ export const projectsData = [
 
 높아지는 물가에 편의점 음식으로 식사를 해결하는 사람이 많아지고, 그에 따라 여러 맛있는 조합도 인스타와 페이스북 등 여러 SNS에 퍼지고 있음.하지만 그 레시피들을 모아서 볼 수 있는 어플이나 사이트가 없고 자신의 레시피를 추천하고 공유하고자 하는 사람들의 커뮤니티 어플도 존재하지 않음.따라서 편의점에서 자신만의 맛있는 조합을 만들고, 그 아이디어를 공유하고 또 다른 사용자의 레시피도 함께 보면서 편의점에서 간단히 식사를 해결하는 것만이 아닌 편의점 식사에서의 즐거움을 제공하고자 하는데 목적을 둠`,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/4-18/BACKEND.git",
     gitFeUrl: "https://github.com/4-18/frontend",
     servLaunch: null,
@@ -500,6 +525,7 @@ export const projectsData = [
 
 게시물 등록 및 친구 추가🐶 :사용자가 서로의 게시물을 공유하고 친구를 추가하며 더 깊은 교류를 할 수 있습니다.`,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/Likelion-To-Star/BE",
     gitFeUrl: "https://github.com/Likelion-To-Star/FE",
     servLaunch: "https://fe-tostar-turtle0204s-projects.vercel.app/login",
@@ -518,6 +544,7 @@ export const projectsData = [
 
 매년 새로운 사용자를 유입하고, 졸업 후 3년, 또는 창업 . 후5년이 경과한 전문가들은 순환 구조에 따라 플랫폼을 떠나게 하여 신선한 크리에이터가 지속적으로 유입되는 시스템을 유지하도록 했다. AIDA 모델을 기반으로 인공지능을 학습시켜 한정된 자금 내에서 최대 효과를 내는 홍보 전략 및 마케팅 플랜을 짤 수 있다. 또한 예산에 맞는 크리에이터 추천이나 직관적인 결과를 제시해준다는 장점도 있다.`,
     servIntro: null,
+    gitOrgUrl: "https://github.com/Line4thon-Gather",
     gitBeUrl: "https://github.com/Line4thon-Gather/gather_back_end.git",
     gitFeUrl: "https://github.com/Line4thon-Gather/gather_Front_End.git",
     servLaunch: null,
@@ -533,6 +560,7 @@ export const projectsData = [
     content: `해커톤을 참가해도 서비스를 홍보하기에 어려움을 느꼈거나, 서비스 배포 이후 실제 사용자 리뷰를 받을 수 없어서 아쉬웠던 점을 극복하고자 기획한 서비스이자 4호선톤 참가자들이 자유롭게 서비스를 업로드하고, 평가할 수 있는 웹 플랫폼
     서비스 홍보 / 경험 / 리뷰를 한 번에 모아볼 수 있는 서비스를 구현`,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/line4thon-team15/back-repo",
     gitFeUrl: "https://github.com/line4thon-team15/front-repo",
     servLaunch: null,
@@ -557,6 +585,7 @@ export const projectsData = [
 
 최종 확정 시간 표시 - 그룹의 최종 확정 시간과 만남 장소를 확정지어 팀원 모두 확인 가능`,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/4LineThon/Timi-Server.git",
     gitFeUrl: "https://github.com/4LineThon/Frontend.git",
     servLaunch: null,
@@ -574,8 +603,9 @@ export const projectsData = [
 
 종을 클릭하여 매일매일 달라지는 31가지의 질문에 답변하고 저장할 수 있는 기능을 구현하였고, 진행률을 확인가능하다. 여기에서 작성했던 답변은 1월 1일부터 재열람이 가능하며 2024년 연말의 추억과 다짐을 되돌아볼 수 있는 기능을 기획 및 개발했습니다.`,
     servIntro: null,
-    gitBeUrl: "https://github.com/2024-LINE4THON/DECEMO",
-    gitFeUrl: "https://github.com/2024-LINE4THON/DECEMO",
+    gitOrgUrl: "https://github.com/2024-LINE4THON/DECEMO",
+    gitBeUrl: null,
+    gitFeUrl: null,
     servLaunch: null,
     no: "12기",
     category: "4호선톤",
@@ -590,6 +620,7 @@ export const projectsData = [
 
 각자의 바쁜 일정을 한눈에 파악하고 가용시간을 기반으로 최적의 약속시간을 자동 추천하여협업과 소통의 효율성을 극대화하는 서비스로 단순한 일정관리 도구를 넘어, 서로의 계획을 함께 실현하는 파트너로 자리 잡을 수 있도록 설계되었습니다.`,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl:
       "https://github.com/2024-4LINETHON-PlanPal/2024-4LINETHON-PlanPal-Server",
     gitFeUrl:
@@ -608,6 +639,7 @@ export const projectsData = [
 
 사용자의 여행 타입을 진단하여, 개인의 여행 스타일에 맞는 여행 유형을 추천하는 기능을 제공합니다. 각 화면을 통해 사용자는 퀴즈 형식으로 여행 취향과 스타일을 탐색할 수 있으며, 결과에 따라 자신의 여행 성향을 시각적으로 확인할 수 있습니다. 또한 검색 및 필터링 기능이나 여행 정보 게시물을 모아 볼 수 있는 커뮤니티 기능도 구현하였습니다.`,
     servIntro: null,
+    gitOrgUrl: null,
     gitBeUrl: "https://github.com/TEAM-4line/4line_backend.git",
     gitFeUrl: "https://github.com/TEAM-4line/4line_frontend.git",
     servLaunch: null,
@@ -626,8 +658,9 @@ export const projectsData = [
 센터(사회복지사/홀몸 어르신)과 지자체(도서관/출판사), 그리고 개인(봉사자/웹 방문자)가 상호작용하며 20~30대 청년층과 60~80대의 어르신과의 만남을 통한 세대 간 연결을가능하게 하는 사회적 가치 창출 공공 웹서비스입니다.`,
     servIntro:
       "https://drive.google.com/file/d/1tJtNxVIRZYni0SjoBAYVcGeBMHToD4zY/view?usp=share_link",
-    gitBeUrl: "https://github.com/MINIPROJECT-yourstory",
-    gitFeUrl: null,
+    gitOrgUrl: null,
+    gitBeUrl: "https://github.com/MINIPROJECT-yourstory/yourstory-BE",
+    gitFeUrl: "https://github.com/MINIPROJECT-yourstory/yourstory-FE",
     servLaunch: null,
     no: "12기",
     category: "파이널프로젝트",
@@ -643,7 +676,8 @@ export const projectsData = [
 
 지속적이고 쉽게 접근 가능한 어린이들을 위한 금융교육을 제공하기 위해 전 날의 경제 뉴스를 요약하여 제공하고, 해당 내용 기반 퀴즈 기능을 구현하였습니다.`,
     servIntro: null,
-    gitBeUrl: "https://github.com/LikeLion-mini-project-IMFINE",
+    gitOrgUrl: "https://github.com/LikeLion-mini-project-IMFINE",
+    gitBeUrl: null,
     gitFeUrl: null,
     servLaunch: null,
     no: "12기",
@@ -660,7 +694,8 @@ export const projectsData = [
 주요 기능으로는 버킷리스트 작성, 버킷리스트 목록 확인, 버킷리스트 커뮤니티가 있습니다.`,
     servIntro:
       "https://drive.google.com/file/d/1rXjWqIex1wTXJ8yrdO0OE4cNU39y0qry/view?usp=share_link",
-    gitBeUrl: "https://github.com/miniproject-likelion12th",
+    gitOrgUrl: "https://github.com/miniproject-likelion12th",
+    gitBeUrl: null,
     gitFeUrl: null,
     servLaunch: null,
     no: "12기",
