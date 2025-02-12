@@ -46,6 +46,7 @@ const Modal = ({ projectId, onClose }) => {
     summary,
     content,
     servIntro,
+    gitOrgUrl,
     gitBeUrl,
     gitFeUrl,
     servLaunch,
@@ -93,6 +94,16 @@ const Modal = ({ projectId, onClose }) => {
               rel="noopener noreferrer"
             >
               서비스 소개
+            </ModalButton>
+          )}
+          {gitOrgUrl && (
+            <ModalButton
+              as="a"
+              href={gitOrgUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
             </ModalButton>
           )}
           {gitBeUrl && (
