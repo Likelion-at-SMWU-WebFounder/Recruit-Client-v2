@@ -1,4 +1,4 @@
 User-agent: *
 Allow: / 
 
-Sitemap: https://smwulion.com/sitemap.xml
+Sitemap: http://smwulion.com/sitemap.xml
