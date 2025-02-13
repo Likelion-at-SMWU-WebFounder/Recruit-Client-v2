@@ -55,15 +55,15 @@ function App() {
               <Route path="/project" element={LayOut(Project)} />
               <Route
                 path="/recruitment"
-                element={LayOut(NonRecruit) /*[--] Recruit 앞 부분 수정*/}
+                element={LayOut(Recruit) /*[--] Recruit 앞 부분 수정*/}
               />
               {/* Recruit(리쿠르팅 중) or NonRecruit(리쿠르팅 기간 X) or FirstRecruit(1차 서류 발표 이후) or FinalRecruit(최종 발표 이후) 변경 */}
-              {/* <Route path="/recruitment/:part" element={<ApplyPage />} />
+              <Route path="/recruitment/:part" element={<ApplyPage />} />
               <Route
                 path="/recruitment/submit-success"
                 element={<SubmitSuccess />}
               />
-              <Route path="/recruitment/submit-fail" element={<SubmitFail />} /> */}
+              <Route path="/recruitment/submit-fail" element={<SubmitFail />} />
 
               {/* 1차 발표 때 FirstVerification, 최종 발표 때 FinalVerification */}
 
