@@ -25,17 +25,22 @@ const Recruit = () => {
 
         <Text>
           {" "}
-          멋쟁이사자처럼 숙명여대 리크루팅 페이지에 오신 것을 환영합니다.
+          {/* 멋쟁이사자처럼 숙명여대 리크루팅 페이지에 오신 것을 환영합니다. */}
+          서류 지원이 마감되었습니다.
         </Text>
-        <Text>희망 지원파트에 접속하시어 서류접수를 진행해주세요. </Text>
+        <Text>
+          {/* 희망 지원파트에 접속하시어 서류접수를 진행해주세요.  */}
+        </Text>
 
         <ChangeText>
-          *예상치 못한 상황(서버 불안정 등)에 대비하여 마감일 전 미리 질문을
+          {/* *예상치 못한 상황(서버 불안정 등)에 대비하여 마감일 전 미리 질문을
           확인 및 답변 내용을 따로 백업하신 후,
-          <br /> 지원서를 제출하시기 바랍니다.
+          <br /> 지원서를 제출하시기 바랍니다. */}
+          1차 서류 심사 중입니다. <br />
+          서류 합격자 발표는 2월 25일 화요일입니다.
         </ChangeText>
 
-        <PartContainer>
+        {/* <PartContainer>
           <PartBox
             background="linear-gradient(180deg, #FFEF98 33.65%, #FCF6D6 100%, #FCF6D6 100%)"
             onClick={() => handlePartClick("plan")}
@@ -54,7 +59,7 @@ const Recruit = () => {
           >
             백엔드
           </PartBox>
-        </PartContainer>
+        </PartContainer> */}
 
         <NotionBox href={notionUrl} target="_blank">
           숙명여대 멋쟁이사자처럼 리쿠르팅 홍보 노션 확인하기 {">>>"}

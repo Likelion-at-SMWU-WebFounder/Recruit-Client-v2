@@ -225,29 +225,30 @@ const Question = () => {
           "제출 이후에는 작성내용 조회 및 수정, 지원 취소가 불가합니다. 제출하시겠습니까?"
         );
         if (confirmation) {
-          try {
-            setLoading(true);
-            const response = await axios.post(apiUrl, requestBody, {
-              withCredentials: true,
-              headers: {
-                "Content-Type": "application/json",
-              },
-            });
+          alert("제출 마감 시간이 초과되었습니다.");
+          // try {
+          //   setLoading(true);
+          //   const response = await axios.post(apiUrl, requestBody, {
+          //     withCredentials: true,
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //     },
+          //   });
 
-            if (response.data.code === 404) {
-              window.alert(response.data.message);
-              setLoading(false);
-              return;
-            } else {
-              setSubmitted(true);
-              navigate("/recruitment/submit-success");
-              setLoading(false);
-            }
-          } catch (error) {
-            console.error("서버 전송 중 오류 발생:", error);
-            setLoading(false);
-          }
-          setSubmitted(true);
+          //   if (response.data.code === 404) {
+          //     window.alert(response.data.message);
+          //     setLoading(false);
+          //     return;
+          //   } else {
+          //     setSubmitted(true);
+          //     navigate("/recruitment/submit-success");
+          //     setLoading(false);
+          //   }
+          // } catch (error) {
+          //   console.error("서버 전송 중 오류 발생:", error);
+          //   setLoading(false);
+          // }
+          // setSubmitted(true);
         }
       } catch (error) {
         console.error("서버 전송 중 오류 발생:", error);
