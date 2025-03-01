@@ -95,6 +95,8 @@ const FinalResult = ({ name, message, track }) => {
           </BoxContainer>
           <BoxContainer>
             <Text>멋쟁이사자처럼 숙명여대 운영진 드림</Text>
+          </BoxContainer>
+          <BoxContainer>
             <Hr />
           </BoxContainer>
         </FailContainer>
@@ -161,7 +163,7 @@ const Lion = styled.img`
   position: absolute;
   bottom: 70px;
   right: 30px;
-  width: 20vw;
+  width: 200px;
   z-index: 10;
 
   /* @media (max-width: 1024px) {
@@ -191,7 +193,7 @@ const Container = styled.div`
 const PassContainer = styled.div`
   display: ${(props) => (props.message === "pass" ? "block" : "none")};
   background-image: url("${process.env.REACT_APP_IMAGE_URL}/Confetti.svg");
-  background-size: 70% auto;
+  background-size: 90% auto;
   background-position: left top;
   background-repeat: no-repeat;
   padding: 25px;
@@ -203,7 +205,7 @@ const PassContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    background-size: 120% auto;
+    background-size: 150% auto;
     background-position: left top 40px;
   }
 `;
@@ -225,8 +227,8 @@ const BoxContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    width: 400px;
-    padding: 17px;
+    //width: 400px;
+    padding: 10px;
   }
 `;
 
