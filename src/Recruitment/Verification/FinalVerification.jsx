@@ -139,14 +139,15 @@ const Text = styled.div`
 
 const Layout = styled.div`
   display: flex;
-  padding: 100px;
+  //padding: 100px;
 `;
 
 const Img = styled.img`
   margin-bottom: 80px;
+  margin-top: 100px;
 
   @media (max-width: 480px) {
-    width: 85%;
+    width: 50%;
   }
 `;
 
