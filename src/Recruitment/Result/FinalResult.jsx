@@ -152,6 +152,7 @@ const Layout = styled.div`
 const Img = styled.img`
   width: 300px;
   margin-left: 50px;
+  padding-top: 50px;
 
   @media (max-width: 480px) {
     width: 200px;
