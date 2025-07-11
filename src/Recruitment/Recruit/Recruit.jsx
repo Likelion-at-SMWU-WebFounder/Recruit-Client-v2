@@ -7,29 +7,22 @@ import { getRecruitPhase } from "../../timeConfig";
 import { recruitInfo } from "../../seasonalData";
 
 const Recruit = () => {
-  const [textMessage, setTextMessage] = useState("");
-  const [subMessage, setSubMessage] = useState("");
-  const [isDeadlinePassed, setisDeadlinePassed] = useState(false);
   const phase = getRecruitPhase();
+
+  const isDeadlinePassed = phase === "closedoc";
+
+  const textMessage =
+    phase === "startdoc"
+      ? "멋쟁이사자처럼 숙명여대 리크루팅 페이지에 오신 것을 환영합니다.\n 희망 지원파트에 접속하시어 서류접수를 진행해주세요."
+      : "서류 지원이 마감되었습니다.";
+
+  const subMessage =
+    phase === "startdoc"
+      ? "*예상치 못한 상황(서버 불안정 등)에 대비하여 마감일 전 미리 질문을 확인 및 답변 내용을 따로 백업하신 후,\n지원서를 제출하시기 바랍니다."
+      : `1차 서류 심사 중입니다.\n서류 합격자 발표는 ${recruitInfo.passAnnounce_1st}입니다.`;
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    if (phase == "startdoc") {
-      setTextMessage(
-        "멋쟁이사자처럼 숙명여대 리크루팅 페이지에 오신 것을 환영합니다.\n 희망 지원파트에 접속하시어 서류접수를 진행해주세요."
-      );
-      setSubMessage(
-        "*예상치 못한 상황(서버 불안정 등)에 대비하여 마감일 전 미리 질문을확인 및 답변 내용을 따로 백업하신 후,\n 지원서를 제출하시기 바랍니다. "
-      );
-    }
-    if (phase == "closedoc") {
-      setTextMessage("서류 지원이 마감되었습니다.");
-      setSubMessage(
-        `1차 서류 심사 중입니다.\n 서류 합격자 발표는 ${recruitInfo.passAnnounce_1st}입니다.`
-      );
-      setisDeadlinePassed(true);
-    }
   }, []);
 
   const navigate = useNavigate();
