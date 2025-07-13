@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import { questions, agree, scheduleData, required } from "../questionData";
+import { agree, scheduleData, required } from "../questionData";
+import { year } from "../seasonalData";
 
 const Question = () => {
   const { part } = useParams();
@@ -51,6 +52,29 @@ const Question = () => {
         return "unknown";
     }
   };
+
+  // 백에서 서류 문항 받아오기 (2차 유지보수 7/13)
+  const [questions, setQuestions] = useState([]);
+  useEffect(() => {
+    const shortTrack = getShortTrack(part); // pm, fe, be
+
+    axios
+      .get(`${process.env.REACT_APP_API_ROOT}/api/manage/docs/quest`, {
+        params: {
+          year: year, // seasonalData에서 관리하는 연도 변수
+          track: shortTrack, // 현재 선택한 파트 (pm, fe, be)
+        },
+      })
+      .then((res) => {
+        if (res.data.isSuccess) {
+          const questionList = res.data.result.map((item) => item.content); // 질문 리스트 저장
+          setQuestions(questionList);
+        }
+      })
+      .catch((err) => {
+        console.error("질문 로딩 실패:", err);
+      });
+  }, [part]);
 
   switch (part) {
     case "plan":
@@ -566,8 +590,8 @@ const Question = () => {
         {/* 질문과 답변 입력 */}
         {/* 6개 질문 answer 인덱스 8~13 */}
         {/*answerList의 a1~a6*/}
-        {questions.common &&
-          questions.common.map((question, index) => (
+        {questions &&
+          questions.map((question, index) => (
             <QuestionContainer key={index}>
               <Text
                 style={{ whiteSpace: "pre-wrap" }}
