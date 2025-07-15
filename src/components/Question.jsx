@@ -12,6 +12,7 @@ const Question = () => {
   // const [selectedFiles, setSelectedFiles] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false); // 로딩 상태
+  const maxLength = 600; // 최대 글자수
 
   // const handleFileSelect = (e) => {
   //   const files = Array.from(e.target.files);
@@ -75,6 +76,8 @@ const Question = () => {
         console.error("질문 로딩 실패:", err);
       });
   }, [part]);
+
+  // 서류 질문 임시 더미데이터
   // const [questions, setQuestions] = useState([
   //   "1. 자기소개를 해주세요.",
   //   "2. 지원 동기를 작성해주세요.",
@@ -103,7 +106,7 @@ const Question = () => {
       partName = "error";
   }
 
-  // 서류 질문 문항 개수에 따라 인덱스 동적으로 부여
+  // 서류 질문 문항 개수에 따라 인덱스 동적으로 부여 (2차 유지보수 7/15)
   const baseIndex = 8; // 서류 질문 시작 index
   const questionCount = questions.length;
 
@@ -147,7 +150,6 @@ const Question = () => {
       return newArr;
     });
   }, [questions.length]);
-  const maxLength = 600; // 최대 글자수
   //const [fileName, setFileName] = useState("");
 
   const handleInputChange = (index, value) => {
