@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as S from "../style/LayoutStyle";
-import { generation } from "../seasonalData";
-import { imgCard } from "../seasonalData";
+import { generation } from "../data/seasonal/seasonalData";
+import { imgCard } from "../data/seasonal/seasonalData";
 import AnimatedContainer from "../components/AnimatedContainer";
 
 const AboutUs = () => {

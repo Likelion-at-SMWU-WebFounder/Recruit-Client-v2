@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Information from "../../components/Information";
 import { useNavigate } from "react-router-dom";
-import { notionUrl } from "../../seasonalData";
+import { notionUrl } from "../../data/seasonal/seasonalData";
 
 const Recruit = () => {
   useEffect(() => {
