@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "../components/Modal";
 import axios from "axios";
-import { projectsData } from "../projectsData";
+import { allProjectsData } from "../data/projects/projectsData";
 import { IoIosArrowForward } from "react-icons/io";
 
 const ProjectCard = ({ project, onClick }) => {
@@ -33,7 +33,7 @@ const Project = () => {
   // const [projects, setProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [filterByNo, setFilterByNo] = useState("전체");
-  const [filteredProjects, setFilteredProjects] = useState(projectsData);
+  const [filteredProjects, setFilteredProjects] = useState(allProjectsData);
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 12;
 
@@ -41,7 +41,7 @@ const Project = () => {
 
   useEffect(() => {
     if (filterByNo === "전체") {
-      const sortedProjects = [...projectsData].sort((p1, p2) => {
+      const sortedProjects = [...allProjectsData].sort((p1, p2) => {
         const no1 = parseInt(p1.no.replace("기", ""), 10);
         const no2 = parseInt(p2.no.replace("기", ""), 10);
         return no2 - no1; // 높은 숫자부터 정렬
@@ -49,10 +49,10 @@ const Project = () => {
       setFilteredProjects(sortedProjects);
     } else {
       setFilteredProjects(
-        projectsData.filter((project) => project.no === filterByNo)
+        allProjectsData.filter((project) => project.no === filterByNo)
       );
     }
-  }, [filterByNo, projectsData]);
+  }, [filterByNo]);
 
   const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
   const pageNumbers = [];
