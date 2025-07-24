@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import { questions, agree, scheduleData, required } from "../questionData";
+import { agree, scheduleData, required } from "../questionData";
+import { year } from "../seasonalData";
 
 const Question = () => {
   const { part } = useParams();
@@ -11,6 +12,7 @@ const Question = () => {
   // const [selectedFiles, setSelectedFiles] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false); // 로딩 상태
+  const maxLength = 600; // 최대 글자수
 
   // const handleFileSelect = (e) => {
   //   const files = Array.from(e.target.files);
@@ -52,6 +54,41 @@ const Question = () => {
     }
   };
 
+  // 백에서 서류 문항 받아오기 (2차 유지보수 7/13)
+  const [questions, setQuestions] = useState([]);
+  useEffect(() => {
+    const shortTrack = getShortTrack(part); // pm, fe, be
+
+    axios
+      .get(`${process.env.REACT_APP_API_ROOT}/api/manage/docs/quest`, {
+        params: {
+          year: year, // seasonalData에서 관리하는 연도 변수
+          track: shortTrack, // 현재 선택한 파트 (pm, fe, be)
+        },
+      })
+      .then((res) => {
+        if (res.data.isSuccess) {
+          const questionList = res.data.result.map((item) => item.content); // 질문 리스트 저장
+          setQuestions(questionList);
+        }
+      })
+      .catch((err) => {
+        console.error("질문 로딩 실패:", err);
+      });
+  }, [part]);
+
+  // 서류 질문 임시 더미데이터
+  // const [questions, setQuestions] = useState([
+  //   "1. 자기소개를 해주세요.",
+  //   "2. 지원 동기를 작성해주세요.",
+  //   "3. 본인의 장점을 말해주세요.",
+  //   "4. 협업 경험을 설명해주세요.",
+  //   "5. 앞으로의 목표는 무엇인가요?",
+  //   "6. 기타 하고 싶은 말이 있다면 적어주세요.",
+  //   "7. 좋은 리더란 어떤 리더라고 생각하나요?",
+  //   "8. 본인이 팀원을 고를 수 있다면 어떤 팀원과 함께 하고 싶나요?",
+  // ]);
+
   switch (part) {
     case "plan":
       partName = "기획 · 디자인";
@@ -68,31 +105,65 @@ const Question = () => {
     default:
       partName = "error";
   }
+
+  // 서류 질문 문항 개수에 따라 인덱스 동적으로 부여 (2차 유지보수 7/15)
+  const baseIndex = 8; // 서류 질문 시작 index
+  const questionCount = questions.length;
+
+  const indexMap = {
+    name: 0, // 성함
+    phone: 1, // 전화번호
+    studentId: 2, // 학번
+    major: 3, // 전공
+    completedSem: 4, // 수료학기
+    schoolStatus: 5, // 재/휴학 여부
+    graduatedYear: 6, // 졸업 예정 연도
+    programmers: 7, // 프로그래머스 수강 여부
+    questionsStart: baseIndex, // 서류 질문 시작 index
+    questionsEnd: baseIndex + questionCount - 1, // 서류 질문 끝 index
+    portfolio: baseIndex + questionCount, // 포트폴리오
+    password: baseIndex + questionCount + 1, // 개인 비밀번호
+    agreeEvent: baseIndex + questionCount + 2, // 위 내용 확인 (필수)
+    agreePrivacy: baseIndex + questionCount + 3, // 개인정보 동의 (필수)
+    email: baseIndex + questionCount + 4, // 이메일
+    programmersImg: baseIndex + questionCount + 5, // 프로그래머스 수강 인증 이미지
+    // 필요시 추가
+  };
+
+  const totalFields = indexMap.programmersImg + 1 + 10; // 이후 항목 여유분
   const defaultValues = {
     5: "재학",
     7: "O",
   };
-
-  const initialAnswers = Array(30)
+  const initialAnswers = Array(totalFields)
     .fill("")
     .map((_, index) => defaultValues[index] || "");
 
   const [answers, setAnswers] = useState(initialAnswers);
-  const maxLength = 600; // 최대 글자수
+  useEffect(() => {
+    // 질문 개수 바뀔 때마다 answers 배열 길이 맞추기
+    setAnswers((prev) => {
+      if (prev.length === totalFields) return prev;
+      const newArr = Array(totalFields)
+        .fill("")
+        .map((_, index) => prev[index] ?? (defaultValues[index] || ""));
+      return newArr;
+    });
+  }, [questions.length]);
   //const [fileName, setFileName] = useState("");
 
   const handleInputChange = (index, value) => {
     const newAnswers = [...answers];
 
-    if (index === 1 && value.length > 11) {
+    if (index === indexMap.phone && value.length > 11) {
       alert("전화번호는 ‘-’없이 11자리로 입력해주세요.");
       value = value.slice(0, 11);
-    } else if (index === 2 && value.length > 7) {
+    } else if (index === indexMap.studentId && value.length > 7) {
       alert("학번은 7자리로 입력해주세요.");
       value = value.slice(0, 7);
     }
 
-    if (index === 19) {
+    if (index === indexMap.password) {
       // 입력된 값이 숫자가 아닌 경우에만 알림 표시
       if (!/^[0-9]*$/.test(value)) {
         alert("비밀번호는 숫자로만 입력해주세요.");
@@ -100,7 +171,7 @@ const Question = () => {
       }
     }
 
-    if (index === 23) {
+    if (index === indexMap.programmersImg) {
       newAnswers[index] = fileName;
     } else {
       // 텍스트 길이가 최대 글자수를 초과하지 않는지 확인
@@ -141,23 +212,16 @@ const Question = () => {
 
     // 필수 입력 필드 확인
     const requiredFields = [
-      answers[0], // 성함
-      answers[1], // 전화번호
-      answers[2], // 학번
-      answers[3], // 전공
-      answers[4], // 수료학기
-      answers[6], // 졸업예정연도
-      answers[22], // 이메일
-
-      answers[8], // 서류 1번문항
-      answers[9], // 서류 2번문항
-      answers[10], // 서류 3번문항
-      answers[11], // 서류 4번문항
-      answers[12], // 서류 5번문항
-      answers[13], // 서류 6번문항
-      answers[20], // 위 내용 확인 (필수)
-      answers[21], // 개인정보 동의 (필수)
-      answers[19], // 개인 비밀번호
+      answers[indexMap.name], // 성함
+      answers[indexMap.phone], // 전화번호
+      answers[indexMap.studentId], // 학번
+      answers[indexMap.major], // 전공
+      answers[indexMap.completedSem], // 수료학기
+      answers[indexMap.email], // 이메일
+      ...answers.slice(indexMap.questionsStart, indexMap.questionsEnd + 1), // 서류 질문 답변
+      answers[indexMap.agreeEvent], // 위 내용 확인 (필수)
+      answers[indexMap.agreePrivacy], // 개인정보 동의 (필수)
+      answers[indexMap.password], // 개인 비밀번호
     ];
 
     // 필수 입력 필드 중 빈 값이 있는지 확인
@@ -170,13 +234,13 @@ const Question = () => {
     } else if (hasInterviewDate) {
       alert("면접 가능 일자가 선택되지 않았습니다. 확인 후 다시 제출해주세요.");
       return;
-    } else if (emailCheck(answers[22])) {
+    } else if (emailCheck(answers[indexMap.email])) {
       alert("유효한 이메일 형식으로 입력해주세요.");
       return;
-    } else if (answers[2].length !== 7) {
+    } else if (answers[indexMap.studentId].length !== 7) {
       alert("학번은 7자리로 입력해주세요."); // 학번 길이 확인
       return;
-    } else if (answers[1].length !== 11) {
+    } else if (answers[indexMap.phone].length !== 11) {
       alert("전화번호는 ‘-’없이 11자리로 입력해주세요."); // 전화번호 길이 확인
       return;
     } else {
@@ -193,31 +257,36 @@ const Question = () => {
 
         const requestBody = {
           studentInfo: {
-            agreeToEventParticipation: answers[20],
-            agreeToTerms: answers[21],
-            completedSem: answers[4],
-            email: answers[22],
-            graduatedYear: answers[6],
-            major: answers[3],
-            name: answers[0],
-            password: answers[19],
-            phoneNumber: answers[1],
-            portfolio: answers[14],
-            programmers: answers[7] === "O" ? "ENROLLED" : "NOT_ENROLLED",
-            programmersImg: answers[23],
-            schoolStatus: answers[5] === "재학" ? "ENROLLED" : "ON_LEAVE",
-            studentId: answers[2],
+            agreeToEventParticipation: answers[indexMap.agreeEvent],
+            agreeToTerms: answers[indexMap.agreePrivacy],
+            completedSem: answers[indexMap.completedSem],
+            email: answers[indexMap.email],
+            graduatedYear: answers[indexMap.graduatedYear],
+            major: answers[indexMap.major],
+            name: answers[indexMap.name],
+            password: answers[indexMap.password],
+            phoneNumber: answers[indexMap.phone],
+            portfolio: answers[indexMap.portfolio],
+            programmers:
+              answers[indexMap.programmers] === "O"
+                ? "ENROLLED"
+                : "NOT_ENROLLED",
+            programmersImg: answers[indexMap.programmersImg],
+            schoolStatus:
+              answers[indexMap.schoolStatus] === "재학"
+                ? "ENROLLED"
+                : "ON_LEAVE",
+            studentId: answers[indexMap.studentId],
             track: trackfield,
           },
-          answerList: {
-            a1: answers[8],
-            a2: answers[9],
-            a3: answers[10],
-            a4: answers[11],
-            a5: answers[12],
-            a6: answers[13],
-            a7: answers[14],
-          },
+          answerList: (() => {
+            const obj = {};
+            for (let i = 0; i < questions.length; i++) {
+              obj[`a${i + 1}`] = answers[indexMap.questionsStart + i];
+            }
+            obj[`a${questions.length + 1}`] = answers[indexMap.portfolio]; // 포트폴리오
+            return obj;
+          })(),
           interview_time: interviewTimes,
         };
 
@@ -271,31 +340,32 @@ const Question = () => {
 
       const requestBody = {
         studentInfo: {
-          agreeToEventParticipation: answers[20],
-          agreeToTerms: answers[21],
-          completedSem: answers[4],
-          email: answers[22],
-          graduatedYear: answers[6],
-          major: answers[3],
-          name: answers[0],
-          password: answers[19],
-          phoneNumber: answers[1],
-          portfolio: answers[14],
-          programmers: answers[7] === "O" ? "ENROLLED" : "NOT_ENROLLED",
-          programmersImg: answers[23],
-          schoolStatus: answers[5] === "재학" ? "ENROLLED" : "ON_LEAVE",
-          studentId: answers[2],
+          agreeToEventParticipation: answers[indexMap.agreeEvent],
+          agreeToTerms: answers[indexMap.agreePrivacy],
+          completedSem: answers[indexMap.completedSem],
+          email: answers[indexMap.email],
+          graduatedYear: answers[indexMap.graduatedYear],
+          major: answers[indexMap.major],
+          name: answers[indexMap.name],
+          password: answers[indexMap.password],
+          phoneNumber: answers[indexMap.phone],
+          portfolio: answers[indexMap.portfolio],
+          programmers:
+            answers[indexMap.programmers] === "O" ? "ENROLLED" : "NOT_ENROLLED",
+          programmersImg: answers[indexMap.programmersImg],
+          schoolStatus:
+            answers[indexMap.schoolStatus] === "재학" ? "ENROLLED" : "ON_LEAVE",
+          studentId: answers[indexMap.studentId],
           track: trackfield,
         },
-        answerList: {
-          a1: answers[8],
-          a2: answers[9],
-          a3: answers[10],
-          a4: answers[11],
-          a5: answers[12],
-          a6: answers[13],
-          a7: answers[14],
-        },
+        answerList: (() => {
+          const obj = {};
+          for (let i = 0; i < questions.length; i++) {
+            obj[`a${i + 1}`] = answers[indexMap.questionsStart + i];
+          }
+          obj[`a${questions.length + 1}`] = answers[indexMap.portfolio]; // 포트폴리오
+          return obj;
+        })(),
         interview_time: interviewTimes,
       };
 
@@ -342,7 +412,7 @@ const Question = () => {
   //     const imageUrl = await uploadImageToS3(imageFile);
 
   //     // programmersImg 상태 업데이트
-  //     handleInputChange(23, imageUrl);
+  //     handleInputChange(indexMap.programmersImg, imageUrl);
   //     setFileName(imageFile.name);
   //   } catch (error) {
   //     console.error("이미지 업로드 중 오류 발생:", error);
@@ -400,8 +470,8 @@ const Question = () => {
               placeholder="김멋사"
               width="260px"
               marginRight="150px"
-              value={answers[0]}
-              onChange={(e) => handleInputChange(0, e.target.value)}
+              value={answers[indexMap.name]}
+              onChange={(e) => handleInputChange(indexMap.name, e.target.value)}
               style={{ marginBottom: "15px" }}
             />
           </FormContainer>
@@ -411,8 +481,10 @@ const Question = () => {
               autocomplete="off"
               placeholder="01012345678"
               width="260px"
-              value={answers[1]}
-              onChange={(e) => handleInputChange(1, e.target.value)}
+              value={answers[indexMap.phone]}
+              onChange={(e) =>
+                handleInputChange(indexMap.phone, e.target.value)
+              }
               style={{ marginBottom: "15px" }}
             />
           </FormContainer>
@@ -425,8 +497,10 @@ const Question = () => {
               placeholder="2345789"
               width="260px"
               marginRight="150px"
-              value={answers[2]}
-              onChange={(e) => handleInputChange(2, e.target.value)}
+              value={answers[indexMap.studentId]}
+              onChange={(e) =>
+                handleInputChange(indexMap.studentId, e.target.value)
+              }
               style={{ marginBottom: "15px" }}
             />
           </FormContainer>
@@ -436,8 +510,10 @@ const Question = () => {
               autocomplete="off"
               placeholder="미디어학부, 인공지능공학부"
               width="296px"
-              value={answers[3]}
-              onChange={(e) => handleInputChange(3, e.target.value)}
+              value={answers[indexMap.major]}
+              onChange={(e) =>
+                handleInputChange(indexMap.major, e.target.value)
+              }
               style={{ marginBottom: "15px" }}
             />
           </FormContainer>
@@ -460,8 +536,10 @@ const Question = () => {
               placeholder="3"
               width="110px"
               marginRight="260px"
-              value={answers[4]}
-              onChange={(e) => handleInputChange(4, e.target.value)}
+              value={answers[indexMap.completedSem]}
+              onChange={(e) =>
+                handleInputChange(indexMap.completedSem, e.target.value)
+              }
               style={{ marginBottom: "15px" }}
             />
           </FormContainer>
@@ -469,8 +547,10 @@ const Question = () => {
             <Text fontSize="20px">재/휴학 여부 *</Text>
             <Select
               width="125px"
-              value={answers[5]}
-              onChange={(e) => handleInputChange(5, e.target.value)}
+              value={answers[indexMap.schoolStatus]}
+              onChange={(e) =>
+                handleInputChange(indexMap.schoolStatus, e.target.value)
+              }
             >
               <Option value="재학">재학</Option>
               <Option value="휴학">휴학</Option>
@@ -497,8 +577,10 @@ const Question = () => {
               autocomplete="off"
               placeholder="sooklion@gmail.com"
               width="250px"
-              value={answers[22]}
-              onChange={(e) => handleInputChange(22, e.target.value)}
+              value={answers[indexMap.email]}
+              onChange={(e) =>
+                handleInputChange(indexMap.email, e.target.value)
+              }
               style={{ marginBottom: "15px" }}
             />
           </FormContainer>
@@ -508,8 +590,10 @@ const Question = () => {
             <Text fontSize="20px">프로그래머스 수강 여부</Text>
             <Select
               width="125px"
-              value={answers[7]}
-              onChange={(e) => handleInputChange(7, e.target.value)}
+              value={answers[indexMap.programmers]}
+              onChange={(e) =>
+                handleInputChange(indexMap.programmers, e.target.value)
+              }
             >
               <Option value="O">O</Option>
               <Option value="X">X</Option>
@@ -564,11 +648,10 @@ const Question = () => {
 
         <Hr marginTop="70px" />
         {/* 질문과 답변 입력 */}
-        {/* 6개 질문 answer 인덱스 8~13 */}
-        {/*answerList의 a1~a6*/}
-        {questions.common &&
-          questions.common.map((question, index) => (
-            <QuestionContainer key={index}>
+        {/*answerList의 a1~aN*/}
+        {questions &&
+          questions.map((question, idx) => (
+            <QuestionContainer key={idx}>
               <Text
                 style={{ whiteSpace: "pre-wrap" }}
                 fontSize="16px"
@@ -577,28 +660,34 @@ const Question = () => {
               >
                 {question}
                 <Length fontSize="12px">
-                  {answers[index + 8].length}/{maxLength}
+                  {answers[indexMap.questionsStart + idx].length}/{maxLength}
                 </Length>
               </Text>
               <Textarea
-                value={answers[index + 8]}
+                value={answers[indexMap.questionsStart + idx]}
                 maxLength={maxLength}
-                onChange={(e) => handleInputChange(index + 8, e.target.value)}
+                onChange={(e) =>
+                  handleInputChange(
+                    indexMap.questionsStart + idx,
+                    e.target.value
+                  )
+                }
                 placeholder="답변을 입력해 주세요."
               />
             </QuestionContainer>
           ))}
-
-        {/* portfolio: answers[6] */}
+        {/* portfolio: answers[indexMap.portfolio] */}
         <QuestionContainer>
           <Text fontSize="16px" marginTop="30px" marginLeft="30px">
-            7. 기술블로그, 포트폴리오, GitHub 등 자유롭게 URL 형식으로 제출해
-            주세요. (선택)
+            {questions.length + 1}. 기술블로그, 포트폴리오, GitHub 등 자유롭게
+            URL 형식으로 제출해 주세요. (선택)
           </Text>
           <Textarea
             style={{ height: "100px" }}
-            value={answers[14]}
-            onChange={(e) => handleInputChange(14, e.target.value)}
+            value={answers[indexMap.portfolio]}
+            onChange={(e) =>
+              handleInputChange(indexMap.portfolio, e.target.value)
+            }
             placeholder="URL을 입력해 주세요. (열람이 가능하도록 권한을 허용해주세요.)"
           />
         </QuestionContainer>
@@ -650,8 +739,10 @@ const Question = () => {
             <AgreeLabel>
               <Agreebox
                 type="checkbox"
-                checked={answers[20]}
-                onChange={(e) => handleInputChange(20, e.target.checked)}
+                checked={answers[indexMap.agreeEvent]}
+                onChange={(e) =>
+                  handleInputChange(indexMap.agreeEvent, e.target.checked)
+                }
               />
               위 내용을 확인하였습니다. (필수)
             </AgreeLabel>
@@ -667,8 +758,10 @@ const Question = () => {
             <AgreeLabel>
               <Agreebox
                 type="checkbox"
-                checked={answers[21]}
-                onChange={(e) => handleInputChange(21, e.target.checked)}
+                checked={answers[indexMap.agreePrivacy]}
+                onChange={(e) =>
+                  handleInputChange(indexMap.agreePrivacy, e.target.checked)
+                }
               />
               개인정보 수집 · 이용에 동의합니다. (필수)
             </AgreeLabel>
@@ -687,13 +780,15 @@ const Question = () => {
               *비밀번호 분실 시, 추후 결과 조회가 어려울 수 있으니 유의바랍니다.
             </span>
           </Text>
-          {/* password: answers[19] */}
+          {/* password: answers[indexMap.password] */}
           <InputContainer>
             <PasswordInput
               autocomplete="off"
               type={showPassword ? "text" : "password"}
-              value={answers[19]}
-              onChange={(e) => handleInputChange(19, e.target.value)}
+              value={answers[indexMap.password]}
+              onChange={(e) =>
+                handleInputChange(indexMap.password, e.target.value)
+              }
               placeholder="4자리 숫자 입력"
               maxLength="4"
             />
