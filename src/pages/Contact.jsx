@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import FAQList from "../components/FAQList";
-import { contactInfo } from "../data/seasonal/seasonalData";
+import { contactInfo } from "../data/seasonal/contact";
 
 const Contact = () => {
   useEffect(() => {

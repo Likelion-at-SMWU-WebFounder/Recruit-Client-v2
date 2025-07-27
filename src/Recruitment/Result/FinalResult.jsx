@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { generation, finalResult } from "../../data/seasonal/seasonalData";
+import { generation } from "../../data/seasonal/aboutus";
+import { finalResult } from "../../data/seasonal/recruit";
 
 const FinalResult = ({ name, message, track }) => {
   return (
