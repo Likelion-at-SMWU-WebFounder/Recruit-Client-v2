@@ -10,7 +10,7 @@ const ProjectCard = ({ project, onClick }) => {
 
   return (
     <Card onClick={() => onClick(project)}>
-      {bgImg ? <CardImage src={bgImg} alt={title} /> : <CardImage />}
+      {bgImg ? <CardImage src={bgImg} alt={title} loading="lazy"/> : <CardImage loading="lazy"/>}
       <CardContent>
         <Detail>
           자세히 보기
