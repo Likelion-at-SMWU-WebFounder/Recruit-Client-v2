@@ -27,7 +27,7 @@ const Makers = () => {
               <div style={{ width: "100%" }}>
                 <AnimatedContainer key={index} index={index}>
                   <ProfileContainer>
-                    <Img src={item.img} alt="profileimg" />
+                    <Img src={item.img} alt="profileimg" loading="lazy" />
                     <BoxContainer>
                       <ProfileNameText>
                         {item.name} | {item.part}
