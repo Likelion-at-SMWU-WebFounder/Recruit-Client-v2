@@ -5,16 +5,16 @@
 // ❗️ date 선언 시 ISO 8601 문자열 방식("YYYY-MM-DDTHH:mm:ss+09:00")으로 선언할 것을 권장합니다.
 
 // 서류 모집 시작
-export const recruitStartTime = new Date("2025-08-19T18:00:00+09:00");
+export const recruitStartTime = new Date("2025-08-19T19:50:00+09:00");
 
 // 서류 마감 시간
-export const docDeadlineTime = new Date("2025-08-19T19:00:00+09:00");
+export const docDeadlineTime = new Date("2025-08-19T20:50:00+09:00");
 
 // 서류 합격 발표
-export const firstResultTime = new Date("2025-08-19T20:00:00+09:00");
+export const firstResultTime = new Date("2025-08-19T21:50:00+09:00");
 
 // 최종 합격 발표
-export const finalResultTime = new Date("2025-08-19T21:00:00+09:00");
+export const finalResultTime = new Date("2025-08-19T22:50:00+09:00");
 
 export const getRecruitPhase = () => {
   const now = new Date();
