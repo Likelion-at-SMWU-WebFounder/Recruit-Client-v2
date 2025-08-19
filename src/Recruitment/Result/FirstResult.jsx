@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { interviewData, generation, year } from "../../seasonalData";
+import { interviewData } from "../../data/seasonal/recruit";
+import { generation, year } from "../../data/seasonal/aboutus";
 
 const FirstResult = ({ name, message, interviewTime }) => {
   return (

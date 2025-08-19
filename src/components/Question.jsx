@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import { agree, scheduleData, required } from "../questionData";
-import { year } from "../seasonalData";
+import { agree, scheduleData, required } from "../data/questions/questionData";
+import { year } from "../data/seasonal/aboutus";
 
 const Question = () => {
   const { part } = useParams();

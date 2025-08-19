@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { projectsData } from "../projectsData";
+import { allProjectsData } from "../data/projects/projectsData";
 import { IoClose } from "react-icons/io5";
 
 const Modal = ({ projectId, onClose }) => {
@@ -32,7 +32,7 @@ const Modal = ({ projectId, onClose }) => {
   //   return <LoadingMessage>Loading...</LoadingMessage>;
   // }
 
-  const project = projectsData.find((project) => project.title === projectId);
+  const project = allProjectsData.find((project) => project.title === projectId);
 
   if (!project) {
     return <ErrorMessage>Cannot find project data.</ErrorMessage>;

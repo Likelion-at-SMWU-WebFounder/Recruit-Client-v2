@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { recruitInfo } from "../seasonalData";
+import { recruitInfo } from "../data/seasonal/recruit";
 
 const Information = () => {
   const steps = [

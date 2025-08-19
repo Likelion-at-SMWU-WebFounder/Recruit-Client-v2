@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Information from "../../components/Information";
 import { useNavigate } from "react-router-dom";
-import { notionUrl } from "../../seasonalData";
+import { notionUrl } from "../../data/seasonal/recruit";
+import { recruitInfo } from "../../data/seasonal/recruit";
 import { getRecruitPhase } from "../../timeConfig";
-import { recruitInfo } from "../../seasonalData";
 
 const Recruit = () => {
   const phase = getRecruitPhase();
