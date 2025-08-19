@@ -62,9 +62,10 @@ const Question = () => {
     axios
       .get(`${process.env.REACT_APP_API_ROOT}/api/manage/docs/quest`, {
         params: {
-          year: year, // seasonalData에서 관리하는 연도 변수
+          year: Number(year), // seasonalData에서 관리하는 연도 변수
           track: shortTrack, // 현재 선택한 파트 (pm, fe, be)
         },
+        withCredentials: true,
       })
       .then((res) => {
         if (res.data.isSuccess) {
@@ -75,7 +76,7 @@ const Question = () => {
       .catch((err) => {
         console.error("질문 로딩 실패:", err);
       });
-  }, [part]);
+  }, [part, year]);
 
   // 서류 질문 임시 더미데이터
   // const [questions, setQuestions] = useState([

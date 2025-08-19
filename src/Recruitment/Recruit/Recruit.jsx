@@ -1,10 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Information from "../../components/Information";
 import { useNavigate } from "react-router-dom";
 import { notionUrl } from "../../seasonalData";
+import { getRecruitPhase } from "../../timeConfig";
+import { recruitInfo } from "../../seasonalData";
 
 const Recruit = () => {
+  const phase = getRecruitPhase();
+
+  const isDeadlinePassed = phase === "closedoc";
+
+  const textMessage =
+    phase === "startdoc"
+      ? "멋쟁이사자처럼 숙명여대 리크루팅 페이지에 오신 것을 환영합니다.\n 희망 지원파트에 접속하시어 서류접수를 진행해주세요."
+      : "서류 지원이 마감되었습니다.";
+
+  const subMessage =
+    phase === "startdoc"
+      ? "*예상치 못한 상황(서버 불안정 등)에 대비하여 마감일 전 미리 질문을 확인 및 답변 내용을 따로 백업하신 후,\n지원서를 제출하시기 바랍니다."
+      : `1차 서류 심사 중입니다.\n서류 합격자 발표는 ${recruitInfo.passAnnounce_1st}입니다.`;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -23,43 +39,31 @@ const Recruit = () => {
           alt="lion"
         />
 
-        <Text>
-          {" "}
-          {/* 멋쟁이사자처럼 숙명여대 리크루팅 페이지에 오신 것을 환영합니다. */}
-          서류 지원이 마감되었습니다.
-        </Text>
-        <Text>
-          {/* 희망 지원파트에 접속하시어 서류접수를 진행해주세요.  */}
-        </Text>
+        <Text>{textMessage}</Text>
+        <ChangeText>{subMessage}</ChangeText>
 
-        <ChangeText>
-          {/* *예상치 못한 상황(서버 불안정 등)에 대비하여 마감일 전 미리 질문을
-          확인 및 답변 내용을 따로 백업하신 후,
-          <br /> 지원서를 제출하시기 바랍니다. */}
-          1차 서류 심사 중입니다. <br />
-          서류 합격자 발표는 2월 25일 화요일입니다.
-        </ChangeText>
-
-        {/* <PartContainer>
-          <PartBox
-            background="linear-gradient(180deg, #FFEF98 33.65%, #FCF6D6 100%, #FCF6D6 100%)"
-            onClick={() => handlePartClick("plan")}
-          >
-            기획 · 디자인
-          </PartBox>
-          <PartBox
-            background="linear-gradient(180deg, #C387FF 5.52%, #E4CFFF 58.65%)"
-            onClick={() => handlePartClick("frontend")}
-          >
-            프론트엔드
-          </PartBox>
-          <PartBox
-            background="linear-gradient(180deg, #98AFFF 23.75%, #DAE1F9 100%)"
-            onClick={() => handlePartClick("backend")}
-          >
-            백엔드
-          </PartBox>
-        </PartContainer> */}
+        {!isDeadlinePassed && (
+          <PartContainer>
+            <PartBox
+              background="linear-gradient(180deg, #FFEF98 33.65%, #FCF6D6 100%, #FCF6D6 100%)"
+              onClick={() => handlePartClick("plan")}
+            >
+              기획 · 디자인
+            </PartBox>
+            <PartBox
+              background="linear-gradient(180deg, #C387FF 5.52%, #E4CFFF 58.65%)"
+              onClick={() => handlePartClick("frontend")}
+            >
+              프론트엔드
+            </PartBox>
+            <PartBox
+              background="linear-gradient(180deg, #98AFFF 23.75%, #DAE1F9 100%)"
+              onClick={() => handlePartClick("backend")}
+            >
+              백엔드
+            </PartBox>
+          </PartContainer>
+        )}
 
         <NotionBox href={notionUrl} target="_blank">
           숙명여대 멋쟁이사자처럼 리쿠르팅 홍보 노션 확인하기 {">>>"}
@@ -82,6 +86,8 @@ const Text = styled.div`
   margin-bottom: ${(props) => props.marginBottom};
   margin-left: ${(props) => props.marginLeft};
   margin-right: ${(props) => props.marginRight};
+  white-space: pre-line;
+  text-align: center;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 25px;
@@ -104,6 +110,7 @@ const ChangeText = styled.span`
   font-weight: 300;
   margin: 50px;
   text-align: center;
+  white-space: pre-line;
 
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 20px;
