@@ -75,7 +75,7 @@ function App() {
                   }
                 })}
               />
-              {phase == "recruit" && ( // 서류 접수 중일 때, 각 파트별 접수 페이지 렌더링
+              {phase == "startdoc" && ( // 서류 접수 중일 때, 각 파트별 접수 페이지 렌더링
                 <>
                   <Route path="/recruitment/:part" element={<ApplyPage />} />
                   <Route
@@ -89,17 +89,19 @@ function App() {
                 </>
               )}
 
-              <Route
-                path="/recruitment/result-verification"
-                element={LayOut(() => {
-                  switch (phase) {
-                    case "first": // 서류 합격 발표 확인 페이지
-                      return <FirstVerification />;
-                    case "final": // 최종 합격 발표 확인 페이지
-                      return <FinalVerification />;
-                  }
-                })}
-              />
+              {(phase == "firstresult" || phase == "finalresult") && (
+                <Route
+                  path="/recruitment/result-verification"
+                  element={LayOut(() => {
+                    switch (phase) {
+                      case "firstresult": // 서류 합격 발표 확인 페이지
+                        return <FirstVerification />;
+                      case "finalresult": // 최종 합격 발표 확인 페이지
+                        return <FinalVerification />;
+                    }
+                  })}
+                />
+              )}
 
               <Route path="/contact" element={LayOut(Contact)} />
               <Route path="/makers" element={LayOut(Makers)} />
