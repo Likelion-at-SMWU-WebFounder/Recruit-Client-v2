@@ -4,6 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { agree, scheduleData, required } from "../data/questions/questionData";
 import { year } from "../data/seasonal/aboutus";
+import { convertToISO } from "../utils/dateUtils";
 
 const Question = () => {
   const { part } = useParams();
@@ -253,7 +254,8 @@ const Question = () => {
         );
         const interviewTimes = {};
         selectedInterviewTimes.forEach((time, index) => {
-          interviewTimes[index + 1] = time;
+          const isoTime = convertToISO(time);
+          if (isoTime) interviewTimes[index + 1] = time;
         });
 
         const requestBody = {
